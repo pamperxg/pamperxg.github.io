@@ -1,2 +1,1 @@
-# pamperxg.github.io
-Blog：
+# Blog
