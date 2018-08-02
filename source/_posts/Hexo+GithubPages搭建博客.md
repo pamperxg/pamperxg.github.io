@@ -3,7 +3,7 @@ title: Hexo+GithubPages搭建博客
 date: 2018-08-02 21:17:37
 tags: [notes,Github Pages,Hexo]
 ---
-​	Ctrl CV 即可搭建个人博客。。。
+​	Ctrl CV 即可搭建博客。。。
 
 <!--more-->
 
@@ -114,6 +114,14 @@ $ hexo d
 ```
 
 此时，打开<https://xxx.github.io/>即可访问博客。
+
+开启写作之旅：
+
+```bash
+$ hexo n "xxx"
+```
+
+
 
  # 四、主题配置
 
