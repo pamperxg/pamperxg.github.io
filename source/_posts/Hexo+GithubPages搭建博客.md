@@ -61,7 +61,7 @@ User git
 IdentityFile ~.ssh/id_rsa.gitlab
 ```
 
-编写完成后同样可以```ssh -T xxx```检查是否配置成功
+编写完成后同样可以 *“ssh -T xxx”* 检查是否配置成功
 
 ## 3、Git常规信息配置
 
