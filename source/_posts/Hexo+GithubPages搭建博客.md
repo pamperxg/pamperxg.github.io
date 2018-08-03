@@ -3,7 +3,7 @@ title: Hexo+GithubPages搭建博客
 date: 2018-08-02 21:17:37
 tags: [notes,Github Pages,Hexo]
 ---
-​	Ctrl CV 即可搭建博客。。。
+​	本博客搭建流程，Ctrl CV 就能拥有 。。。
 
 <!--more-->
 
@@ -61,15 +61,17 @@ User git
 IdentityFile ~.ssh/id_rsa.gitlab
 ```
 
-编写完成后同样可以 *“ssh -T xxx”* 检查是否配置成功
+编写完成后同样可以如前所述 *“ssh -T xxx”* 检查是否配置成功
 
 ## 3、Git常规配置
 
 ```bash
 $ git config --list     #查看config信息
-$ git config --global user.name "xxx"
+$ git config --global user.name "xxx"    
 $ git config --global user.email "xxx@xxx.xx"
 ```
+
+如果须有某个文件夹下单独配置，--global改为--local即可
 
 # 三、搭建博客开启写作之旅
 
@@ -88,10 +90,10 @@ $ git checkout hexo
 于hexo分支下，
 
 ```bash
-$ hexo init
+$ hexo init  #只有空文件夹时需要改句代码
 $ npm install hexo-deployer-git
-$ hexo g  #生成静态网页
-$ hexo s  #本地预览http://localhost:4000/
+$ hexo g  #generate,生成静态网页
+$ hexo s  #server,本地预览http://localhost:4000/
 ```
 
 博客的配置文件为_config.yml，关于部署的配置如下：
@@ -110,7 +112,7 @@ deploy:
 ```bash
 $hexo clean
 $ hexo g
-$ hexo d
+$ hexo d  #deploy
 ```
 
 此时，打开<https://xxx.github.io/>即可访问博客。
@@ -118,14 +120,14 @@ $ hexo d
 开启写作之旅：
 
 ```bash
-$ hexo n "xxx"  #命令执行后，在/source/_posts下回产生一个xxx.md文件
+$ hexo n "xxx"  #new,命令执行后，在/source/_posts下回产生一个xxx.md文件
 ```
 
 当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：
 
 ```bash
 $ git fetch --all
-$ git reset --hard origin/master
+$ git reset --hard origin/hexo
 $ git pull
 ```
 
