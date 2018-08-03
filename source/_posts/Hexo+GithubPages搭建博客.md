@@ -63,7 +63,7 @@ IdentityFile ~.ssh/id_rsa.gitlab
 
 编写完成后同样可以 *“ssh -T xxx”* 检查是否配置成功
 
-## 3、Git常规信息配置
+## 3、Git常规配置
 
 ```bash
 $ git config --list     #查看config信息
@@ -71,7 +71,7 @@ $ git config --global user.name "xxx"
 $ git config --global user.email "xxx@xxx.xx"
 ```
 
-# 三、搭建博客
+# 三、搭建博客开启写作之旅
 
 ​	Hexo搭建博客后部署到Github，如果我们需要把我们原始文件也存到Github便于我们后续在不同电脑更改，理论上我们需要一个库部署，一个库来存储我们的原始文件。这里我们通过建立不同的分支来实现。
 
@@ -118,10 +118,16 @@ $ hexo d
 开启写作之旅：
 
 ```bash
-$ hexo n "xxx"
+$ hexo n "xxx"  #命令执行后，在/source/_posts下回产生一个xxx.md文件
 ```
 
+当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：
 
+```bash
+$ git fetch --all
+$ git reset --hard origin/master
+$ git pull
+```
 
  # 四、主题配置
 
