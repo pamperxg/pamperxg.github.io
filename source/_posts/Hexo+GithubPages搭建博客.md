@@ -75,6 +75,8 @@ $ git config --global user.email "xxx@xxx.xx"
 
 # 三、搭建博客开启写作之旅
 
+### 搭建流程
+
 ​	Hexo搭建博客后部署到Github，如果我们需要把我们原始文件也存到Github便于我们后续在不同电脑更改，理论上我们需要一个库部署，一个库来存储我们的原始文件。这里我们通过建立不同的分支来实现。
 
 ```bash
@@ -123,12 +125,37 @@ $ hexo d  #deploy
 $ hexo n "xxx"  #new,命令执行后，在/source/_posts下回产生一个xxx.md文件
 ```
 
-当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：
+修改完后，push到hexo分支：
+
+```bash
+$ git add .
+$ git commit -m "xxx"
+$ git push origin hexo  #-f强行push
+```
+
+如需在其他机器写作，git clone下来即可
+
+### 坑点记录
+
+- **修改配置_config.yml文件时，记得配置项之前加空格**
+
+  比如：title: *<-这个地方必须有空格*Pamper'Blog
+
+- 当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：
 
 ```bash
 $ git fetch --all
 $ git reset --hard origin/hexo
 $ git pull
+```
+
+- 添加.gitignore忽略某些文件，如.DS_Store，.deploy_git，如果发现.gitignore没起作用，清除一下git缓存即可：
+
+```bash
+$ git rm -r --cached .
+$ git add .
+$ git commit -m "update .gitignore"
+$ git push origin hexo
 ```
 
  # 四、主题配置
