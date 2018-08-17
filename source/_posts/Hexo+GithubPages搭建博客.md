@@ -7,7 +7,7 @@ tags: [notes,Github Pages,Hexo]
 
 <!--more-->
 
-# 一、安装Node.js、Hexo
+#  一、安装Node.js、Hexo
 
 ​	Ubuntu、Mac、Win下的安装都大同小异
 

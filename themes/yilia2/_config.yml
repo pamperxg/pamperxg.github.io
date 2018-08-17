@@ -3,7 +3,9 @@
 menu:
   HomePage: /
   Notes: /tags/notes
-
+  Coding: /tags/coding
+  DataScience: /tags/DataScience
+  Interview: /tags/面试
 # SubNav
 subnav:
   github: "https://github.com/pamperxg"
