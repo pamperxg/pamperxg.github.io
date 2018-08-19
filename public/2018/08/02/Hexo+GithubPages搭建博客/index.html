@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T10:06:46.000Z">
+<meta property="og:updated_time" content="2018-08-19T03:38:35.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GithubPages搭建博客">
 <meta name="twitter:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
@@ -220,7 +220,7 @@
 <p>​    我们可以把hexo分支设置为默认分支，打开项目的settings-&gt;Branches-&gt;Default Branch更改即可。因为后续更改只会发生在hexo分支，master分支仅起部署作用。</p>
 <p>接着，我们操作Hexo：</p>
 <p>于hexo分支下，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init  <span class="comment">#只有空文件夹时需要改句代码</span></span><br><span class="line">$ npm install hexo-deployer-git</span><br><span class="line">$ hexo g  <span class="comment">#generate,生成静态网页</span></span><br><span class="line">$ hexo s  <span class="comment">#server,本地预览http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init  <span class="comment">#只有空文件夹时需要这句代码</span></span><br><span class="line">$ npm install hexo-deployer-git</span><br><span class="line">$ hexo g  <span class="comment">#generate,生成静态网页</span></span><br><span class="line">$ hexo s  <span class="comment">#server,本地预览http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
 <p>博客的配置文件为_config.yml，关于部署的配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>其他配置参考注释。。</p>

@@ -92,7 +92,7 @@ $ git checkout hexo
 于hexo分支下，
 
 ```bash
-$ hexo init  #只有空文件夹时需要改句代码
+$ hexo init  #只有空文件夹时需要这句代码
 $ npm install hexo-deployer-git
 $ hexo g  #generate,生成静态网页
 $ hexo s  #server,本地预览http://localhost:4000/
