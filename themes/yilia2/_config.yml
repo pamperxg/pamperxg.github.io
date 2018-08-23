@@ -1,11 +1,10 @@
 # Header
 
 menu:
-  HomePage: /
+  主页: /
   Notes: /tags/notes
   Coding: /tags/coding
   DataScience: /tags/DataScience
-  Interview: /tags/面试
 # SubNav
 subnav:
   github: "https://github.com/pamperxg"
@@ -13,13 +12,13 @@ subnav:
   #rss: "#"
   #zhihu: "#"
   #qq: "#"
-  weixin: "1261790465"
+  #weixin: "1261790465"
   jianshu: "https://www.jianshu.com/u/484f3f0c4dd3"
   #douban: "#"
   #segmentfault: "#"
   #bilibili: "#"
   #acfun: "#"
-  mail: "pamperxg@yeah.net"
+  #mail: "pamperxg@yeah.net"
   #facebook: "#"
   #google: "#"
   #twitter: "#"
