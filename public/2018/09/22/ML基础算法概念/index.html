@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="统计学习偏向于理论的优美完善。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-23T03:22:53.876Z">
+<meta property="og:updated_time" content="2018-09-27T16:54:56.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML基础算法概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -280,6 +280,16 @@
 <p>递归构建二叉树，对回归树用<strong>平方误差最小化</strong>准则，分类树用<strong>基尼指数最小化</strong>准则进行特征选择，生成二叉树。</p>
 <p><strong>剪枝</strong>：</p>
 <p>从生成算法的决策树底端开始不断剪枝，直到根节点，形成一个子树序列，然后通过交叉验证在独立的验证数据集上对子树序列进行测试，选取最优子树。</p>
+<hr>
+<p>涉及到<strong>距离度量</strong>时，缺失的数据就会比较重要。</p>
+<p><strong>随机森林和XGBoost缺失值处理</strong>：</p>
+<ul>
+<li><p>随机森林：1、数值型变量用所有对应类别中的中位数替换，类别型变量用出现最多的值（众数）替换</p>
+<p>​          2、加权，相似的点拥有更高的权重          </p>
+</li>
+<li><p>XGBoost：训练时缺失数据会被分到左子树或者右子树计算损失，选择较优的那个。如果训练时没有缺失而预测时出现缺失，则默认被分到右子树。</p>
+</li>
+</ul>
 
       
 
@@ -529,6 +539,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -541,7 +563,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">notes</a>
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,22 +580,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>

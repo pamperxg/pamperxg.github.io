@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T16:09:46.892Z">
+<meta property="og:updated_time" content="2018-09-27T16:54:52.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
@@ -195,7 +195,7 @@
 <p>判断一棵树是否是另一棵树的子树</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>链表反转</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RverseLinkedList</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseLinkedList</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        ListNode prev = <span class="keyword">null</span>;</span><br><span class="line">        ListNode curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode next = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseNodeRecurse</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head = <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode p = reverseNodeRecurse(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>归并排序</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>String To Int</p>
@@ -211,13 +211,23 @@
 <p>二分类的label，数据如何分布熵最大？</p>
 <p>Bootstrap是什么？</p>
 <p>Bagging和Boosting区别、Stacking？</p>
+<p>协方差矩阵？</p>
+<blockquote>
+<p>标准差和方差都是用来描述一维数据，协方差是一种用来度量两个随机变量关系的统计量，是一个对称的方阵，对角线上的因子就是变量的方差。</p>
+</blockquote>
 <p>pearson相关系数(如何定义)？</p>
+<blockquote>
+<p>协方差/标准差乘积</p>
+</blockquote>
 <p>评价指标有哪些(分类、回归)？</p>
 <p>AUC怎么计算？ROC曲线怎么画？</p>
 <p>降维的方法有哪些？</p>
 <p>如何做异常检测？</p>
 <p>如何判断一个特征是否有用？</p>
 <p>如何判断数据是线性的？</p>
+<blockquote>
+<p>线性分类模型是指决策面是输入向量X的线性函数。定义为D维输入空间的D-1维超平面。如果数据集可以被线性决策面精确地分类，该数据集是线性可分的。</p>
+</blockquote>
 <p>线性模型和非线性模型的区别？</p>
 <p>CTR预估中如何处理样本不平衡的问题？</p>
 <p>如何判断采样是否有效？</p>
@@ -227,7 +237,7 @@
 <p>TFIDF，怎么计算，怎么改进？</p>
 <p>TFIDF，有什么缺点？</p>
 <blockquote>
-<p>优点：简单快速，容易理解。缺点：用词频来衡量文章中的一个词的重要性不够全面，有时候重要的词出现的不够多，而且这种计算无法体现位置信息，无法体现词在上下文中的重要性。如需体现词的上下文结构，需要使用Word2Vec</p>
+<p>优点：简单快速，容易理解。缺点：用词频来衡量文章中的一个词的重要性不够全面，有时候重要的词出现的不够多，而且这种计算无法体现位置信息，无法体现词在上下文中的重要性。如需体现词的上下文结构，需要使用Word2Vec。</p>
 </blockquote>
 <p>N-gram怎么平滑？</p>
 <p>拉普拉斯平滑？贝叶斯平滑？</p>
@@ -236,8 +246,16 @@
 <blockquote>
 <p>符合指数分布族的一般模型</p>
 </blockquote>
+<p>最小二乘和最大似然的关系？</p>
+<blockquote>
+<p>最小二乘：找到一组估计值，使得实际值与估计值距离最小                                                </p>
+<p>最大似然：寻找一组参数估计值，使得已发生的样本概率最大</p>
+<p>最小二乘是高斯噪声模型假设下的最大似然解？</p>
+<p>对于二分类问题，不适宜用最小平方法，最小平方法对应于高斯分布假设条件下的最大似然法，而二值目标向量的概率分布显然不是高斯分布。需要选用更恰当的概率模型。</p>
+</blockquote>
 <h4 id="手推公式"><a href="#手推公式" class="headerlink" title="手推公式"></a>手推公式</h4><p>LR</p>
 <p>SVM</p>
+<p>适用于特征维度多于样本数的情况？</p>
 <p>XGB</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h5 id="SQL题"><a href="#SQL题" class="headerlink" title="SQL题"></a>SQL题</h5><p>一个表包含Name，Subject，Score三个字段，输出总分前十名的同学</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Name</span>,<span class="keyword">sum</span>(Score) <span class="keyword">as</span> SumScore <span class="keyword">from</span> A <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">Name</span> <span class="keyword">order</span> <span class="keyword">by</span> SumScore <span class="keyword">limit</span> <span class="number">10</span>; ?</span><br></pre></td></tr></table></figure>
@@ -245,6 +263,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p>Python 有哪些数据类型结构？List和Dict的区别？</p>
 <p>Python异常捕获？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line"><span class="keyword">finally</span>:</span><br></pre></td></tr></table></figure>
 <p>Python生成器？</p>
 <p>Python map、reduce函数？</p>
 <h5 id="大数据相关题"><a href="#大数据相关题" class="headerlink" title="大数据相关题"></a>大数据相关题</h5><p>介绍下HDFS？</p>
@@ -252,7 +271,7 @@
 <p>高可用机制和联邦机制是什么？</p>
 <p>高可用机制的备用是冷的还是热的？为什么？</p>
 <p>如何对大文件中的数字排序？(文件很大机器内存有限)</p>
-<p>爬取大量URL时，如何判断这个URL是否已经爬过？</p>
+<p>爬取大量URL时，如何判断这个URL是否已经爬过？（set？布隆过滤器？）</p>
 
       
 
@@ -507,6 +526,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -519,7 +550,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">notes</a>
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,22 +567,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>
