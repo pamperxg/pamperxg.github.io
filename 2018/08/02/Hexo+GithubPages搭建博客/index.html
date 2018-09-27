@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo+GithubPages搭建博客 | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​    Ctrl CV 即可搭建博客。。。">
+  <meta name="description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
 <meta name="keywords" content="notes,Github Pages,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+GithubPages搭建博客">
 <meta property="og:url" content="http://yoursite.com/2018/08/02/Hexo+GithubPages搭建博客/index.html">
 <meta property="og:site_name" content="Pamper&#39;s Blog">
-<meta property="og:description" content="​    Ctrl CV 即可搭建博客。。。">
+<meta property="og:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-03T01:41:58.768Z">
+<meta property="og:updated_time" content="2018-08-25T01:49:21.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GithubPages搭建博客">
-<meta name="twitter:description" content="​    Ctrl CV 即可搭建博客。。。">
+<meta name="twitter:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
   
     <link rel="alternative" href="/atom.xml" title="Pamper&#39;s Blog" type="application/atom+xml">
   
@@ -48,21 +48,25 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/riven.png" class="js-avatar">
+			<img src="/riven.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">pamper</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">Is Rampage...</p>
+		<p class="header-subtitle">Try Play Tough</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">HomePage</a></li>
+				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/notes">Notes</a></li>
+	        
+				<li><a href="/tags/coding">Coding</a></li>
+	        
+				<li><a href="/tags/DataScience">DataScience</a></li>
 	        
 			</ul>
 		</nav>
@@ -86,7 +90,7 @@
 		        
 					<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/484f3f0c4dd3" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
-					<a class="mail" target="_blank" href="/pamperxg@yeah.net" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="https://github.com/pamperxg" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -104,15 +108,19 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/riven.png" class="js-avatar">
+				<img src="/riven.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">pamper</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Is Rampage...<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Try Play Tough<i class="icon icon-quo-right"></i></p>
 			
 			
+			
+				
+			
+				
 			
 				
 			
@@ -127,18 +135,22 @@
 			        
 						<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/484f3f0c4dd3" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
-						<a class="mail" target="_blank" href="/pamperxg@yeah.net" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="https://github.com/pamperxg" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">HomePage</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/notes">Notes</a></li>
+					<li style="width: 25%"><a href="/tags/notes">Notes</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/coding">Coding</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/DataScience">DataScience</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,7 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    Ctrl CV 即可搭建博客。。。</p>
+        <p>​    本博客搭建流程，Ctrl CV 就能拥有 。。。</p>
 <a id="more"></a>
 <h1 id="一、安装Node-js、Hexo"><a href="#一、安装Node-js、Hexo" class="headerlink" title="一、安装Node.js、Hexo"></a>一、安装Node.js、Hexo</h1><p>​    Ubuntu、Mac、Win下的安装都大同小异</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install node.js</span><br><span class="line">$ sudo apt-get install npm   <span class="comment">#一种包管理工具</span></span><br><span class="line">$ sudo npm install -g hexo</span><br><span class="line"></span><br><span class="line">$ node -v</span><br><span class="line">$ hexo -v  <span class="comment">#输出相应的版本即安装成功</span></span><br></pre></td></tr></table></figure>
@@ -190,22 +202,38 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.xx -C <span class="string">"xxx@xx.xx"</span>   <span class="comment">#生成另外一个带别名的key</span></span><br><span class="line">$ ssh-add ~/.ssh/id_rsa.xx  <span class="comment">#添加新的ssh key到ssh agent，其默认只读id_rsa</span></span><br><span class="line">$ touch config  <span class="comment">#创建多个key的配置文件</span></span><br></pre></td></tr></table></figure>
 <p>已同时配置gitlab和github的key为例，config文件中写入如下信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github</span><br><span class="line">HostName github.com</span><br><span class="line">User git</span><br><span class="line">IdentityFile ~.ssh/id_rsa.github</span><br><span class="line"></span><br><span class="line">Host gitlab</span><br><span class="line">HostName gitlab.com</span><br><span class="line">User git</span><br><span class="line">IdentityFile ~.ssh/id_rsa.gitlab</span><br></pre></td></tr></table></figure>
-<p>编写完成后同样可以 <em>“ssh -T xxx”</em> 检查是否配置成功</p>
-<h2 id="3、Git常规信息配置"><a href="#3、Git常规信息配置" class="headerlink" title="3、Git常规信息配置"></a>3、Git常规信息配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list     <span class="comment">#查看config信息</span></span><br><span class="line">$ git config --global user.name <span class="string">"xxx"</span></span><br><span class="line">$ git config --global user.email <span class="string">"xxx@xxx.xx"</span></span><br></pre></td></tr></table></figure>
-<h1 id="三、搭建博客"><a href="#三、搭建博客" class="headerlink" title="三、搭建博客"></a>三、搭建博客</h1><p>​    Hexo搭建博客后部署到Github，如果我们需要把我们原始文件也存到Github便于我们后续在不同电脑更改，理论上我们需要一个库部署，一个库来存储我们的原始文件。这里我们通过建立不同的分支来实现。</p>
+<p>编写完成后同样可以如前所述 <em>“ssh -T xxx”</em> 检查是否配置成功</p>
+<h2 id="3、Git常规配置"><a href="#3、Git常规配置" class="headerlink" title="3、Git常规配置"></a>3、Git常规配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list     <span class="comment">#查看config信息</span></span><br><span class="line">$ git config --global user.name <span class="string">"xxx"</span>    </span><br><span class="line">$ git config --global user.email <span class="string">"xxx@xxx.xx"</span></span><br></pre></td></tr></table></figure>
+<p>如果须有某个文件夹下单独配置，–global改为–local即可</p>
+<h1 id="三、搭建博客开启写作之旅"><a href="#三、搭建博客开启写作之旅" class="headerlink" title="三、搭建博客开启写作之旅"></a>三、搭建博客开启写作之旅</h1><h3 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h3><p>​    Hexo搭建博客后部署到Github，如果我们需要把我们原始文件也存到Github便于我们后续在不同电脑更改，理论上我们需要一个库部署，一个库来存储我们的原始文件。这里我们通过建立不同的分支来实现。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:xxx/xxx.github.io.git</span><br><span class="line">$ git branch hexo</span><br><span class="line">$ git checkout hexo</span><br></pre></td></tr></table></figure>
 <p>​    我们可以把hexo分支设置为默认分支，打开项目的settings-&gt;Branches-&gt;Default Branch更改即可。因为后续更改只会发生在hexo分支，master分支仅起部署作用。</p>
 <p>接着，我们操作Hexo：</p>
 <p>于hexo分支下，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install hexo-deployer-git</span><br><span class="line">$ hexo g  <span class="comment">#生成静态网页</span></span><br><span class="line">$ hexo s  <span class="comment">#本地预览http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init  <span class="comment">#只有空文件夹时需要这句代码</span></span><br><span class="line">$ npm install hexo-deployer-git</span><br><span class="line">$ hexo g  <span class="comment">#generate,生成静态网页</span></span><br><span class="line">$ hexo s  <span class="comment">#server,本地预览http://localhost:4000/</span></span><br></pre></td></tr></table></figure>
 <p>博客的配置文件为_config.yml，关于部署的配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>其他配置参考注释。。</p>
 <p>重新生成部署：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d  <span class="comment">#deploy</span></span><br></pre></td></tr></table></figure>
 <p>此时，打开<a href="https://xxx.github.io/" target="_blank" rel="noopener">https://xxx.github.io/</a>即可访问博客。</p>
 <p>开启写作之旅：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n <span class="string">"xxx"</span>  <span class="comment">#new,命令执行后，在/source/_posts下回产生一个xxx.md文件</span></span><br></pre></td></tr></table></figure>
+<p>修改完后，push到hexo分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"xxx"</span></span><br><span class="line">$ git push origin hexo  <span class="comment">#-f强行push</span></span><br></pre></td></tr></table></figure>
+<p>如需在其他机器写作，git clone下来即可</p>
+<h3 id="坑点记录"><a href="#坑点记录" class="headerlink" title="坑点记录"></a>坑点记录</h3><ul>
+<li><p><strong>修改配置_config.yml文件时，记得配置项之前加空格</strong></p>
+<p>比如：title: <em>&lt;-这个地方必须有空格</em>Pamper’Blog</p>
+</li>
+<li><p>当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/hexo</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加.gitignore忽略某些文件，如.DS_Store，.deploy_git，如果发现.gitignore没起作用，清除一下git缓存即可：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm -r --cached .</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"update .gitignore"</span></span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure>
 <h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>​    配置文件_config.yml中有主题配置选项theme，将心仪的主题clone到themes文件夹下，修改配置重新部署即可应用主题，主题基本配置同样主题文件夹下的 _config.yml配置。</p>
 <p>​    本博客采用<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>主题</p>
 
@@ -297,6 +325,20 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2018/08/17/排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          排序算法
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -310,6 +352,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装Node-js、Hexo"><span class="toc-number">1.</span> <span class="toc-text">一、安装Node.js、Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、Git相关配置"><span class="toc-number">2.</span> <span class="toc-text">二、Git相关配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、创建一个username-github-io的repository"><span class="toc-number">2.1.</span> <span class="toc-text">1、创建一个username.github.io的repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、配置ssh-key"><span class="toc-number">2.2.</span> <span class="toc-text">2、配置ssh key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Git常规配置"><span class="toc-number">2.3.</span> <span class="toc-text">3、Git常规配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、搭建博客开启写作之旅"><span class="toc-number">3.</span> <span class="toc-text">三、搭建博客开启写作之旅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建流程"><span class="toc-number">3.0.1.</span> <span class="toc-text">搭建流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坑点记录"><span class="toc-number">3.0.2.</span> <span class="toc-text">坑点记录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、主题配置"><span class="toc-number">4.</span> <span class="toc-text">四、主题配置</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -444,6 +499,38 @@ MathJax.Hub.Queue(function() {
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -493,7 +580,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">。。。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">我想打篮球🏀</div>
   	  	
     	</section>
     
