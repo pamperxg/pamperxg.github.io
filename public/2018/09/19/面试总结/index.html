@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-29T17:35:35.353Z">
+<meta property="og:updated_time" content="2018-09-30T17:38:34.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
@@ -193,13 +193,13 @@
 <p>给一个数组，只有一个数只出现一次，其他的都出现两次，找出这个数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>判断一棵树是否是另一棵树的子树</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IsSubTree</span></span>&#123;</span><br><span class="line">    <span class="comment">//t是否是s的子树</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubTree</span><span class="params">(TreeNode s,TreeNode t)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(isSameTree(s,t)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> isSubTree(s.left,t) || isSubTree(s.right,t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p,TreeNode q)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(p.val == q.val)</span><br><span class="line">            <span class="keyword">return</span> isSameTree(p.left,q.left) &amp;&amp; isSameTree(p.right,q.right);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>链表反转</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RverseLinkedList</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseLinkedList</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        ListNode prev = <span class="keyword">null</span>;</span><br><span class="line">        ListNode curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode next = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseNodeRecurse</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head = <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode p = reverseNodeRecurse(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>归并排序</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>String To Int</p>
-<p>考虑：判断空串、判断空格、判断符号、判断数字（判断溢出）</p>
+<p>考虑：判断空串、判断空格、判断符号、判断数字（判断溢出）,注意index&lt;s.length()</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Atoi</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//空串</span></span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//空格</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt; s.length() &amp;&amp; s.charAt(index) == <span class="string">' '</span>)</span><br><span class="line">            index ++;</span><br><span class="line">        <span class="comment">//符号</span></span><br><span class="line">        <span class="keyword">if</span>(index &lt; s.length() &amp;&amp; (s.charAt(index) == <span class="string">'+'</span>) || s.charAt(index) == <span class="string">'-'</span>)&#123;</span><br><span class="line">            sign = s.charAt(index) == <span class="string">'+'</span> ? <span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//数字</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">int</span> digit = s.charAt(index) - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(digit &lt; <span class="number">0</span> || digit &gt; <span class="number">9</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">//判断溢出</span></span><br><span class="line">            <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span> &lt; total || (Integer.MAX_VALUE/<span class="number">10</span> == total &amp;&amp; Integer.MAX_VALUE%<span class="number">10</span> &lt; digit))</span><br><span class="line">                <span class="keyword">return</span> sign &gt; <span class="number">0</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</span><br><span class="line">            total = total*<span class="number">10</span> + digit;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sign*total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>求第k大的数(复杂度是多少？)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -254,8 +254,8 @@
 <p>对于二分类问题，不适宜用最小平方法，最小平方法对应于高斯分布假设条件下的最大似然法，而二值目标向量的概率分布显然不是高斯分布。需要选用更恰当的概率模型。</p>
 </blockquote>
 <h4 id="手推公式"><a href="#手推公式" class="headerlink" title="手推公式"></a>手推公式</h4><p>LR</p>
-<p>SVM</p>
-<p>适用于特征维度多于样本数的情况？</p>
+<p>SVM(适用于特征维度多于样本数的情况？)</p>
+<p>PCA</p>
 <p>XGB</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h5 id="SQL题"><a href="#SQL题" class="headerlink" title="SQL题"></a>SQL题</h5><p>一个表包含Name，Subject，Score三个字段，输出总分前十名的同学</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Name</span>,<span class="keyword">sum</span>(Score) <span class="keyword">as</span> SumScore <span class="keyword">from</span> A <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">Name</span> <span class="keyword">order</span> <span class="keyword">by</span> SumScore <span class="keyword">limit</span> <span class="number">10</span>; ?</span><br></pre></td></tr></table></figure>
@@ -530,23 +530,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,6 +546,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -566,7 +562,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>
