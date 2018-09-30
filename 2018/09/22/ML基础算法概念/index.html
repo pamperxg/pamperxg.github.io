@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-29T17:31:09.094Z">
+<meta property="og:updated_time" content="2018-09-30T17:03:20.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML基础算法概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -201,13 +201,18 @@
 <li><p>风险函数：期望损失： 损失函数*联合概率分布的二重积分</p>
 </li>
 </ul>
-<p><em>由于联合概率是未知的，根据大数定律，当样本容量趋于无穷时，经验风险趋于期望风险，所以可以有经验风险来求期望风险，但是由于样本的数量有限，效果往往达不到预期。</em></p>
+<p><em>由于联合概率是未知的，根据大数定律，当样本容量趋于无穷时，经验风险趋于期望风险，所以可以由经验风险来求期望风险，但是由于样本的数量有限，效果往往达不到预期。</em></p>
 <ul>
 <li>监督学习的两个基本策略：经验风险最小化(empiracal risk minimization)和结构风险最小化(structural risk minimization)</li>
 <li>ERM：样本容量足够大的时候能达到较好的效果，样本容量较小的时候容易产生过拟合，例：极大似然估计（模型是条件概率分布，损失函数是对数损失，经验风险最小化等价于极大似然估计）。</li>
 <li>SRM：通过正则化系数来权衡经验风险和模型复杂度，模型越复杂时，正则项越大，例：最大后验估计（模型是条件概率分布，损失函数为对数损失函数，模型复杂度由先验概率表示，结构风险最小化等价于最大后验估计）。</li>
 </ul>
 <p>贝叶斯定理中任意一个量都可以从联合概率分布得到，要么通过积分的方式，要么通过关于某个合适的变量求条件概率。</p>
+<p>频率派和贝叶斯派区别和联系：</p>
+<ul>
+<li>频率观点：通过最优化某些准则（如似然函数）来确定参数的具体值。</li>
+<li>贝叶斯观点：给定观察数据，我们引入参数的先验分布，然后使用贝叶斯定理来计算对应的后验概率。</li>
+</ul>
 <p>共轭先验：使得后验概率分布的函数形式与先验概率相同。</p>
 <p>熵、互信息</p>
 <p>KL散度与极大似然</p>
@@ -251,8 +256,12 @@
 </ul>
 <p>各种分布</p>
 <ul>
-<li>伯努利</li>
-<li>beta（引入先验）</li>
+<li>伯努利分布（二项分布的特例）</li>
+<li>二项式分布（泊松分布是二项式分布的极限形式，二项式分布也能推出正态分布）</li>
+<li>beta分布（引入先验，二项分布的共轭分布）</li>
+<li>【随着数据量的增加，参数的后验分布等于最大似然解】</li>
+<li>多项式分布–&gt;狄利克雷分布（二项-&gt;抛硬币，多项-&gt;掷骰子）</li>
+<li>高斯分布（混合高斯模型的隐变量：数据点属于哪个高斯分布）</li>
 </ul>
 <hr>
 <h5 id="Naive贝叶斯："><a href="#Naive贝叶斯：" class="headerlink" title="Naive贝叶斯："></a>Naive贝叶斯：</h5><ul>
@@ -574,14 +583,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
              
@@ -591,6 +592,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
