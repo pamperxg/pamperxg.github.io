@@ -147,6 +147,10 @@ $ git push origin hexo  #-f强行push
 $ git fetch --all
 $ git reset --hard origin/hexo
 $ git pull
+
+$ git fetch origin hexo
+$ git log -p hexo..origin/hexo
+$ git merge origin/hexo
 ```
 
 - 添加.gitignore忽略某些文件，如.DS_Store，.deploy_git，如果发现.gitignore没起作用，清除一下git缓存即可：
