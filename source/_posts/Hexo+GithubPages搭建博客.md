@@ -3,7 +3,7 @@ title: Hexo+GithubPages搭建博客
 date: 2018-08-02 21:17:37
 tags: [notes,Github Pages,Hexo]
 ---
-​	本博客搭建流程，Ctrl CV 就能拥有 。。。
+​	本博客完整搭建流程
 
 <!--more-->
 

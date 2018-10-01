@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>面试总结 | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
+  <meta name="description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta name="keywords" content="notes,面试总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试总结">
 <meta property="og:url" content="http://yoursite.com/2018/09/19/面试总结/index.html">
 <meta property="og:site_name" content="Pamper&#39;s Blog">
-<meta property="og:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
+<meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-30T17:38:34.119Z">
+<meta property="og:updated_time" content="2018-10-01T17:01:52.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
-<meta name="twitter:description" content="不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的 == 凉凉">
+<meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
   
     <link rel="alternative" href="/atom.xml" title="Pamper&#39;s Blog" type="application/atom+xml">
   
@@ -185,8 +185,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>不同的人面试的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的</p>
-<p>== <strong>凉凉</strong></p>
+        <p>不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。</p>
+<p>今天我们就聊到这里。。。你先回去等通知。。</p>
 <a id="more"></a>
 <h3 id="关于数据结构"><a href="#关于数据结构" class="headerlink" title="关于数据结构"></a>关于数据结构</h3><p>二分查找</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinarySearch</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]==target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt; target)</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -208,6 +208,14 @@
 <p>RF原理？</p>
 <p>树如何分裂？分裂后熵应该变大还是变小？</p>
 <p>熵的定义和意义、怎么计算熵？</p>
+<blockquote>
+<p>我们一般使用信息量来进行不确定性的度量。分布为p(x)随机变量X的自信息定义为：-log(p(x))。</p>
+<p>熵定义为信息量关于随机变量概率分布的期望（编码信息的比特位下界）。</p>
+<p>条件熵：条件概率分布的熵对随机变量X的期望，条件熵 = 联合熵 - 单独熵。</p>
+<p>相对熵（KL散度）：两个概率分布之间的差异，sum(pi*log(pi/qi))。</p>
+<p>交叉熵：模型的分布于训练时分布的差异，crossEntropy = H(label) - KL(label || q)，当KL散度为0的时候，交叉熵为0。</p>
+<p>熵与方差的关系(在大部分分布的情况下正相关？)</p>
+</blockquote>
 <p>二分类的label，数据如何分布熵最大？</p>
 <p>Bootstrap是什么？</p>
 <p>Bagging和Boosting区别、Stacking？</p>
@@ -222,6 +230,15 @@
 <p>评价指标有哪些(分类、回归)？</p>
 <p>AUC怎么计算？ROC曲线怎么画？</p>
 <p>降维的方法有哪些？</p>
+<blockquote>
+<p>缺失比例过滤</p>
+<p>低方差滤波（方差与信息熵关系）</p>
+<p>高相关滤波（注意保留与目标变量存在高相关性的列，高相关性的特征会使得线性回归逻辑回归的效果变差）</p>
+<p>树模型特征重要性</p>
+<p>前向特征选择，反向特征消除（加减特征看效果。。）</p>
+<p>因子分析（按相关性分组）</p>
+<p>PCA、ICA、IOSMAP、t-SNE、UMAP</p>
+</blockquote>
 <p>如何做异常检测？</p>
 <p>如何判断一个特征是否有用？</p>
 <p>如何判断数据是线性的？</p>
@@ -229,6 +246,9 @@
 <p>线性分类模型是指决策面是输入向量X的线性函数。定义为D维输入空间的D-1维超平面。如果数据集可以被线性决策面精确地分类，该数据集是线性可分的。</p>
 </blockquote>
 <p>线性模型和非线性模型的区别？</p>
+<blockquote>
+<p>决策边界是线性，自变量（单变量时）x是否只受一个w影响，特征交叉是非线性模型。</p>
+</blockquote>
 <p>CTR预估中如何处理样本不平衡的问题？</p>
 <p>如何判断采样是否有效？</p>
 <p>TextCNN原理？</p>
@@ -241,7 +261,7 @@
 </blockquote>
 <p>N-gram怎么平滑？</p>
 <p>拉普拉斯平滑？贝叶斯平滑？</p>
-<p>聚类算法？硬分类软分类？</p>
+<p>聚类算法？硬核聚类软核聚类？</p>
 <p>广义线性模型的理解？</p>
 <blockquote>
 <p>符合指数分布族的一般模型</p>
@@ -359,18 +379,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/22/ML基础算法概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ML基础算法概念
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/10/JVM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM</div>
+    <a href="/2018/08/31/刷题总结DayANight/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">刷题总结DayANight</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -526,7 +537,35 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,27 +577,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,7 +585,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
             
             <div class="clearfix"></div>

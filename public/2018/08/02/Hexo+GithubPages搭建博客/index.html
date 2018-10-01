@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo+GithubPages搭建博客 | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
+  <meta name="description" content="​    本博客完整搭建流程">
 <meta name="keywords" content="notes,Github Pages,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+GithubPages搭建博客">
 <meta property="og:url" content="http://yoursite.com/2018/08/02/Hexo+GithubPages搭建博客/index.html">
 <meta property="og:site_name" content="Pamper&#39;s Blog">
-<meta property="og:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
+<meta property="og:description" content="​    本博客完整搭建流程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T01:49:21.638Z">
+<meta property="og:updated_time" content="2018-10-01T16:35:52.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GithubPages搭建博客">
-<meta name="twitter:description" content="​    本博客搭建流程，Ctrl CV 就能拥有 。。。">
+<meta name="twitter:description" content="​    本博客完整搭建流程">
   
     <link rel="alternative" href="/atom.xml" title="Pamper&#39;s Blog" type="application/atom+xml">
   
@@ -185,7 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    本博客搭建流程，Ctrl CV 就能拥有 。。。</p>
+        <p>​    本博客完整搭建流程</p>
 <a id="more"></a>
 <h1 id="一、安装Node-js、Hexo"><a href="#一、安装Node-js、Hexo" class="headerlink" title="一、安装Node.js、Hexo"></a>一、安装Node.js、Hexo</h1><p>​    Ubuntu、Mac、Win下的安装都大同小异</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install node.js</span><br><span class="line">$ sudo apt-get install npm   <span class="comment">#一种包管理工具</span></span><br><span class="line">$ sudo npm install -g hexo</span><br><span class="line"></span><br><span class="line">$ node -v</span><br><span class="line">$ hexo -v  <span class="comment">#输出相应的版本即安装成功</span></span><br></pre></td></tr></table></figure>
@@ -229,7 +229,7 @@
 <li><p>当我们在多台机器上修改博客，产生修改不一致的情况时，可以强制某台机器本地同步git上的代码：</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/hexo</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/hexo</span><br><span class="line">$ git pull</span><br><span class="line"></span><br><span class="line">$ git fetch origin hexo</span><br><span class="line">$ git <span class="built_in">log</span> -p hexo..origin/hexo</span><br><span class="line">$ git merge origin/hexo</span><br></pre></td></tr></table></figure>
 <ul>
 <li>添加.gitignore忽略某些文件，如.DS_Store，.deploy_git，如果发现.gitignore没起作用，清除一下git缓存即可：</li>
 </ul>
@@ -489,7 +489,35 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,27 +529,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,7 +537,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
             
             <div class="clearfix"></div>

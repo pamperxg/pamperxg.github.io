@@ -1,7 +1,7 @@
 ---
-title: ML基础算法概念
-date: 2018-09-22 20:42:56
-tags: [notes,DataScience,机器学习]
+title: ML&DL基础概念
+date: 2018-08-25 20:42:56
+tags: [notes,DataScience,MachineLearning,DeepLearning]
 ---
 
 **统计学习**偏向于理论的优美完善，研究泛化误差界。**机器学习**是统计学习对实践技术的延伸，为实际问题提供算法支撑。**数据挖掘**偏重于大量数据的实践应用，注重实际问题的解决。
