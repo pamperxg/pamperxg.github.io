@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-01T17:01:52.405Z">
+<meta property="og:updated_time" content="2018-10-02T07:49:39.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -247,7 +247,7 @@
 </blockquote>
 <p>线性模型和非线性模型的区别？</p>
 <blockquote>
-<p>决策边界是线性，自变量（单变量时）x是否只受一个w影响，特征交叉是非线性模型。</p>
+<p>决策边界是线性，自变量（单变量时）x是否只受一个w影响，是w的线性函数，特征交叉是非线性模型（基函数非线性）。</p>
 </blockquote>
 <p>CTR预估中如何处理样本不平衡的问题？</p>
 <p>如何判断采样是否有效？</p>
@@ -262,6 +262,9 @@
 <p>N-gram怎么平滑？</p>
 <p>拉普拉斯平滑？贝叶斯平滑？</p>
 <p>聚类算法？硬核聚类软核聚类？</p>
+<blockquote>
+<p>只能有一个类别的叫硬核聚类，kmeans是硬核，GMM是软核</p>
+</blockquote>
 <p>广义线性模型的理解？</p>
 <blockquote>
 <p>符合指数分布族的一般模型</p>
@@ -272,6 +275,14 @@
 <p>最大似然：寻找一组参数估计值，使得已发生的样本概率最大</p>
 <p>最小二乘是高斯噪声模型假设下的最大似然解？</p>
 <p>对于二分类问题，不适宜用最小平方法，最小平方法对应于高斯分布假设条件下的最大似然法，而二值目标向量的概率分布显然不是高斯分布。需要选用更恰当的概率模型。</p>
+</blockquote>
+<p>激活函数有哪些？ReLU和Sigmoid的区别有哪些？</p>
+<p>参数化方法和非参数化方法？</p>
+<blockquote>
+<p>线性回归是参数化的，kNN是非参数化的（基于记忆的方法）</p>
+</blockquote>
+<p>逻辑回归为什么不同squareloss？</p>
+<blockquote>
 </blockquote>
 <h4 id="手推公式"><a href="#手推公式" class="headerlink" title="手推公式"></a>手推公式</h4><p>LR</p>
 <p>SVM(适用于特征维度多于样本数的情况？)</p>
@@ -569,10 +580,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -594,6 +601,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
             
             <div class="clearfix"></div>
