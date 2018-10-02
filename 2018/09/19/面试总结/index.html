@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-02T07:49:39.359Z">
+<meta property="og:updated_time" content="2018-10-02T16:48:26.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -206,6 +206,10 @@
 <h3 id="关于算法"><a href="#关于算法" class="headerlink" title="关于算法"></a>关于算法</h3><h4 id="算法原理："><a href="#算法原理：" class="headerlink" title="算法原理："></a>算法原理：</h4><p>XGBoost原理(如何并行)？</p>
 <p>XGBoost和LightGBM区别、和RF区别？</p>
 <p>RF原理？</p>
+<p>SVM的核函数有哪些？</p>
+<blockquote>
+<p>线性核、多项式核、径向基核（RBF）、傅里叶核、样条核、Sigmoid核</p>
+</blockquote>
 <p>树如何分裂？分裂后熵应该变大还是变小？</p>
 <p>熵的定义和意义、怎么计算熵？</p>
 <blockquote>
@@ -228,6 +232,11 @@
 <p>协方差/标准差乘积</p>
 </blockquote>
 <p>评价指标有哪些(分类、回归)？</p>
+<ul>
+<li><p>R-Squared：$R^2 = 1 - \sum(y-\hat{y})^2/\sum(y-\bar{y})^2$，衡量回归方程与真实样本输出之间的相似程度。</p>
+<p>反映的是大概有多准，因为随着样本数增加R-Squared必然增加，无法真正定量说明准确程度。单独看R-Square并不能推断出特征是否有意义。应该使用校正决定系数（Adjusted R-Squared）</p>
+</li>
+</ul>
 <p>AUC怎么计算？ROC曲线怎么画？</p>
 <p>降维的方法有哪些？</p>
 <blockquote>
@@ -281,9 +290,15 @@
 <blockquote>
 <p>线性回归是参数化的，kNN是非参数化的（基于记忆的方法）</p>
 </blockquote>
-<p>逻辑回归为什么不同squareloss？</p>
+<p>逻辑回归为什么不用squareloss？</p>
 <blockquote>
 </blockquote>
+<p>各种范数？</p>
+<blockquote>
+<p>$L_p$范数：向量各个元素绝对值的$p$次方求和，然后求$1/p$次方。</p>
+<p>$L_1$、$L_2$:向量各个元素绝对值之和，平方和然后求平方根。</p>
+</blockquote>
+<p>各种距离？</p>
 <h4 id="手推公式"><a href="#手推公式" class="headerlink" title="手推公式"></a>手推公式</h4><p>LR</p>
 <p>SVM(适用于特征维度多于样本数的情况？)</p>
 <p>PCA</p>
@@ -556,19 +571,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,11 +595,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">

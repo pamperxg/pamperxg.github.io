@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-02T07:49:39.359Z">
+<meta property="og:updated_time" content="2018-10-02T16:48:09.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML&amp;DL基础概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -187,9 +187,9 @@
       
         <p><strong>统计学习</strong>偏向于理论的优美完善，研究泛化误差界。<strong>机器学习</strong>是统计学习对实践技术的延伸，为实际问题提供算法支撑。<strong>数据挖掘</strong>偏重于大量数据的实践应用，注重实际问题的解决。</p>
 <a id="more"></a>
-<p><strong>WTF</strong>：从给定的训练数据集合出发，<strong>假设</strong>数据是独立同分布产生的，<strong>假设</strong>要学习的模型是某个函数集合（假设空间），有某评价准则，从假设空间挑选最优模型。</p>
+<h3 id="ML"><a href="#ML" class="headerlink" title="ML"></a>ML</h3><p><strong>WTF</strong>：从给定的训练数据集合出发，<strong>假设</strong>数据是独立同分布产生的，<strong>假设</strong>要学习的模型是某个函数集合（假设空间），有某评价准则，从假设空间挑选最优模型。</p>
 <p>其中涉及的变换空间有：输入空间、特征空间、输出空间</p>
-<p>包含三个要素：<strong>模型</strong>、<strong>策略</strong>、<strong>算法</strong></p>
+<p>统计学习三个要素：<strong>模型</strong>、<strong>策略</strong>、<strong>算法</strong></p>
 <p>目标：研究泛化误差界</p>
 <hr>
 <h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><ul>
@@ -223,6 +223,7 @@
 <li>从贝叶斯的角度看，正则项相当于模型的先验概率，简单的模型有较大的先验概率，复杂的模型有较小的先验概率。</li>
 <li>可以看成是一种模型选择的手段，其他模型选择方法还有：交叉验证（重复使用数据）。</li>
 </ul>
+<p>在模型中增加更多的特征一般会增加训练样本的准确率，减小bias。但是测试样本的准确率不一定增加，除非增加的特征为有效特征。</p>
 <p>生成模型和判别模型</p>
 <ul>
 <li><p>生成方法由数据学习联合概率分布，然后求出条件概率分布作为预测模型。</p>
@@ -339,6 +340,14 @@
 <p>线性回归的模型可以表达非线性的东西，因为基函数是非线性的（这里基函数是固定的，NN、SVM是变化基）。</p>
 <p>多项式基函数的局限：它们是输入变量的全局函数，对于输入空间一个区域的改变将会影响所有的其他区域。</p>
 <hr>
+<h3 id="DL"><a href="#DL" class="headerlink" title="DL"></a>DL</h3><h5 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h5><p><strong>梯度下降法的步骤</strong>：</p>
+<p>1、随机初始化权重和偏差</p>
+<p>2、把输入传入网络得到输出值</p>
+<p>3、计算预测值与真实值之间的误差</p>
+<p>4、对每一个产生误差的神经元，调整相应的权重值以减小误差</p>
+<p>5、重复迭代，直至网络权重达到最佳值</p>
+<p><strong>梯度消失爆炸</strong>：</p>
+<p><strong>各类激活函数比较</strong>：</p>
 
       
 
@@ -472,7 +481,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Naive贝叶斯："><span class="toc-number">2.</span> <span class="toc-text">Naive贝叶斯：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#决策树："><span class="toc-number">3.</span> <span class="toc-text">决策树：</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ML"><span class="toc-number">1.</span> <span class="toc-text">ML</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本概念"><span class="toc-number">1.0.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Naive贝叶斯："><span class="toc-number">1.0.2.</span> <span class="toc-text">Naive贝叶斯：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#决策树："><span class="toc-number">1.0.3.</span> <span class="toc-text">决策树：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DL"><span class="toc-number">2.</span> <span class="toc-text">DL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本概念："><span class="toc-number">2.0.1.</span> <span class="toc-text">基本概念：</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -609,19 +618,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +642,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
