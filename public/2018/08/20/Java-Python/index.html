@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Java和Python的一些基础知识总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-03T17:27:56.643Z">
+<meta property="og:updated_time" content="2018-10-03T18:12:28.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java&amp;Python">
 <meta name="twitter:description" content="Java和Python的一些基础知识总结">
@@ -187,17 +187,75 @@
       
         <p>Java和Python的一些基础知识总结</p>
 <a id="more"></a>
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h5><figure class="highlight plain"><figcaption><span>(extends java.lang.Iterable)```，每一个位置存一个元素，没有get方法，只能通过```iterator()```遍历元素</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- List【维护一组元素特定顺序】</span><br><span class="line">  - **ArrayList**【查询快，基于arrays数组实现】</span><br><span class="line">  - **LinkedList**【增删快，常用作队列】</span><br><span class="line">  - **Vector**【实现同步，线程安全】</span><br><span class="line">- Queue</span><br><span class="line">  - **PriorityQueue**【基于堆结构实现】</span><br><span class="line">- Set【每个元素唯一】</span><br><span class="line">  - SortedSet</span><br><span class="line">    - **TreeSet**【保持次序的set，基于红黑树实现，查找效率不如hashset】</span><br><span class="line">  - **HashSet**【定义了hashcode，支持快速查找，不支持有序性操作，使用iterator遍历的结果可能是不确定的】</span><br><span class="line">  - **LinkedHashSet**【hash加快查询，链表维护元素次序，只能顺序访问，可以快速增删】</span><br><span class="line"></span><br><span class="line">```java.util.Map(接口)```        （key-value pair）</span><br><span class="line"></span><br><span class="line">- **HashMap**</span><br><span class="line">- **HashTable**【线程安全】</span><br><span class="line">- **ConcurrentHashMap**【支持线程安全，且效率更高】</span><br><span class="line">- **LinkedHashMap**【使用链表维护元素顺序(插入顺序、LRU顺序)】</span><br><span class="line">- SortedMap</span><br><span class="line">  - **TreeMap**</span><br><span class="line"></span><br><span class="line">array：容量固定且无法动态改变</span><br><span class="line"></span><br><span class="line">**Arrays**：操作array的类，拥有一组静态函数</span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>Integer[] arr = {1,2,3};<br>List list = Arrays.asList();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Collections**：和Arrays一样是工具类</span><br><span class="line"></span><br><span class="line">**包装类**：</span><br><span class="line"></span><br><span class="line">- 对象型：```Boolean、Character(object的直接子类)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h5><p>Collection：</p>
+<p> java.util.Collection(接口) –extends java.lang.Iterable ，每一个位置存一个元素，没有get方法，只能通过iterator() 遍历元素</p>
 <ul>
-<li>数值型：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">基本数据类型：```boolean、byte、char、short、int、float、long、double</span><br></pre></td></tr></table></figure></li>
+<li>List【维护一组元素特定顺序】<ul>
+<li><strong>ArrayList</strong>【查询快，基于arrays数组实现】</li>
+<li><strong>LinkedList</strong>【增删快，常用作队列】</li>
+<li><strong>Vector</strong>【实现同步，线程安全】</li>
 </ul>
-<p>包装类和基本类型的转化是自动拆箱装箱的，java把一些基本类型的常用对象存储在缓存池中，调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; ```valueOf()```和```new 对象```区别：new出来的对象虽然值一样但是不是同一个对象，所以x!=y</span><br><span class="line"></span><br><span class="line">**String、StringBuilder、StringBuffer**:</span><br><span class="line"></span><br><span class="line">&gt; String声明为final不可变，其他两个是可变的，StringBuilder线程不安全</span><br><span class="line"></span><br><span class="line">##### 常识梳理</span><br><span class="line"></span><br><span class="line">**关键字**</span><br><span class="line"></span><br><span class="line">**参数传递方式**</span><br><span class="line"></span><br><span class="line">**接口和抽象类**</span><br><span class="line"></span><br><span class="line">**泛型**</span><br><span class="line"></span><br><span class="line">**Object通用方法**</span><br><span class="line"></span><br><span class="line">**继承重写重载**</span><br><span class="line"></span><br><span class="line">**虚拟机**</span><br><span class="line"></span><br><span class="line">**Spring、SpringBoot**</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### Python</span><br><span class="line"></span><br><span class="line">#####**dict排序**</span><br><span class="line"></span><br><span class="line">```tmp_list = sorted(tmp_list.items(),key = lambda d:d[1],reverse = True)```按value、反序</span><br><span class="line"></span><br><span class="line">##### **交集并集差集**</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">print(list(set(b).difference(set(a))))</span><br><span class="line">print(list(set(b).union(set(a))))</span><br><span class="line">print(list(set(b).intersection(set(a))))</span><br></pre></td></tr></table></figure></p>
-<h5 id="xrange、range"><a href="#xrange、range" class="headerlink" title="xrange、range"></a><strong>xrange、range</strong></h5><h5 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a><strong>生成器</strong></h5><p>#####<strong>@property</strong></p>
-<p>#####<strong>@staticmethod、@classmethod</strong></p>
-<p>#####<strong>enumerate</strong></p>
-<p>#####<strong>多线程多进程</strong></p>
-<h5 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h5><p>#####<strong>pandas操作</strong></p>
+</li>
+<li>Queue<ul>
+<li><strong>PriorityQueue</strong>【基于堆结构实现】</li>
+</ul>
+</li>
+<li>Set【每个元素唯一】<ul>
+<li>SortedSet<ul>
+<li><strong>TreeSet</strong>【保持次序的set，基于红黑树实现，查找效率不如hashset】</li>
+</ul>
+</li>
+<li><strong>HashSet</strong>【定义了hashcode，支持快速查找，不支持有序性操作，使用iterator遍历的结果可能是不确定的】</li>
+<li><strong>LinkedHashSet</strong>【hash加快查询，链表维护元素次序，只能顺序访问，可以快速增删】</li>
+</ul>
+</li>
+</ul>
+<p>Map：</p>
+<p>java.util.Map(接口)      （key-value pair）</p>
+<ul>
+<li><strong>HashMap</strong></li>
+<li><strong>HashTable</strong>【线程安全】</li>
+<li><strong>ConcurrentHashMap</strong>【支持线程安全，且效率更高】</li>
+<li><strong>LinkedHashMap</strong>【使用链表维护元素顺序(插入顺序、LRU顺序)】</li>
+<li>SortedMap<ul>
+<li><strong>TreeMap</strong></li>
+</ul>
+</li>
+</ul>
+<p>array：容量固定且无法动态改变<br><strong>Arrays</strong>：操作array的类，拥有一组静态函数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">List list = Arrays.asList();</span><br></pre></td></tr></table></figure></p>
+<p><strong>Collections</strong>：和Arrays一样是工具类<br><strong>包装类</strong>：</p>
+<ul>
+<li>对象型：Boolean、Character(object的直接子类)</li>
+<li>数值型：Byte、Double、Short、Integer、Float<br>基本数据类型：boolean、byte、char、short、int、float、long、double<br>包装类和基本类型的转化是自动拆箱装箱的，java把一些基本类型的常用对象存储在缓存池中，调用valueOf() 方法直接使用缓存池中的对象<blockquote>
+<p>valueOf() 和new 对象区别：new出来的对象虽然值一样但是不是同一个对象，所以x!=y</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>String、StringBuilder、StringBuffer</strong>:</p>
+<blockquote>
+<p>String声明为final不可变，其他两个是可变的，StringBuilder线程不安全</p>
+</blockquote>
+<h5 id="常识梳理"><a href="#常识梳理" class="headerlink" title="常识梳理"></a>常识梳理</h5><p><strong>关键字</strong></p>
+<p><strong>参数传递方式</strong></p>
+<p><strong>接口和抽象类</strong></p>
+<p><strong>泛型</strong></p>
+<p><strong>Object通用方法</strong></p>
+<p><strong>继承重写重载</strong></p>
+<p><strong>虚拟机</strong></p>
+<p><strong>Spring、SpringBoot</strong></p>
+<hr>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>dict排序</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp_list = sorted(tmp_list.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse = <span class="keyword">True</span>)  <span class="comment">##按value、反序</span></span><br></pre></td></tr></table></figure>
+<p><strong>交集并集差集</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(list(set(b).difference(set(a))))</span><br><span class="line">print(list(set(b).union(set(a))))</span><br><span class="line">print(list(set(b).intersection(set(a))))</span><br></pre></td></tr></table></figure>
+<p><strong>xrange、range</strong></p>
+<p><strong>生成器</strong></p>
+<p><strong>@property</strong></p>
+<p><strong>@staticmethod、@classmethod</strong></p>
+<p><strong>enumerate</strong></p>
+<p><strong>多线程多进程</strong></p>
+<p><strong>数据库连接</strong></p>
+<p><strong>pandas操作</strong></p>
 <p><strong>loc、iloc、ix</strong></p>
 
       
@@ -332,7 +390,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-number">1.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常用类"><span class="toc-number">1.0.1.</span> <span class="toc-text">常用类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#xrange、range"><span class="toc-number">1.0.2.</span> <span class="toc-text">xrange、range</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#生成器"><span class="toc-number">1.0.3.</span> <span class="toc-text">生成器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据库连接"><span class="toc-number">1.0.4.</span> <span class="toc-text">数据库连接</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java"><span class="toc-number">1.</span> <span class="toc-text">Java</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常用类"><span class="toc-number">1.0.1.</span> <span class="toc-text">常用类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#常识梳理"><span class="toc-number">1.0.2.</span> <span class="toc-text">常识梳理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-number">2.</span> <span class="toc-text">Python</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -469,14 +527,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -493,11 +543,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,10 +572,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
