@@ -276,7 +276,7 @@ $$
 $$
 \delta_j = h^\prime(a_j)\sum_k(\delta_kw_{kj})
 $$
-![BP](ML&DL基础概念/BP.jpg)
+![BP](BP.jpg)
 
 卷积网络：
 
