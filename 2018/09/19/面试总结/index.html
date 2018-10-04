@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-03T06:45:51.507Z">
+<meta property="og:updated_time" content="2018-10-04T16:18:34.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -253,6 +253,7 @@
 <p>如何判断数据是线性的？</p>
 <blockquote>
 <p>线性分类模型是指决策面是输入向量X的线性函数。定义为D维输入空间的D-1维超平面。如果数据集可以被线性决策面精确地分类，该数据集是线性可分的。</p>
+<p>判断数据集是否线性可分：低维直接画图判断，高维检查凸包是否相交。</p>
 </blockquote>
 <p>线性模型和非线性模型的区别？</p>
 <blockquote>
@@ -292,6 +293,7 @@
 </blockquote>
 <p>逻辑回归为什么不用squareloss？</p>
 <blockquote>
+<p>最小二乘法等价于目标变量先验分布为高斯分布是的极大似然估计，明显逻辑回归目标变量的分布为伯努利分布。</p>
 </blockquote>
 <p>各种范数？</p>
 <blockquote>
@@ -299,6 +301,11 @@
 <p>$L_1$、$L_2$:向量各个元素绝对值之和，平方和然后求平方根。</p>
 </blockquote>
 <p>各种距离？</p>
+<blockquote>
+<p>曼哈顿距离、欧式距离、余弦距离、明式距离、pearson相关系数、</p>
+</blockquote>
+<p>SVM数据量大时为什么速度慢？</p>
+<p>SVM核函数如何选择？</p>
 <h4 id="手推公式"><a href="#手推公式" class="headerlink" title="手推公式"></a>手推公式</h4><p>LR</p>
 <p>SVM(适用于特征维度多于样本数的情况？)</p>
 <p>PCA</p>
@@ -579,11 +586,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +602,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,10 +627,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
             
             <div class="clearfix"></div>

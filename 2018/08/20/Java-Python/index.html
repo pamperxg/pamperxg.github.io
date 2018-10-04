@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Java和Python的一些基础知识总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-03T18:12:28.200Z">
+<meta property="og:updated_time" content="2018-10-04T17:30:26.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java&amp;Python">
 <meta name="twitter:description" content="Java和Python的一些基础知识总结">
@@ -187,6 +187,13 @@
       
         <p>Java和Python的一些基础知识总结</p>
 <a id="more"></a>
+<p>多线程、多进程、同步、异步、阻塞、非阻塞</p>
+<p>多线程和多进程最大的不同在于，多进程中，同一个变量，各自有一份拷贝存在于每个进程中，互不影响，而多线程中，所有变量都由所有线程共享，所以，任何一个变量都可以被任何一个线程修改，因此，线程之间共享数据最大的危险在于多个线程同时改一个变量，把内容给改乱了。 </p>
+<p>同步才有阻塞和非阻塞之分</p>
+<p>同步：执行一个操作后等待结果，然后再继续后面的操作</p>
+<p>阻塞：进程给cpu传达一个任务后，一直等待cpu处理完成再进行后续操作</p>
+<p>非阻塞：进程给cpu传达一个任务后，继续处理后续操作，隔段时间再询问之前操作是否完成，也称轮询</p>
+<p>异步：执行一个操作后，可以去执行其他操作，等待通知再回来执行未完成操作 </p>
 <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h5><p>Collection：</p>
 <p> java.util.Collection(接口) –extends java.lang.Iterable ，每一个位置存一个元素，没有get方法，只能通过iterator() 遍历元素</p>
 <ul>
@@ -231,31 +238,134 @@
 </blockquote>
 </li>
 </ul>
+<blockquote>
+<p>java不能隐式执行下转型1.1字面是double类型，不能执行float f = 1.1，只能执行float f = 1.1f但使用+=可以执行隐式类型转换 </p>
+</blockquote>
 <p><strong>String、StringBuilder、StringBuffer</strong>:</p>
 <blockquote>
 <p>String声明为final不可变，其他两个是可变的，StringBuilder线程不安全</p>
 </blockquote>
 <h5 id="常识梳理"><a href="#常识梳理" class="headerlink" title="常识梳理"></a>常识梳理</h5><p><strong>关键字</strong></p>
+<blockquote>
+<p>public,protected,default,private</p>
+<p>全局，自身子类包内，包内，自身 </p>
+</blockquote>
 <p><strong>参数传递方式</strong></p>
+<blockquote>
+<p>java的参数是以值传递的方式传入方法，而不是引用传递Dog dog = new Dog(‘a’);中的dog是存储对象地址的指针，在将一个参数传入方法时，本质是将对象的地址以值得方式传递到形参中 。</p>
+</blockquote>
 <p><strong>接口和抽象类</strong></p>
+<blockquote>
+<p>抽象类(IS-A):包含抽象方法的类（也可以不包含），也可以拥有成员变量和成员方法,不能被实例化，需要继承抽象类才能实例化其子类【抽象事物，模板式设计】</p>
+<p>抽象方法：只有声明没有具体实现，必须为public或者protected抽象类是为了继承而生的，子类必须实现父类的抽象方法，如果没有实现，也应该声明为抽象类 </p>
+<p>接口(LIKE-A)：极度抽象，一般都不定义变量（public(方法) 、成员变量只能static final），所有的方法（public abstract）都不能有具体的实现【抽象行为，辐射式设计】(从java8开始接口也可以拥有默认的方法实现，因为不支持默认方法的接口维护成本太高，接口增加方法要修改所有实现了该方法的类)</p>
+<p>只能继承一个抽象类，但是能实现多个接口 </p>
+</blockquote>
+<blockquote>
+<p>java中的接口有继承和实现两个概念，且支持多继承</p>
+<p>接口可以继承另外一个接口，并获得父接口所有的方法和成员变量</p>
+<p>接口也可以被一个类实现，实现接口的类需要实现接口及其父接口里的多有抽象方法（java1.8中增加了default关键字，允许接口里有非抽象方法，这些抽象方法可以不被接口的实现类实现）</p>
+<p>为什么接口支持多继承而类不可以？</p>
+<p>当继承多个类中有参数列表相同的方法时子类就会产生混淆，所以只能单继承，单继承限制了类的拓展性但是接口中的方法都为抽象方法，没有方法体，只有接口的实现类有方法的实现，所以不会产生混淆 </p>
+</blockquote>
 <p><strong>泛型</strong></p>
+<blockquote>
+<p>泛型：参数化类型</p>
+<p>泛型类型逻辑上可以看成是多个不同的类型，实际上都是相同的基本类型？ </p>
+</blockquote>
+<p><strong>反射</strong></p>
+<blockquote>
+<p>运行时动态加载 </p>
+</blockquote>
 <p><strong>Object通用方法</strong></p>
-<p><strong>继承重写重载</strong></p>
+<blockquote>
+<p>equals和==：</p>
+<p>基本类型没有equals方法，==判断两个值是否相等引用类型equals判断引用的对象是否等价，==判断两个实例是否引用同一个对象 </p>
+<p>等价的两个实例散列值一定相同，但散列值相同的两个实例不一定等价，在覆盖equals方法时应该也覆盖hashCode方法，保证等价的实例有相同的hashcode </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualExample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> x;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> y;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> z;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">EqualExample</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.x = x;</span><br><span class="line">                <span class="keyword">this</span>.y = y;</span><br><span class="line">                <span class="keyword">this</span>.z = z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        EqualExample that = (EqualExample) o;</span><br><span class="line">        <span class="keyword">if</span>(x!=that.x) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(y!=that.y) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> z = that.z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">EqualExample e1 = <span class="keyword">new</span> EqualExample(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">EqualExample e2 = <span class="keyword">new</span> EqualExample(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">syso(e1.equals(e2)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">HashSet&lt;EqualExample&gt; s1 = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">s1.add(e1);</span><br><span class="line">s1.add(e2);</span><br><span class="line">syso(s1.size()) <span class="comment">//2,没有重写hashcode方法</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">toString()</span></span><br><span class="line"><span class="comment">clone()</span></span><br><span class="line"><span class="comment">protect方法，必须显示重写才能调用</span></span><br><span class="line"><span class="comment">必须先实现cloneable接口才能调用clone方法</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneExample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> CloneExample <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (CloneExample)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">CloneExample c1 = <span class="keyword">new</span> CloneExample();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">        CloneExample c2 = c1.clone();</span><br><span class="line">&#125; <span class="keyword">catch</span> (CloneNotSupportedException e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">&#125; <span class="comment">//java.lang.CloneNotSupportedException: CloneTest</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneExample</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> CloneExample <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (CloneExample)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//深拷贝(引用不同对象)和浅拷贝(引用同一对象)</span></span><br></pre></td></tr></table></figure>
+<p><strong>封装继承重写重载</strong></p>
+<blockquote>
+<p>封装</p>
+<p>子类覆盖父类的方法，子类中该方法的访问级别不能低于父类，(里式替换原则：子类对象必须能够替换所有的父类对象)字段不能公有，使用共有的getter，setter进行修改 </p>
+<p>重写：继承过程中</p>
+<p>重载：同一个类中同名方法，只有返回值不同不算重载方法名相同，参数列表不同（不同参数类型，参数顺序或参数个数），方法的返回值类型和修饰符与方法重载没有任何关系。 </p>
+</blockquote>
+<p><strong>初始化顺序</strong></p>
+<blockquote>
+<p>在存在继承的情况下，初始化顺序为：</p>
+<p>父类(静态变量，静态语句块)</p>
+<p>子类(静态变量，静态语句块)</p>
+<p>父类(实例变量，普通语句块)</p>
+<p>父类(构造函数)</p>
+<p>子类(实例变量，普通语句块)</p>
+<p>子类(构造函数) </p>
+</blockquote>
 <p><strong>虚拟机</strong></p>
+<blockquote>
+<ul>
+<li><p><strong>运行时数据区域</strong></p>
+<p><strong>THREAD</strong></p>
+<ul>
+<li><p><strong>程序计数器</strong>：</p>
+<p>记录正在执行的虚拟机字节码指令地址 </p>
+</li>
+<li><p><strong>虚拟机栈</strong>：</p>
+<p>每一个java方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等</p>
+<p>每一个方法调用到完成的过程对应一个栈帧在JVM中入栈和出栈的过程</p>
+<p>java -Xss=512M HackTheJava //指定大小 </p>
+</li>
+<li><p><strong>本地方法栈</strong>： </p>
+</li>
+</ul>
+<p><strong>堆</strong>：</p>
+<p>所有的对象实例在这里分配内存，垃圾收集的主要区域，不需要连续内存，可动态扩展</p>
+<p>新生代(Eden,From Survivor,To Survivor)</p>
+<p>老年代</p>
+<p>永久代</p>
+<p>java -Xms=1M -Xmx=2M HackTheJava </p>
+<p><strong>方法区</strong>：</p>
+<p>存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据 </p>
+<ul>
+<li><strong>运行时常量池</strong>：方法区的一部分 </li>
+</ul>
+</li>
+<li><p><strong>直接内存</strong>：程序计数器、虚拟机栈、本地方法栈三个区域属于线程私有，只存在于线程的生命周期内，线程结束即消失，不需要垃圾收集</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>垃圾收集垃圾收集主要集中在堆和方法区 </p>
+</blockquote>
+<blockquote>
+<p>类加载机制：运行期间动态加载 </p>
+</blockquote>
 <p><strong>Spring、SpringBoot</strong></p>
+<p>TODO</p>
 <hr>
 <h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>dict排序</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp_list = sorted(tmp_list.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse = <span class="keyword">True</span>)  <span class="comment">##按value、反序</span></span><br></pre></td></tr></table></figure>
 <p><strong>交集并集差集</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(list(set(b).difference(set(a))))</span><br><span class="line">print(list(set(b).union(set(a))))</span><br><span class="line">print(list(set(b).intersection(set(a))))</span><br></pre></td></tr></table></figure>
 <p><strong>xrange、range</strong></p>
+<p>xrange返回一个迭代器，range返回一个list</p>
 <p><strong>生成器</strong></p>
 <p><strong>@property</strong></p>
+<p>将一个函数定义为特性，直接obj.name使用，遵循统一访问的原则 ，相当与get set？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stu</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">    @property #相当于get方法，调用简单方便可控</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._score</span><br><span class="line"><span class="meta">    @score.setter #set方法，</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self,value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value,int):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'must be int'</span>)</span><br><span class="line">        <span class="keyword">if</span> value&lt;<span class="number">0</span> <span class="keyword">or</span> value&gt;<span class="number">100</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'must 0&lt;x&lt;100'</span>)</span><br><span class="line">            self._score = value</span><br></pre></td></tr></table></figure>
 <p><strong>@staticmethod、@classmethod</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Date</span><span class="params">(object)</span>:</span></span><br><span class="line">    day = <span class="number">0</span></span><br><span class="line">    month = <span class="number">0</span></span><br><span class="line">    year = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,day=<span class="number">0</span>,month=<span class="number">0</span>,year=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.day = day</span><br><span class="line">        self.month = month</span><br><span class="line">        self.year = year</span><br><span class="line"><span class="meta">    @classmethod #尝试一种另类的构造函数，python缺乏重载的特性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_string</span><span class="params">(cls,date_as_string)</span>:</span></span><br><span class="line">        day,month,year = map(int,date_as_string.split(<span class="string">'-'</span>))</span><br><span class="line">        date1 = cls(day,month,year)</span><br><span class="line">        <span class="keyword">return</span> date1</span><br><span class="line"><span class="meta">    @staticmethod #不需要访问类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_date_valid</span><span class="params">(date_as_string)</span>:</span></span><br><span class="line">        day,month,year = map(int,date_as_string.split(<span class="string">'-'</span>))</span><br><span class="line">        <span class="keyword">return</span> day&lt;=<span class="number">31</span> <span class="keyword">and</span> month&lt;=<span class="number">12</span> <span class="keyword">and</span> year&lt;=<span class="number">2019</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    s = Stu()</span><br><span class="line">    s.score = <span class="number">60</span></span><br><span class="line">    print(s.score)</span><br><span class="line">    <span class="comment"># s.score = 999</span></span><br><span class="line">    date2 = Date.from_string(<span class="string">'06-08-2018'</span>)</span><br><span class="line">    is_date = Date.is_date_valid(<span class="string">'06-08-2019'</span>)</span><br><span class="line"></span><br><span class="line">    print(date2.day)</span><br><span class="line">    print(is_date)</span><br></pre></td></tr></table></figure>
 <p><strong>enumerate</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(list1)):</span><br><span class="line">    <span class="keyword">print</span> (i,list1[i])</span><br><span class="line"><span class="comment">#enumerate的用法</span></span><br><span class="line"><span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(list1):</span><br><span class="line">    <span class="keyword">print</span> (index,item)</span><br><span class="line"><span class="comment">#enumerate还可以指定索引的起始值</span></span><br><span class="line"><span class="keyword">for</span> index,item <span class="keyword">in</span> enumerate(list1,<span class="number">1</span>):</span><br><span class="line">    print(index,item)</span><br><span class="line"><span class="comment">#简单的统计文件行数的方法</span></span><br><span class="line">count = len(open(filepath,<span class="string">'r'</span>).readlines())</span><br><span class="line"></span><br><span class="line">count=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> index,line <span class="keyword">in</span> enumerate(open(filepath,<span class="string">'r'</span>)):</span><br><span class="line">    count+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p><strong>多线程多进程</strong></p>
+<blockquote>
+<p>Python的线程虽然是真正的线程，但解释器执行代码时，有一个GIL锁：Global Interpreter Lock，任何Python线程执行前，必须先获得GIL锁，然后，每执行100条字节码，解释器就自动释放GIL锁，让别的线程有机会执行。这个GIL全局锁实际上把所有线程的执行代码都给上了锁，所以，多线程在Python中只能交替执行，即使100个线程跑在100核CPU上，也只能用到1个核。不能多线程并发。 </p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> os,time,random</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process,Pool,cpu_count,Queue</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="comment"># parser = argparse.ArgumentParser()</span></span><br><span class="line"><span class="comment"># parser.add_argument('integer',type=int,help='display an integer')</span></span><br><span class="line"><span class="comment"># args = parser.parse_args()</span></span><br><span class="line"><span class="comment"># print(args.integer)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># parser.add_argument("--square",help="display a square of a given number",type=int)</span></span><br><span class="line"><span class="comment"># parser.add_argument("--cubic",help="display a cubic of a given number",type=int)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># args = parser.parse_args()</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># if args.square:</span></span><br><span class="line"><span class="comment">#     print(args.square**2)</span></span><br><span class="line"><span class="comment"># if args.cubic:</span></span><br><span class="line"><span class="comment">#     print(args.cubic**3)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'Run child process %s (%s)...'</span> %(name,os.getpid()))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">long_time_task</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'Run child process %s (%s)...'</span> %(name,os.getpid()))</span><br><span class="line">    start = time.time()</span><br><span class="line">    time.sleep(random.random()*<span class="number">3</span>)</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(<span class="string">'Task %s runs %.2f seconds'</span> % (name,(end-start)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(q)</span>:</span></span><br><span class="line">    print(<span class="string">'Process to write: %s'</span> % os.getpid())</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>]:</span><br><span class="line">    print(<span class="string">'put %s queue '</span> % value)</span><br><span class="line">    q.put(value)</span><br><span class="line">    time.sleep(random.random())</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(q)</span>:</span></span><br><span class="line">    print(<span class="string">'Process to read: %s'</span> % os.getpid())</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        value = q.get(<span class="keyword">True</span>)</span><br><span class="line">    print(<span class="string">'get %s from queue'</span> % value)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'thread %s is running'</span> % threading.current_thread().name)</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n&lt;<span class="number">5</span>:</span><br><span class="line">        n = n+<span class="number">1</span></span><br><span class="line">        print(<span class="string">'thread %s &gt;&gt;&gt; %s'</span> % (threading.current_thread().name,n))</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        print(<span class="string">'thread %s ended'</span> % threading.current_thread().name)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#进程，进程池</span></span><br><span class="line">    print(cpu_count())</span><br><span class="line">    print(<span class="string">'Parent process %s'</span> % os.getpid())</span><br><span class="line">    <span class="comment"># p = Process(target=run_proc,args=('test',))</span></span><br><span class="line">    p = Pool(<span class="number">32</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">33</span>):</span><br><span class="line">        p.apply_async(long_time_task,args=(i,))</span><br><span class="line">        <span class="comment"># print('Child process start')</span></span><br><span class="line">        <span class="comment"># p.start()</span></span><br><span class="line">        <span class="comment"># p.join()</span></span><br><span class="line">        <span class="comment"># print('Child process end')</span></span><br><span class="line">        print(<span class="string">'waiting for all subprocess done'</span>)</span><br><span class="line">        p.close()</span><br><span class="line">        p.join()</span><br><span class="line">        print(<span class="string">'All subprocess done'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#进程执行</span></span><br><span class="line">r = subprocess.call([<span class="string">'nslookup'</span>,<span class="string">'https://pamperxg.github.io'</span>])</span><br><span class="line">print(<span class="string">'Exit code:'</span>,r)</span><br><span class="line"></span><br><span class="line"><span class="comment">#进程间通信</span></span><br><span class="line">q = Queue()</span><br><span class="line">pw = Process(target=write,args=(q,))</span><br><span class="line">pr = Process(target=read,args=(q,))</span><br><span class="line">pw.start()</span><br><span class="line">pr.start()</span><br><span class="line">pw.join()</span><br><span class="line">pr.terminate()</span><br><span class="line"></span><br><span class="line"><span class="comment">#线程</span></span><br><span class="line">t = threading.Thread(target=loop,name=<span class="string">'LoopThread'</span>)</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">print(<span class="string">'thread %s ended'</span> % threading.current_thread().name)</span><br></pre></td></tr></table></figure>
 <p><strong>数据库连接</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ConnectDataBase</span><span class="params">(self,db_name,user_name,password)</span>:</span></span><br><span class="line">        conn = mdb.connect(host=<span class="string">'88.88.88.88'</span>,port=<span class="number">3306</span>,user=user_name,passwd=password,\</span><br><span class="line">                           db=db_name,charset=<span class="string">'utf8'</span>)</span><br><span class="line">        cursor = conn.cursor()</span><br><span class="line">        <span class="keyword">return</span> (conn,cursor)</span><br></pre></td></tr></table></figure>
 <p><strong>pandas操作</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定列进行操作</span></span><br><span class="line">df.loc[(df.Cabin.notnull()),<span class="string">'Cabin'</span>] = <span class="string">'Yes'</span>  <span class="comment">#选取指定列替换为yes</span></span><br><span class="line"></span><br><span class="line">df.loc[df.Team.isin([<span class="string">'England'</span>,<span class="string">'Italy'</span>,<span class="string">'Russia'</span>]),[<span class="string">'Team'</span>,<span class="string">'Shooting Accuracy'</span>]] <span class="comment">#选取满足条件的列</span></span><br></pre></td></tr></table></figure>
 <p><strong>loc、iloc、ix</strong></p>
 
       
@@ -535,11 +645,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +661,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,10 +686,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
             
             <div class="clearfix"></div>
