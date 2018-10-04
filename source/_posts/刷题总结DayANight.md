@@ -110,17 +110,38 @@ element peek
 
 ### 链表
 
-反转
+反转,见面试总结
 
 ### LeetCode
 
 #### 数据结构
 
-
-
 #### SQL
 
+- count(\*),count(1),count(列名) 
 
+> count(\*)包含了所有的列，相当于行数，统计结果的时候不会忽略列值null*
+>
+> count(1)效果与count(*)相同
+>
+> count(列名)只包括列名那一列，统计结果的时候会忽略列值为空 null，为主键时执行快，不为主键时执行没有count(1)快 
+
+- limit 1 offset 1，从第一条开始（offset1）取一条
+
+  limit 2,1 从第二条开始去一条，即取第二条 
+
+- rank,dense_rank(不跳过),row_number 
+
+[leetcode197:Rising Temperature](https://leetcode.com/problems/rising-temperature/)
+
+datediff函数
+
+```mysql
+#找出比前一天温度高的Id
+select weather.Id
+from weather join weather w on DATEDIFF(weather.RecordDate,w.RecordDate) = 1
+and weather.Temperature > w.Temperature;
+```
 
 #### Shell
 

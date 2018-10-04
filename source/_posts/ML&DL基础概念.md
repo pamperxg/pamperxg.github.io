@@ -45,9 +45,9 @@ tags: [notes,DataScience,MachineLearning,DeepLearning]
 
 共轭先验：使得后验概率分布的函数形式与先验概率相同，一般称先验分布于似然函数是共轭的。
 
-熵、互信息
+熵、互信息？
 
-KL散度与极大似然
+KL散度与极大似然？
 
 正则项：
 
@@ -84,7 +84,7 @@ KL散度与极大似然
 
 泛函，指函数张成的空间。例Taylor公式，任意一个函数可以放到（$1,x,x^2,x^3$）所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话就是Hilbert空间。
 
-回归分析，p-value(假设检验的角度)
+回归分析，p-value(假设检验的角度)？
 
 维度灾难
 
@@ -276,7 +276,7 @@ $$
 $$
 \delta_j = h^\prime(a_j)\sum_k(\delta_kw_{kj})
 $$
-![BP](../assets/BP.jpg)
+![BP](ML&DL基础概念/BP.jpg)
 
 卷积网络：
 
