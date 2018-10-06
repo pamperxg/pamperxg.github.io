@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/GMM.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/BP.jpg">
-<meta property="og:updated_time" content="2018-10-06T14:15:15.649Z">
+<meta property="og:updated_time" content="2018-10-06T17:39:23.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML&amp;DL基础概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -255,10 +255,19 @@
 <p>泛函，指函数张成的空间。例Taylor公式，任意一个函数可以放到（$1,x,x^2,x^3…$）所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话就是Hilbert空间。</p>
 <p>回归分析，p-value(假设检验的角度)？</p>
 <p>维度灾难</p>
+<p>（特征的数量有一个邻界点，过多带来过拟合）</p>
 <ul>
-<li>如果把空间的区域分割成一个一个的单元格，单元格的数量随着空间的维数以指数的形式增大。此时，为了保证这些单元格都不为空，需要指数级增长的训练数据。</li>
-<li>对于一个M阶多项式，系数数量的增长速度类似于D（维度）的M次方。$y(x,w)=w_0+\sum_{i=1}^{D}w_ix_i+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_ix_j+\sum_{i=1}^{D}\sum_{j=1}^{D}\sum_{k=1}^{D}w_{ijk}x_ix_jx_k$</li>
-<li>D很大时，一个球体的大部分体积都聚集在表面附近的薄壳上。</li>
+<li><p>如果把空间的区域分割成一个一个的单元格，单元格的数量随着空间的维数以指数的形式增大。此时，为了保证这些单元格都不为空，需要指数级增长的训练数据（维度在指数级地爆炸增长）。</p>
+<blockquote>
+<p>增加维度来获得最佳线性分类效果等价于在低维空间中使用非线性模型</p>
+</blockquote>
+</li>
+<li><p>对于一个M阶多项式，系数数量的增长速度类似于D（维度）的M次方。$y(x,w)=w_0+\sum_{i=1}^{D}w_ix_i+\sum_{i=1}^{D}\sum_{j=1}^{D}w_{ij}x_ix_j+\sum_{i=1}^{D}\sum_{j=1}^{D}\sum_{k=1}^{D}w_{ijk}x_ix_jx_k$</p>
+</li>
+<li><p>D很大时，一个球体的大部分体积都聚集在表面附近的薄壳上（样本密度越来越小，数据的稀疏性变得愈发明显）。</p>
+</li>
+<li><p>距离度量（欧式距离）失效，最近距离和最远距离变得不可辨别</p>
+</li>
 </ul>
 <p>各种分布</p>
 <blockquote>
@@ -390,13 +399,14 @@
 <p>多项式基函数的局限：它们是输入变量的全局函数，对于输入空间一个区域的改变将会影响所有的其他区域。</p>
 <p>对$x$做非线性变化，再对这些基函数线性组合，会使得计算量变得庞大，可以使用kernel trick，直接由核函数来计算内积，来解决非线性关系。</p>
 <p>固定基函数的线性组合构成的回归模型和分类模型，它们的实际应用被<strong>维数灾难</strong>问题限制了。为了将这些模型应用于大规模问题，有必要根据数据调节基函数。（SVM、神经网络）</p>
+<p>如何避免维度灾难问题？</p>
 <p>kernel function 满足交换律（内积满足交换律），满足Mercer定理（核矩阵是半正定的）。</p>
 <blockquote>
 <p>有一些模式识别方法，对于新输入的预测纯粹依靠学习到的参数向量$w$，也有一类方法，训练数据点或者它的一个子集在预测阶段任然保留并且被使用。如最近邻方法（memory-based，训练速度快，预测速度慢）、核函数方法（每一个核函数都以训练数据为中心）。</p>
 </blockquote>
 <p>核方法：</p>
 <p>许多线性参数模型可以被转化为一个等价的“对偶表示”，预测的基础也是在训练数据点处计算的核函数的线性组合。对于基于固定非线性特征空间映射$\phi(x)$的模型来说，核函数关系如下：<br>$$<br>k(x,x^\prime) = \phi(x)^T\phi(x^\prime)<br>$$<br>对偶表示：完全通过核函数表示，可以直接针对核函数进行计算，<strong>避免了显式地引入特征向量</strong>$\phi(x)$，这使得我们可以隐式地使用高维特征空间，甚至无限维特征空间。</p>
-<p>构造核：核函数对应于某个特征空间的标量积，合法核函数的充分必要条件：Gram矩阵在所有的集合${x_n}​$的选择下都是半正定的。</p>
+<p>构造核：核函数对应于某个特征空间的标量积，合法核函数的充分必要条件：Gram矩阵在所有的集合${x_n}$的选择下都是半正定的。</p>
 <p>多项式核</p>
 <p>高斯核？无穷维？</p>
 <p>sigmoid核（Gram矩阵是非半正定的也可以使用）</p>
@@ -706,6 +716,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -722,15 +736,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +748,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
               </li>
             
             <div class="clearfix"></div>

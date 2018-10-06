@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-06T14:15:10.127Z">
+<meta property="og:updated_time" content="2018-10-06T17:39:19.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -277,6 +277,7 @@
 <p>前向特征选择，反向特征消除（加减特征看效果。。）</p>
 <p>因子分析（按相关性分组）</p>
 <p>PCA、ICA、IOSMAP、t-SNE、UMAP</p>
+<p>AutoEncoder、Word2Vec</p>
 </blockquote>
 <p>如何做异常检测？</p>
 <p>如何判断一个特征是否有用？</p>
@@ -345,9 +346,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p>Python 有哪些数据类型结构？List和Dict的区别？</p>
 <p>Python异常捕获？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line"><span class="keyword">finally</span>:</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(type(e))  <span class="comment">##捕捉到异常对象执行</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="number">1</span>) <span class="comment">##不抛出异常执行    </span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(<span class="number">2</span>)  <span class="comment">##无论如何都执行</span></span><br></pre></td></tr></table></figure>
 <p>Python生成器？</p>
+<blockquote>
+<p>变循环，边计算的结构，节省空间（如果使用列表内存占用太大）</p>
+</blockquote>
 <p>Python map、reduce函数？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2int</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x,y:x*<span class="number">10</span>+y,map(char2num,s))</span><br><span class="line"><span class="comment">#map</span></span><br><span class="line"><span class="comment">#reduce 把结果继续和下一个元素做累积运算</span></span><br></pre></td></tr></table></figure>
 <h5 id="大数据相关题"><a href="#大数据相关题" class="headerlink" title="大数据相关题"></a>大数据相关题</h5><p>介绍下HDFS？</p>
 <p>说下MapReduce原理？</p>
 <p>高可用机制和联邦机制是什么？</p>
@@ -615,6 +620,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -631,15 +640,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,11 +652,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+                <a href="javascript:void(0)" class="js-tag color1">MachineLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
               </li>
             
             <div class="clearfix"></div>
