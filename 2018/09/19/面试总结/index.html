@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-04T16:18:34.488Z">
+<meta property="og:updated_time" content="2018-10-06T17:39:19.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -189,20 +189,13 @@
 <p>今天我们就聊到这里。。。你先回去等通知。。</p>
 <a id="more"></a>
 <h3 id="关于数据结构"><a href="#关于数据结构" class="headerlink" title="关于数据结构"></a>关于数据结构</h3><p>二分查找</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinarySearch</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]==target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; target)</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>给一个数组，除了两个数字只出现一次，其他的都出现两次，找出这两个数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findNumsAppearedOnce</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> num1[],<span class="keyword">int</span> num2[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> diff = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> val:nums)</span><br><span class="line">        diff ^= val;</span><br><span class="line">    diff &amp;= -diff;    <span class="comment">//取出最右边两个不同的数的不同位</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> val:nums)&#123;  <span class="comment">//分成两组，两个不同的数字在不同组</span></span><br><span class="line">        <span class="keyword">if</span>((val &amp; diff) == <span class="number">0</span>)</span><br><span class="line">            num1[<span class="number">0</span>] ^= val;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            num2[<span class="number">0</span>] ^= val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>判断一棵树是否是另一棵树的子树</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IsSubTree</span></span>&#123;</span><br><span class="line">    <span class="comment">//t是否是s的子树</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubTree</span><span class="params">(TreeNode s,TreeNode t)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(isSameTree(s,t)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> isSubTree(s.left,t) || isSubTree(s.right,t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p,TreeNode q)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(p.val == q.val)</span><br><span class="line">            <span class="keyword">return</span> isSameTree(p.left,q.left) &amp;&amp; isSameTree(p.right,q.right);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>链表反转</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RverseLinkedList</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseLinkedList</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        ListNode prev = <span class="keyword">null</span>;</span><br><span class="line">        ListNode curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode next = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseNodeRecurse</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head = <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode p = reverseNodeRecurse(head.next);</span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>归并排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt;&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] nums)</span></span>&#123;</span><br><span class="line">        sort(nums,<span class="number">0</span>.nums.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(T[] nums,<span class="keyword">int</span> l,<span class="keyword">int</span> h)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(h &lt; l) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> m = l + (h-l)/<span class="number">2</span>;</span><br><span class="line">        sort(nums,l,m);</span><br><span class="line">        sort(nums,m+<span class="number">1</span>,h);</span><br><span class="line">        merge(nums,l,m,h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(T[] nums,<span class="keyword">int</span> l,<span class="keyword">int</span> m,<span class="keyword">int</span> h)</span></span>&#123;</span><br><span class="line">        T[] tmp = (T[]) <span class="keyword">new</span> Comparable[nums.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=l;k&lt;h;k++)</span><br><span class="line">            tmp[k] = nums[k];</span><br><span class="line">        <span class="keyword">int</span> i=l,j=m+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=l;k&lt;h;k++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;m)</span><br><span class="line">                nums[k] = nums[j++];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j &gt; h)</span><br><span class="line">                nums[k] = nums[i++];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i].compareTo(nums[j]) &lt; <span class="number">0</span>)</span><br><span class="line">                nums[k] = nums[i++];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nums[k] = nums[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>String To Int</p>
 <p>考虑：判断空串、判断空格、判断符号、判断数字（判断溢出）,注意index&lt;s.length()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Atoi</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//空串</span></span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//空格</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt; s.length() &amp;&amp; s.charAt(index) == <span class="string">' '</span>)</span><br><span class="line">            index ++;</span><br><span class="line">        <span class="comment">//符号</span></span><br><span class="line">        <span class="keyword">if</span>(index &lt; s.length() &amp;&amp; (s.charAt(index) == <span class="string">'+'</span>) || s.charAt(index) == <span class="string">'-'</span>)&#123;</span><br><span class="line">            sign = s.charAt(index) == <span class="string">'+'</span> ? <span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//数字</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">int</span> digit = s.charAt(index) - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(digit &lt; <span class="number">0</span> || digit &gt; <span class="number">9</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">//判断溢出</span></span><br><span class="line">            <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span> &lt; total || (Integer.MAX_VALUE/<span class="number">10</span> == total &amp;&amp; Integer.MAX_VALUE%<span class="number">10</span> &lt; digit))</span><br><span class="line">                <span class="keyword">return</span> sign &gt; <span class="number">0</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</span><br><span class="line">            total = total*<span class="number">10</span> + digit;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sign*total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>求第k大的数(复杂度是多少？)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">时间复杂度O(n)，空间复杂度O(1)</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FindKthLargestElem</span></span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargestElem</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        k = nums.length - k;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,h=nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= h)&#123;</span><br><span class="line">            <span class="keyword">int</span> j = partition(nums,l,h);</span><br><span class="line">            <span class="keyword">if</span>(j == k) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(j &lt; k)</span><br><span class="line">                l = j + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                h = j - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[k];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> l,<span class="keyword">int</span> h)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i=l,j=h+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>((nums[++i] &lt; nums[l]) &amp;&amp; i&lt;h);</span><br><span class="line">            <span class="keyword">while</span>((nums[--j] &gt; nums[l]) &amp;&amp; j&gt;l);</span><br><span class="line">            <span class="keyword">if</span>(i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">            swap(nums,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums,l,j);</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> j,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求第k大的数(复杂度是多少？时间复杂度O(n)，空间复杂度O(1))</p>
 <h3 id="关于算法"><a href="#关于算法" class="headerlink" title="关于算法"></a>关于算法</h3><h4 id="算法原理："><a href="#算法原理：" class="headerlink" title="算法原理："></a>算法原理：</h4><p>XGBoost原理(如何并行)？</p>
 <p>XGBoost和LightGBM区别、和RF区别？</p>
 <p>RF原理？</p>
@@ -213,16 +206,53 @@
 <p>树如何分裂？分裂后熵应该变大还是变小？</p>
 <p>熵的定义和意义、怎么计算熵？</p>
 <blockquote>
-<p>我们一般使用信息量来进行不确定性的度量。分布为p(x)随机变量X的自信息定义为：-log(p(x))。</p>
-<p>熵定义为信息量关于随机变量概率分布的期望（编码信息的比特位下界）。</p>
-<p>条件熵：条件概率分布的熵对随机变量X的期望，条件熵 = 联合熵 - 单独熵。</p>
-<p>相对熵（KL散度）：两个概率分布之间的差异，sum(pi*log(pi/qi))。</p>
-<p>交叉熵：模型的分布于训练时分布的差异，crossEntropy = H(label) - KL(label || q)，当KL散度为0的时候，交叉熵为0。</p>
+<p>我们一般使用<strong>信息量</strong>来进行<strong>不确定性</strong>的度量。分布为$P(X)$随机变量$X$的自信息定义为：$-log(p(X))$。</p>
+<blockquote>
+<p>对于两个不相关的事件x和y，定义$I(x)$来表示时间的信息，则$I(x,y)=I(x)+I(y)$，而$P(x,y)=P(x)P(y)$。由此可知$I(x)$与$P(x)$的对数相关，则可定义$I(x)=-log(P(x))$，负数为了保证信息量为正数。</p>
+</blockquote>
+<p><strong>(信息)熵</strong>定义为信息量关于随机变量$X$概率分布的期望，也就是定义为该随机变量所有可能发生的事件产生信息量的期望。（最短平均编码长度？）。</p>
+<blockquote>
+<p>1维随机变量：$H(X)=-\sum_xp(x)log(p(x))$</p>
+<p>多维的联合熵：$H(X,Y)=-\sum_{x,y}p(x,y)log(p(x,y))=-\sum_{i=1}^{n}\sum_{j=1}^{m}p(x_i,y_i)log(p(x_i,y_i))$</p>
+<blockquote>
+<p>随机变量取值个数越多熵越大，当随机变量均匀分布时，熵最大。($0&lt;H(X)&lt;log(n)$)</p>
+</blockquote>
+</blockquote>
+<p><strong>条件熵</strong>：$X$给定条件下$Y$的条件概率分布的熵对随机变量$X$的期望，条件熵 = 联合熵 - 单独熵。</p>
+<blockquote>
+<p>$H(Y|X)=\sum_xp(x)H(Y|X=x)=-\sum_xp(x)\sum_yp(y|x)logp(y|x)=-\sum_x\sum_yp(x,y)logp(y,x)=-\sum_{x,y}p(x,y)logp(y|x)$</p>
+<p>$H(X,Y)=-\sum_{x,y}p(x,y)logp(x,y)=H(Y|X)+H(X)$</p>
+<p>$H(Y|X)=H(X,Y)-H(X)$</p>
+</blockquote>
+<p><strong>相对熵</strong>（KL散度）：两个概率分布之间的差异。</p>
+<blockquote>
+<p>$D_{KL}(p||q)=\sum_xp(x)log\frac{p(x)}{q(x)}$(p与q之间的对数差在p上的期望值)</p>
+</blockquote>
+<p><strong>交叉熵</strong>：模型的分布与训练时分布的差异，当KL散度为0的时候，模型预测值得分布于训练集分布相同。</p>
+<blockquote>
+<p>$H(p,q)=-\sum_xp(x)logq(x)$</p>
+<p>$H(p,q)=H(p)+D_{KL}(p||q)$</p>
+</blockquote>
 <p>熵与方差的关系(在大部分分布的情况下正相关？)</p>
+<p><strong>信息增益</strong>：熵-条件熵</p>
+<p><strong>互信息</strong>：联合分布于乘积分布之间的相对熵，熵-条件熵</p>
+<blockquote>
+<p>$I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}=H(X)-H(X|Y)$</p>
+</blockquote>
 </blockquote>
 <p>二分类的label，数据如何分布熵最大？</p>
+<blockquote>
+<p>一半一半，均匀分布的时候</p>
+</blockquote>
 <p>Bootstrap是什么？</p>
+<blockquote>
+<p>有放回抽样?</p>
+</blockquote>
 <p>Bagging和Boosting区别、Stacking？</p>
+<blockquote>
+<p>bagging：如果各个单独的模型产生的误差是不相关的，那么bagging后的平均误差可以仅仅通过M个版本求平均的方法减小M倍，但是实际应用中，误差通常是高度相关的。</p>
+<p>boosting：基分类器是顺序训练的，每个基分类器使用数据集的一个加权形式进行训练，其中与每个数据点相关的权系数依赖于前一个分类器的表现。被一个基分类器误分类的点在训练序列的下一个分类器时会被赋予更高的权重。Adaboost训练完毕后通过加权投票的方法进行组合。</p>
+</blockquote>
 <p>协方差矩阵？</p>
 <blockquote>
 <p>标准差和方差都是用来描述一维数据，协方差是一种用来度量两个随机变量关系的统计量，是一个对称的方阵，对角线上的因子就是变量的方差。</p>
@@ -247,6 +277,7 @@
 <p>前向特征选择，反向特征消除（加减特征看效果。。）</p>
 <p>因子分析（按相关性分组）</p>
 <p>PCA、ICA、IOSMAP、t-SNE、UMAP</p>
+<p>AutoEncoder、Word2Vec</p>
 </blockquote>
 <p>如何做异常检测？</p>
 <p>如何判断一个特征是否有用？</p>
@@ -284,7 +315,7 @@
 <p>最小二乘：找到一组估计值，使得实际值与估计值距离最小                                                </p>
 <p>最大似然：寻找一组参数估计值，使得已发生的样本概率最大</p>
 <p>最小二乘是高斯噪声模型假设下的最大似然解？</p>
-<p>对于二分类问题，不适宜用最小平方法，最小平方法对应于高斯分布假设条件下的最大似然法，而二值目标向量的概率分布显然不是高斯分布。需要选用更恰当的概率模型。</p>
+<p>对于二分类问题，不适宜用最小平方法，</p>
 </blockquote>
 <p>激活函数有哪些？ReLU和Sigmoid的区别有哪些？</p>
 <p>参数化方法和非参数化方法？</p>
@@ -293,7 +324,6 @@
 </blockquote>
 <p>逻辑回归为什么不用squareloss？</p>
 <blockquote>
-<p>最小二乘法等价于目标变量先验分布为高斯分布是的极大似然估计，明显逻辑回归目标变量的分布为伯努利分布。</p>
 </blockquote>
 <p>各种范数？</p>
 <blockquote>
@@ -316,9 +346,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p>Python 有哪些数据类型结构？List和Dict的区别？</p>
 <p>Python异常捕获？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line"><span class="keyword">finally</span>:</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(type(e))  <span class="comment">##捕捉到异常对象执行</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="number">1</span>) <span class="comment">##不抛出异常执行    </span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(<span class="number">2</span>)  <span class="comment">##无论如何都执行</span></span><br></pre></td></tr></table></figure>
 <p>Python生成器？</p>
+<blockquote>
+<p>变循环，边计算的结构，节省空间（如果使用列表内存占用太大）</p>
+</blockquote>
 <p>Python map、reduce函数？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2int</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x,y:x*<span class="number">10</span>+y,map(char2num,s))</span><br><span class="line"><span class="comment">#map</span></span><br><span class="line"><span class="comment">#reduce 把结果继续和下一个元素做累积运算</span></span><br></pre></td></tr></table></figure>
 <h5 id="大数据相关题"><a href="#大数据相关题" class="headerlink" title="大数据相关题"></a>大数据相关题</h5><p>介绍下HDFS？</p>
 <p>说下MapReduce原理？</p>
 <p>高可用机制和联邦机制是什么？</p>
@@ -586,19 +620,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,7 +644,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
