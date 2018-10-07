@@ -117,7 +117,7 @@ List list = Arrays.asList();
 
 > equals和==：
 >
-> 基本类型没有equals方法，==判断两个值是否相等引用类型equals判断引用的对象是否等价，==判断两个实例是否引用同一个对象 
+> 基本类型没有equals方法，\==判断两个值是否相等引用类型equals判断引用的对象是否等价，\==判断两个实例是否引用同一个对象 
 >
 > 等价的两个实例散列值一定相同，但散列值相同的两个实例不一定等价，在覆盖equals方法时应该也覆盖hashCode方法，保证等价的实例有相同的hashcode 
 
@@ -264,6 +264,54 @@ TODO
 
 ### Python
 
+[pythonGitbook](https://eastlakeside.gitbooks.io/interpy-zh/content/)
+
+**list、tuple、dict、set**
+
+- list：列表，链表，有序，可索引，“[]”
+
+  ```python
+  append(y)、extend(L)、count(y)、index(y)、insert(i,y)、pop(y)、remove(y)、reverse()、sort()
+  #y--元素，L--列表
+  ```
+
+- tuple：元组，对象集合，可索引，不能修改，“()”
+
+  > 不可变，能保证代码的安全性
+  >
+  > len()，tuple[y]
+  >
+  > 同样可以索引切片连接重复
+
+- dict：字典，key-value组合，无序，（空间换时间），“{}”
+
+  > 不允许一个键对应多个值
+
+  ```python
+  dict.keys(),dict.values(),dict.items()
+  hash(obj) ##-->可作为key
+  del,dict.pop,clear
+  sorted(dict.items(),key = lambda d:d[0])
+  dict.get()
+  dict.setdefault()
+  {}.fromkeys(('a','b'),True)  #{'a':True,'b':True}
+  ```
+
+- set：集合，无序，元素自动去重，“set([])”
+
+  ```python
+  add,update,remove
+  discard与remove #【如果删除的元素不在集合内，discard不会报错】
+  #|(联合),&(交集),-(差集),^(差分)
+  ```
+
+**collections**
+
+- defaultdict(不需要检查key是否存在，减少keyerror的发生)
+- Counter
+- deque：双端队列
+- namedtuple：可以像字典一样访问，但是是不可变的
+
 **dict排序**
 
 ```python
@@ -276,6 +324,9 @@ tmp_list = sorted(tmp_list.items(),key = lambda d:d[1],reverse = True)  ##按val
 print(list(set(b).difference(set(a))))
 print(list(set(b).union(set(a))))
 print(list(set(b).intersection(set(a))))
+
+#检查是否有重复元素
+duplicates = set([x for x in some_list if some_list.count(x) > 1])
 ```
 
 **xrange、range**
@@ -461,8 +512,30 @@ def ConnectDataBase(self,db_name,user_name,password):
 ```python
 #选取指定列进行操作
 df.loc[(df.Cabin.notnull()),'Cabin'] = 'Yes'  #选取指定列替换为yes
-
 df.loc[df.Team.isin(['England','Italy','Russia']),['Team','Shooting Accuracy']] #选取满足条件的列
 ```
 
 **loc、iloc、ix**
+
+> loc：在行标签上进行索引，包括start和end
+>
+> iloc：在行标签位置上进行索引，不包括end
+>
+> ix：在行标签上索引，索引不到就到位置上索引（如果index非全部整数）,不包括end
+>
+> > .ix is deprecated. Please use
+> > .loc for label based indexing or
+> > .iloc for positional indexing
+
+**map、filter、reduce**
+
+```python
+items = [1,2,3,4]
+squared = list(map(lambda x:x**2,items)) #map python3返回迭代器，python2返回列表
+
+less_than_zero = filter(lambda x:x<0,number_list) #同python3返回迭代器，python2返回列表
+
+#对一个列表进行计算并且返回结果
+product = reduce((lambda x,y:x*y),[1,2,3,4]) #24
+```
+

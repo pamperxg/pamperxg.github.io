@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-06T17:39:19.648Z">
+<meta property="og:updated_time" content="2018-10-07T03:29:17.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结">
 <meta name="twitter:description" content="不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。 今天我们就聊到这里。。。你先回去等通知。。">
@@ -345,6 +345,26 @@
 <h5 id="编程语言题"><a href="#编程语言题" class="headerlink" title="编程语言题"></a>编程语言题</h5><p>Python dict排序</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p>Python 有哪些数据类型结构？List和Dict的区别？</p>
+<blockquote>
+<p>list,dict,set,tuple</p>
+<p>collections(defaultdict、counter、deque、namedtuple、enum.Enum)</p>
+<p><a href="https://eastlakeside.gitbooks.io/interpy-zh/content/collections/collections.html" target="_blank" rel="noopener">pythonGitbook</a></p>
+</blockquote>
+<blockquote>
+<p>dict:</p>
+<ul>
+<li>查找和插入速度极快，且不会随着key的增加而增加</li>
+<li>占用大量内存</li>
+</ul>
+<p>list：</p>
+<ul>
+<li>查找和插入时间随着元素的增加而增加</li>
+<li>占用空间小，浪费内存少</li>
+</ul>
+<blockquote>
+<p>dict的key必须是不可变对象，dict根据key计算value的存储位置（hash算法）</p>
+</blockquote>
+</blockquote>
 <p>Python异常捕获？</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(type(e))  <span class="comment">##捕捉到异常对象执行</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="number">1</span>) <span class="comment">##不抛出异常执行    </span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(<span class="number">2</span>)  <span class="comment">##无论如何都执行</span></span><br></pre></td></tr></table></figure>
 <p>Python生成器？</p>
@@ -612,35 +632,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,6 +657,30 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
             
             <div class="clearfix"></div>

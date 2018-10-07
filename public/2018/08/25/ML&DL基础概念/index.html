@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/GMM.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/BP.jpg">
-<meta property="og:updated_time" content="2018-10-06T17:39:23.164Z">
+<meta property="og:updated_time" content="2018-10-07T16:26:33.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML&amp;DL基础概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -219,7 +219,23 @@
 <p>共轭先验：使得后验概率分布的函数形式与先验概率相同，一般称先验分布与似然函数是共轭的。</p>
 <p>熵、互信息？</p>
 <p>KL散度与极大似然？</p>
+<p>过拟合和欠拟合：</p>
+<p>欠拟合指的是模型不能在训练集上获得足够低的误差，过拟合指的是训练误差和测试误差的差距太大。</p>
+<p>调整模型的<strong>容量</strong>，</p>
+<p>当算法容量适合任务的复杂度和所提供数据的数量时，算法效果最佳。</p>
+<p>VC维：</p>
+<blockquote>
+<p>量化模型（二元分类器）容量，该分类器能够分类的训练样本的最大数目。训练误差和泛化误差之间差异的上界随着模型容量的增长而增长，但是随着训练样本增多而下降。</p>
+</blockquote>
+<p>No Free Lunch theorem：</p>
+<blockquote>
+<p>在所有可能的数据生成分布上平均后，每一个分类算法在未事先观测的点上都有相同的错误率。没有一个机器学习算法总是比其他的要好。但是这个结论只在我们考虑所有的数据生成分布时才成立。真实应用中，如果我们对遇到的概率分布进行假设，则可以设计在这些分布上效果良好的学习算法。</p>
+<p>机器学习是理解什么样的分布于人工智能获取经验的“真实世界”相关，以及什么样的学习算法在我们关注的数据生成分布上效果要好。</p>
+</blockquote>
 <p>正则项：</p>
+<blockquote>
+<p>修改学习算法，使其降低泛化误差而非训练误差</p>
+</blockquote>
 <ul>
 <li>当经验风险项较小时，表示模型较复杂，包含的参数越多，正则项就会越大。</li>
 <li>正则项的作用就是选择经验风险和模型复杂度同时较小的模型。奥卡姆剃刀法则（能很好地解释已知数据并且十分简单的才是最好的模型）。</li>
@@ -708,35 +724,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,6 +749,30 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
             
             <div class="clearfix"></div>
