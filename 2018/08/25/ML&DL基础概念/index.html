@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/GMM.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/25/ML&DL基础概念/BP.jpg">
-<meta property="og:updated_time" content="2018-10-06T17:39:23.164Z">
+<meta property="og:updated_time" content="2018-10-07T17:07:43.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML&amp;DL基础概念">
 <meta name="twitter:description" content="统计学习偏向于理论的优美完善，研究泛化误差界。机器学习是统计学习对实践技术的延伸，为实际问题提供算法支撑。数据挖掘偏重于大量数据的实践应用，注重实际问题的解决。">
@@ -204,7 +204,9 @@
 <li><p>风险函数：期望损失： 损失函数*联合概率分布的二重积分</p>
 </li>
 </ul>
-<p><em>由于联合概率是未知的，根据大数定律，当样本容量趋于无穷时，经验风险趋于期望风险，所以可以由经验风险来求期望风险，但是由于样本的数量有限，效果往往达不到预期。</em></p>
+<blockquote>
+<p>由于联合概率是未知的，根据大数定律，当样本容量趋于无穷时，经验风险趋于期望风险，所以可以由经验风险来求期望风险，但是由于样本的数量有限，效果往往达不到预期。</p>
+</blockquote>
 <ul>
 <li>监督学习的两个基本策略：经验风险最小化(empiracal risk minimization)和结构风险最小化(structural risk minimization)</li>
 <li>ERM：样本容量足够大的时候能达到较好的效果，样本容量较小的时候容易产生过拟合，例：极大似然估计（模型是条件概率分布，损失函数是对数损失，经验风险最小化等价于极大似然估计）。</li>
@@ -217,9 +219,61 @@
 <li>贝叶斯观点：给定观察数据，我们引入参数的先验分布，然后使用贝叶斯定理来计算对应的后验概率。</li>
 </ul>
 <p>共轭先验：使得后验概率分布的函数形式与先验概率相同，一般称先验分布与似然函数是共轭的。</p>
-<p>熵、互信息？</p>
-<p>KL散度与极大似然？</p>
+<p>关于熵：</p>
+<blockquote>
+<p>我们一般使用<strong>信息量</strong>来进行<strong>不确定性</strong>的度量。分布为$P(X)$随机变量$X$的自信息定义为：$-log(p(X))$。</p>
+<blockquote>
+<p>对于两个不相关的事件x和y，定义$I(x)$来表示时间的信息，则$I(x,y)=I(x)+I(y)$，而$P(x,y)=P(x)P(y)$。由此可知$I(x)$与$P(x)$的对数相关，则可定义$I(x)=-log(P(x))$，负数为了保证信息量为正数。</p>
+</blockquote>
+<p><strong>(信息)熵</strong>定义为信息量关于随机变量$X$概率分布的期望，也就是定义为该随机变量所有可能发生的事件产生信息量的期望。（最短平均编码长度？）。</p>
+<blockquote>
+<p>1维随机变量：$H(X)=-\sum_xp(x)log(p(x))$</p>
+<p>多维的联合熵：$H(X,Y)=-\sum_{x,y}p(x,y)log(p(x,y))=-\sum_{i=1}^{n}\sum_{j=1}^{m}p(x_i,y_i)log(p(x_i,y_i))$</p>
+<blockquote>
+<p>随机变量取值个数越多熵越大，当随机变量均匀分布时，熵最大。($0&lt;H(X)&lt;log(n)$)</p>
+</blockquote>
+</blockquote>
+<p><strong>条件熵</strong>：$X$给定条件下$Y$的条件概率分布的熵对随机变量$X$的期望，条件熵 = 联合熵 - 单独熵。</p>
+<blockquote>
+<p>$H(Y|X)=\sum_xp(x)H(Y|X=x)=-\sum_xp(x)\sum_yp(y|x)logp(y|x)=-\sum_x\sum_yp(x,y)logp(y,x)=-\sum_{x,y}p(x,y)logp(y|x)$</p>
+<p>$H(X,Y)=-\sum_{x,y}p(x,y)logp(x,y)=H(Y|X)+H(X)$</p>
+<p>$H(Y|X)=H(X,Y)-H(X)$</p>
+</blockquote>
+<p><strong>相对熵</strong>（KL散度）：两个概率分布之间的差异。</p>
+<blockquote>
+<p>$D_{KL}(p||q)=\sum_xp(x)log\frac{p(x)}{q(x)}$(p与q之间的对数差在p上的期望值)</p>
+</blockquote>
+<p><strong>交叉熵</strong>：模型的分布与训练时分布的差异，当KL散度为0的时候，模型预测值得分布于训练集分布相同。</p>
+<blockquote>
+<p>$H(p,q)=-\sum_xp(x)logq(x)$</p>
+<p>$H(p,q)=H(p)+D_{KL}(p||q)$</p>
+</blockquote>
+<p>熵与方差的关系(在大部分分布的情况下正相关？)</p>
+<p><strong>信息增益</strong>：熵-条件熵</p>
+<p><strong>互信息</strong>：联合分布于乘积分布之间的相对熵，熵-条件熵</p>
+<blockquote>
+<p>$I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}=H(X)-H(X|Y)$</p>
+</blockquote>
+</blockquote>
+<p>过拟合和欠拟合：</p>
+<blockquote>
+<p>欠拟合指的是模型不能在训练集上获得足够低的误差，过拟合指的是训练误差和测试误差的差距太大。</p>
+<p>调整模型的<strong>容量</strong>，</p>
+<p>当算法容量适合任务的复杂度和所提供数据的数量时，算法效果最佳。</p>
+</blockquote>
+<p>VC维：</p>
+<blockquote>
+<p>量化模型（二元分类器）容量，该分类器能够分类的训练样本的最大数目。训练误差和泛化误差之间差异的上界随着模型容量的增长而增长，但是随着训练样本增多而下降。</p>
+</blockquote>
+<p>No Free Lunch theorem：</p>
+<blockquote>
+<p>在所有可能的数据生成分布上平均后，每一个分类算法在未事先观测的点上都有相同的错误率。没有一个机器学习算法总是比其他的要好。但是这个结论只在我们考虑所有的数据生成分布时才成立。真实应用中，如果我们对遇到的概率分布进行假设，则可以设计在这些分布上效果良好的学习算法。</p>
+<p>机器学习是理解什么样的分布于人工智能获取经验的“真实世界”相关，以及什么样的学习算法在我们关注的数据生成分布上效果要好。</p>
+</blockquote>
 <p>正则项：</p>
+<blockquote>
+<p>修改学习算法，使其降低泛化误差而非训练误差</p>
+</blockquote>
 <ul>
 <li>当经验风险项较小时，表示模型较复杂，包含的参数越多，正则项就会越大。</li>
 <li>正则项的作用就是选择经验风险和模型复杂度同时较小的模型。奥卡姆剃刀法则（能很好地解释已知数据并且十分简单的才是最好的模型）。</li>
@@ -393,7 +447,7 @@
 <p><img src="/2018/08/25/ML&DL基础概念/GMM.png" alt="GMM"></p>
 <hr>
 <p><strong>线性模型</strong>：</p>
-<p>GLM建模过程：先明确y服从什么分布，找到一个合适的链接函数，将参数$\theta$映射成整条实直线，规定$f(\theta) = a + bx$ 。<a href="https://mp.weixin.qq.com/s?__biz=MzU1NTUxNTM0Mg==&amp;mid=2247487577&amp;idx=3&amp;sn=eaa836d0bf6aeb4e454a73f42f70340b&amp;source=41#wechat_redirect" target="_blank" rel="noopener">推导</a></p>
+<p>GLM建模过程：先明确y(条件概率？)服从什么分布，找到一个合适的链接函数，将参数$\theta$映射成整条实直线，规定$f(\theta) = a + bx$ 。<a href="https://mp.weixin.qq.com/s?__biz=MzU1NTUxNTM0Mg==&amp;mid=2247487577&amp;idx=3&amp;sn=eaa836d0bf6aeb4e454a73f42f70340b&amp;source=41#wechat_redirect" target="_blank" rel="noopener">推导</a></p>
 <p>回归的线性模型和分类的线性模型：基于<strong>固定</strong>非线性基函数的线性组合。$y(x,w)=f(\sum_{j=1}^{M}w_j\phi_j(x))$,$f(.)$在分类问题中是一个非线性激活函数，在回归问题中为恒等函数。</p>
 <p>线性回归的模型可以表达非线性的东西，因为基函数是非线性的（这里基函数是固定的，NN、SVM是变化基）。</p>
 <p>多项式基函数的局限：它们是输入变量的全局函数，对于输入空间一个区域的改变将会影响所有的其他区域。</p>
@@ -436,8 +490,34 @@
 <p>3、计算预测值与真实值之间的误差</p>
 <p>4、对每一个产生误差的神经元，调整相应的权重值以减小误差</p>
 <p>5、重复迭代，直至网络权重达到最佳值</p>
+<p><strong>跳出局部最小值的策略</strong>：</p>
+<p>1、尝试不同的参数初始化策略，再选择</p>
+<p>2、模拟退火</p>
+<blockquote>
+<p>每一步都以一定的概率接受比当前差的结果，有助于跳出局部极值，接受“次优解”的概率随着时间的推移不断降低</p>
+</blockquote>
+<p>3、使用随机梯度下降</p>
+<p>4、动量</p>
+<p><strong>各种梯度下降</strong>：</p>
 <p><strong>梯度消失爆炸</strong>：</p>
+<blockquote>
+<p>原因：1、网络过深。2、激活函数选择不合适（如sigmoid的导数不会超过0.25）</p>
+</blockquote>
+<p>解决办法：</p>
+<p>1、预训练+微调</p>
+<p>2、梯度剪切、权重正则（针对爆炸）[出现的更多的是梯度消失]</p>
+<p>3、更换激活函数</p>
+<p>4、batchnorm（消除放大缩小影响，把梯度拉回非饱和区）</p>
+<p>5、使用残差结构（shortcut）</p>
+<p>6、使用LSTM（gates）</p>
 <p><strong>各类激活函数比较</strong>：</p>
+<p>relu：</p>
+<blockquote>
+<p>缓解梯度消失爆炸、计算方便、加速网络训练</p>
+</blockquote>
+<p>leakrelu:</p>
+<p>elu:</p>
+<p><strong>BN</strong>：</p>
 
       
 
@@ -716,10 +796,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -728,11 +804,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,11 +824,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
              
               <li class="article-tag-list-item">

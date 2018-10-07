@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Java和Python的一些基础知识总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-04T17:30:26.388Z">
+<meta property="og:updated_time" content="2018-10-07T16:30:17.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java&amp;Python">
 <meta name="twitter:description" content="Java和Python的一些基础知识总结">
@@ -280,7 +280,7 @@
 <p><strong>Object通用方法</strong></p>
 <blockquote>
 <p>equals和==：</p>
-<p>基本类型没有equals方法，==判断两个值是否相等引用类型equals判断引用的对象是否等价，==判断两个实例是否引用同一个对象 </p>
+<p>基本类型没有equals方法，\==判断两个值是否相等引用类型equals判断引用的对象是否等价，\==判断两个实例是否引用同一个对象 </p>
 <p>等价的两个实例散列值一定相同，但散列值相同的两个实例不一定等价，在覆盖equals方法时应该也覆盖hashCode方法，保证等价的实例有相同的hashcode </p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualExample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> x;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> y;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> z;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">EqualExample</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.x = x;</span><br><span class="line">                <span class="keyword">this</span>.y = y;</span><br><span class="line">                <span class="keyword">this</span>.z = z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        EqualExample that = (EqualExample) o;</span><br><span class="line">        <span class="keyword">if</span>(x!=that.x) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(y!=that.y) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> z = that.z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">EqualExample e1 = <span class="keyword">new</span> EqualExample(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">EqualExample e2 = <span class="keyword">new</span> EqualExample(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">syso(e1.equals(e2)); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">HashSet&lt;EqualExample&gt; s1 = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">s1.add(e1);</span><br><span class="line">s1.add(e2);</span><br><span class="line">syso(s1.size()) <span class="comment">//2,没有重写hashcode方法</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">toString()</span></span><br><span class="line"><span class="comment">clone()</span></span><br><span class="line"><span class="comment">protect方法，必须显示重写才能调用</span></span><br><span class="line"><span class="comment">必须先实现cloneable接口才能调用clone方法</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneExample</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> CloneExample <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (CloneExample)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">CloneExample c1 = <span class="keyword">new</span> CloneExample();</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">        CloneExample c2 = c1.clone();</span><br><span class="line">&#125; <span class="keyword">catch</span> (CloneNotSupportedException e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">&#125; <span class="comment">//java.lang.CloneNotSupportedException: CloneTest</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CloneExample</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> CloneExample <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> (CloneExample)<span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//深拷贝(引用不同对象)和浅拷贝(引用同一对象)</span></span><br></pre></td></tr></table></figure>
@@ -343,10 +343,40 @@
 <p><strong>Spring、SpringBoot</strong></p>
 <p>TODO</p>
 <hr>
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><strong>dict排序</strong></p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p><a href="https://eastlakeside.gitbooks.io/interpy-zh/content/" target="_blank" rel="noopener">pythonGitbook</a></p>
+<p><strong>list、tuple、dict、set</strong></p>
+<ul>
+<li><p>list：列表，链表，有序，可索引，“[]”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">append(y)、extend(L)、count(y)、index(y)、insert(i,y)、pop(y)、remove(y)、reverse()、sort()</span><br><span class="line"><span class="comment">#y--元素，L--列表</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tuple：元组，对象集合，可索引，不能修改，“()”</p>
+<blockquote>
+<p>不可变，能保证代码的安全性</p>
+<p>len()，tuple[y]</p>
+<p>同样可以索引切片连接重复</p>
+</blockquote>
+</li>
+<li><p>dict：字典，key-value组合，无序，（空间换时间），“{}”</p>
+<blockquote>
+<p>不允许一个键对应多个值</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict.keys(),dict.values(),dict.items()</span><br><span class="line">hash(obj) <span class="comment">##--&gt;可作为key</span></span><br><span class="line"><span class="keyword">del</span>,dict.pop,clear</span><br><span class="line">sorted(dict.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">dict.get()</span><br><span class="line">dict.setdefault()</span><br><span class="line">&#123;&#125;.fromkeys((<span class="string">'a'</span>,<span class="string">'b'</span>),<span class="keyword">True</span>)  <span class="comment">#&#123;'a':True,'b':True&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>set：集合，无序，元素自动去重，“set([])”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add,update,remove</span><br><span class="line">discard与remove <span class="comment">#【如果删除的元素不在集合内，discard不会报错】</span></span><br><span class="line"><span class="comment">#|(联合),&amp;(交集),-(差集),^(差分)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>collections</strong></p>
+<ul>
+<li>defaultdict(不需要检查key是否存在，减少keyerror的发生)</li>
+<li>Counter</li>
+<li>deque：双端队列</li>
+<li>namedtuple：可以像字典一样访问，但是是不可变的</li>
+</ul>
+<p><strong>dict排序</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp_list = sorted(tmp_list.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse = <span class="keyword">True</span>)  <span class="comment">##按value、反序</span></span><br></pre></td></tr></table></figure>
 <p><strong>交集并集差集</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(list(set(b).difference(set(a))))</span><br><span class="line">print(list(set(b).union(set(a))))</span><br><span class="line">print(list(set(b).intersection(set(a))))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(list(set(b).difference(set(a))))</span><br><span class="line">print(list(set(b).union(set(a))))</span><br><span class="line">print(list(set(b).intersection(set(a))))</span><br><span class="line"></span><br><span class="line"><span class="comment">#检查是否有重复元素</span></span><br><span class="line">duplicates = set([x <span class="keyword">for</span> x <span class="keyword">in</span> some_list <span class="keyword">if</span> some_list.count(x) &gt; <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
 <p><strong>xrange、range</strong></p>
 <p>xrange返回一个迭代器，range返回一个list</p>
 <p><strong>生成器</strong></p>
@@ -365,8 +395,18 @@
 <p><strong>数据库连接</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ConnectDataBase</span><span class="params">(self,db_name,user_name,password)</span>:</span></span><br><span class="line">        conn = mdb.connect(host=<span class="string">'88.88.88.88'</span>,port=<span class="number">3306</span>,user=user_name,passwd=password,\</span><br><span class="line">                           db=db_name,charset=<span class="string">'utf8'</span>)</span><br><span class="line">        cursor = conn.cursor()</span><br><span class="line">        <span class="keyword">return</span> (conn,cursor)</span><br></pre></td></tr></table></figure>
 <p><strong>pandas操作</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定列进行操作</span></span><br><span class="line">df.loc[(df.Cabin.notnull()),<span class="string">'Cabin'</span>] = <span class="string">'Yes'</span>  <span class="comment">#选取指定列替换为yes</span></span><br><span class="line"></span><br><span class="line">df.loc[df.Team.isin([<span class="string">'England'</span>,<span class="string">'Italy'</span>,<span class="string">'Russia'</span>]),[<span class="string">'Team'</span>,<span class="string">'Shooting Accuracy'</span>]] <span class="comment">#选取满足条件的列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定列进行操作</span></span><br><span class="line">df.loc[(df.Cabin.notnull()),<span class="string">'Cabin'</span>] = <span class="string">'Yes'</span>  <span class="comment">#选取指定列替换为yes</span></span><br><span class="line">df.loc[df.Team.isin([<span class="string">'England'</span>,<span class="string">'Italy'</span>,<span class="string">'Russia'</span>]),[<span class="string">'Team'</span>,<span class="string">'Shooting Accuracy'</span>]] <span class="comment">#选取满足条件的列</span></span><br></pre></td></tr></table></figure>
 <p><strong>loc、iloc、ix</strong></p>
+<blockquote>
+<p>loc：在行标签上进行索引，包括start和end</p>
+<p>iloc：在行标签位置上进行索引，不包括end</p>
+<p>ix：在行标签上索引，索引不到就到位置上索引（如果index非全部整数）,不包括end</p>
+<blockquote>
+<p>.ix is deprecated. Please use<br>.loc for label based indexing or<br>.iloc for positional indexing</p>
+</blockquote>
+</blockquote>
+<p><strong>map、filter、reduce</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">squared = list(map(<span class="keyword">lambda</span> x:x**<span class="number">2</span>,items)) <span class="comment">#map python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line">less_than_zero = filter(<span class="keyword">lambda</span> x:x&lt;<span class="number">0</span>,number_list) <span class="comment">#同python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对一个列表进行计算并且返回结果</span></span><br><span class="line">product = reduce((<span class="keyword">lambda</span> x,y:x*y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">#24</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -645,10 +685,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -657,11 +693,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,11 +713,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
              
               <li class="article-tag-list-item">
