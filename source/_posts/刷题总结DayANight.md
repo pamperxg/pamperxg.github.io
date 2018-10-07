@@ -328,6 +328,14 @@ public class FindKthLargestElem{
 
 - rank,dense_rank(不跳过),row_number 
 
+[leetcode178:RankScore](https://leetcode.com/problems/rank-scores/)
+
+```mysql
+select Score,
+(select count(*) from (select distinct Score s from Scores) tmp where s >= Score) Rank
+from Scores order by Score desc;
+```
+
 [leetcode197:Rising Temperature](https://leetcode.com/problems/rising-temperature/)
 
 datediff函数
