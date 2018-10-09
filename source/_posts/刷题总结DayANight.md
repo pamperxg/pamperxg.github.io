@@ -314,6 +314,34 @@ public class FindKthLargestElem{
 
 #### SQL
 
+执行顺序：
+
+> 1.from
+>
+> 2.on
+>
+> 3.join
+>
+> 4.where
+>
+> 5.group by
+>
+> 6.with、聚合（avg，sum）
+>
+> 7.having
+>
+> 8.select
+>
+> 9.distinct
+>
+> 10.order by
+>
+> 11.limit
+
+> 中间每一步都会生成一张虚拟表，如果需要的字段不在上一步的虚拟表中就会报错
+>
+> select中的别名不能用于select中，但是可以用于后面的步骤，比如order by
+
 - count(\*),count(1),count(列名) 
 
 > count(\*)包含了所有的列，相当于行数，统计结果的时候不会忽略列值null*
@@ -322,11 +350,18 @@ public class FindKthLargestElem{
 >
 > count(列名)只包括列名那一列，统计结果的时候会忽略列值为空 null，为主键时执行快，不为主键时执行没有count(1)快 
 
-- limit 1 offset 1，从第一条开始（offset1）取一条
-
-  limit 2,1 从第二条开始去一条，即取第二条 
-
 - rank,dense_rank(不跳过),row_number 
+
+[leetcode176SecondHighestSalary](https://leetcode.com/problems/second-highest-salary/description/)
+
+- limit 1 offset 1，从第一条开始（offset1）取一条
+- limit 2,1 从第二条开始去一条，即取第二条 
+- ifnull(xx,null) as xx
+
+```mysql
+select ifnull((select distinct Salary 
+from Employee order by Salary desc limit 1,1),null) as SecondHighestSalary;
+```
 
 [leetcode178:RankScore](https://leetcode.com/problems/rank-scores/)
 
@@ -345,6 +380,11 @@ datediff函数
 select weather.Id
 from weather join weather w on DATEDIFF(weather.RecordDate,w.RecordDate) = 1
 and weather.Temperature > w.Temperature;
+
+select w1.Id
+from Weather w1,Weather w2
+where w1.Temperature > w2.Temperature
+and to_days(w1.RecordDate)-to_days(w2.RecordDate)=1;
 ```
 
 #### Shell
