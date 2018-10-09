@@ -454,6 +454,19 @@ select ifnull((select distinct Salary
 from Employee order by Salary desc limit 1,1),null) as SecondHighestSalary;
 ```
 
+[leetcode177NthHighestSalary](https://leetcode.com/problems/nth-highest-salary/)
+
+```mysql
+create function getNthHighestSalary(N int) returns int
+begin
+declare M int;
+set M=N-1;
+	return(
+        select distinct Salary from Employee order by Salary desc limit M,1
+    );
+end
+```
+
 [leetcode178:RankScore](https://leetcode.com/problems/rank-scores/)
 
 ```mysql
