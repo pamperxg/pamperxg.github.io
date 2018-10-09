@@ -166,38 +166,6 @@ public class IsSubTree{
 }
 ```
 
-链表反转
-
-```java
-public class RverseLinkedList{
-    public ListNode reverseLinkedList(ListNode head){
-        ListNode prev = null;
-        ListNode curr = head;
-        while(curr != null){
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
-    }
-    public ListNode reverseNodeRecurse(ListNode head){
-        if(head = null || head.next == null) return null;
-        ListNode p = reverseNodeRecurse(head.next);
-        head.next.next = head;
-        head.next = null;
-        return p;
-    }
-}
-public class ListNode{
-    int val;
-    ListNode next;
-    ListNode(int val){
-        this.val = val;
-    }
-}
-```
-
 归并排序
 
 ```java
@@ -304,9 +272,132 @@ public class FindKthLargestElem{
     }
 }
 ```
+```java
+public class TwoSum{
+    public int[] twoSum(int[] nums,int target){
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int obj = target - nums[i];
+            if(map.containsKey(obj))
+                return new int[]{map.get(obj),i};
+            map.put(nums[i],i);
+        }
+        throw new IllegalArgumentException("No Solution!");
+        //Throwable--Error/Exception[IllegalArgumentException]
+    }
+}
+
+//排序，二分查找
+public class ThreeSum{
+    public List<List<Integer>> threeSum(int[] nums){
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length;i++){
+            if(i>0 && nums[i]==nums[i-1])
+                continue;
+            int j=i+1,k=nums.length-1,target=-nums[i];
+            while(j<k){
+                if(nums[j]+nums[k]=target){
+                    res.add(Arrays.asList(nums[i],nums[j],nums[k]));
+                    j++;
+                    k--;
+                    while(j<k && nums[j]==nums[j-1]) j++;
+                    while(j<k && nums[k]==nums[k+1]) k--;
+                }
+                else if(nums[j]+nums[k] < target)
+                    j++;
+                else
+                    k--;
+            }
+        }
+        return res;
+    }
+}
+```
+
 ### 链表
 
-反转,见面试总结
+```java
+//pre->curr->next
+//curr<-next
+public class RverseLinkedList{
+    public ListNode reverseLinkedList(ListNode head){
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    public ListNode reverseNodeRecurse(ListNode head){
+        if(head = null || head.next == null) return null;
+        ListNode p = reverseNodeRecurse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
+}
+public class ListNode{
+    int val;
+    ListNode next;
+    ListNode(int val){
+        this.val = val;
+    }
+}
+
+//(2->4->3)+(5->6->4)=(7->0->8)
+public class AddTwoNum{
+    public ListNode addTwoNums(ListNode l1,ListNode l2){
+        ListNode dummyHead = new ListNode(0);
+        ListNode p=l1,q=l2,curr=dummyHead;
+        int carry = 0;
+        while(p!=null || q!=null){
+            int x = p!=null ? p.val:0;
+            int y = q!=null ? q.val:0;
+            int sum = x+y+carry;
+            carry = sum/10;
+            curr.next = new ListNode(sum%10);
+            curr = curr.next;
+            if(p!=null) p=p.next;
+            if(q!=null) q=q.next;
+        }
+        if(carry > 0)
+            curr.next = new ListNode(carry);
+        return dummyHead.next;
+    }
+}
+
+public class GetIntersection{
+    public ListNode getIntersection(ListNode headA,ListNode headB){
+        ListNode l1=headA,l2=headB;
+        while(l1 != l2){
+            l1 = l1 != null ? l1.next:headB;
+            l2 = l2 != null ? l2.next:headA;
+        }
+        return l1;
+    }
+}
+
+public class RemoveNthFromEnd{
+    public ListNode removeNthFromEnd(ListNode head,int n){
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+        while(n-- >= 0)
+            fast = fast.next;
+        while(fast != null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return dummy.next;
+    }
+}
+```
 
 ### LeetCode
 
