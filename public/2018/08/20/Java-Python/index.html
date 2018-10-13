@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Java和Python的一些基础知识总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-07T16:30:17.303Z">
+<meta property="og:updated_time" content="2018-10-13T04:00:24.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java&amp;Python">
 <meta name="twitter:description" content="Java和Python的一些基础知识总结">
@@ -407,6 +407,59 @@
 </blockquote>
 <p><strong>map、filter、reduce</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">squared = list(map(<span class="keyword">lambda</span> x:x**<span class="number">2</span>,items)) <span class="comment">#map python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line">less_than_zero = filter(<span class="keyword">lambda</span> x:x&lt;<span class="number">0</span>,number_list) <span class="comment">#同python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对一个列表进行计算并且返回结果</span></span><br><span class="line">product = reduce((<span class="keyword">lambda</span> x,y:x*y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">#24</span></span><br></pre></td></tr></table></figure>
+<p><strong>网络相关</strong>：</p>
+<p>应用层：为特定应用程序提供数据传输服务，http，dns</p>
+<p>运输层：进程间的通用数据传输服务，TCP、UDP</p>
+<p>网络层：主机间的数据传输服务</p>
+<p>数据链路层：为同一链路的主机提供服务</p>
+<p>物理层：怎样在传输媒体上传输数据比特流 </p>
+<p>表示层</p>
+<p>会话层 </p>
+<p>TCP/UDP：—  应用层：http，dns                  </p>
+<p>​            —   运输层：tcp，udp                  </p>
+<p>​                    —   网际层 ：IP                  </p>
+<pre><code>---   网络接口层： 
+</code></pre><blockquote>
+<p>UDP是无连接的，支持一对一，一对多，多对一，多对多</p>
+<p>TCP是面向连接的，只能一对一</p>
+</blockquote>
+<p>序号，确认号，数据偏移，确认ACK，同步SYN，中止FIN，窗口 </p>
+<p><em>TCP三次握手，四次挥手：</em></p>
+<ul>
+<li><p>服务端处于listen状态，等待客户端的连接请求</p>
+</li>
+<li><p>客户端向服务端发送请求报文，SYN=1，ACK=0，初始序号x </p>
+</li>
+<li><p>服务端收到请求报文后，若同意连接，向客户端发送确认报文，SYN=1,ACK=1，确认号ack=x+1,初始序号y </p>
+</li>
+<li><p>客户端收到确认报文后，继续向服务端发出确认，确认号ack=y+1，序号为x+1 </p>
+</li>
+<li><p>服务端收到客户端确认后，连接建立</p>
+<blockquote>
+<p>防止失效连接请求到达服务器</p>
+<p>如果客户端发送的连接请求在网络中滞留，滞留时间超过客户端超时重传时间后，客户端会重新请求连接，延时的请求还是会到达服务端，如果不进行三次握手，服务器就会打开两个连接，有三次握手就会忽略滞留连接请求的连接确认，不进行三次握手，所以不会再次打开连接。 </p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>客户端发送连接释放报文，FIN=1 </p>
+</li>
+<li><p>服务端收到后发出确认，此时TCP处于<strong>半关闭状态</strong>，服务器端能向客户端发送数据，反之不行/ CLOSE_WAIT </p>
+</li>
+<li><p>服务端不再需要连接时，发送连接释放报文，FIN=1 </p>
+</li>
+<li><p>客户端收到后发出确认，进入<strong>TIME_WAIT</strong>状态，等待2MSL(最大报文存活时间)后释放连接 </p>
+</li>
+<li><p>服务端收到客户端确认后释放连接 </p>
+<blockquote>
+<p>CLOSE_WAIT:状态让服务端发送完数据</p>
+<p>TIME_WAIT:确保确认报文能到达服务端，若未到达，服务端会再次发送释放报文。。                   </p>
+<p>​             等待本连接产生的所有报文都从网络中消失，下一个新连接不会受到旧的请求报文 </p>
+<p>可靠传输：超时重传 </p>
+</blockquote>
+</li>
+</ul>
 
       
 
@@ -693,11 +746,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,11 +758,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
