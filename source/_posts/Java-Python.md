@@ -539,6 +539,28 @@ less_than_zero = filter(lambda x:x<0,number_list) #同python3返回迭代器，p
 product = reduce((lambda x,y:x*y),[1,2,3,4]) #24
 ```
 
+**时间处理**(python、pandas)：
+
+python标准库：datetime、time、calendar
+
+- 其中datetime模块中的标准数据类型有：date、time、datetime、timedeltad
+
+
+
+```python
+#1
+from datetime import datetime,timedelta
+datetime.now()
+#2
+[datetime.strptime(x,'%Y-%m-%d') for x in date]
+#3
+from dateutil.parser import parse
+parse('2018-10-10')
+#4
+import pandas as pd
+pd.to_datetime(date)
+```
+
 **网络相关**：
 
 应用层：为特定应用程序提供数据传输服务，http，dns
