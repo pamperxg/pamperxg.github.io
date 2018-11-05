@@ -513,6 +513,8 @@ def ConnectDataBase(self,db_name,user_name,password):
 #选取指定列进行操作
 df.loc[(df.Cabin.notnull()),'Cabin'] = 'Yes'  #选取指定列替换为yes
 df.loc[df.Team.isin(['England','Italy','Russia']),['Team','Shooting Accuracy']] #选取满足条件的列
+#
+df.groupby('a',as_index=False).sum()
 ```
 
 **loc、iloc、ix**
