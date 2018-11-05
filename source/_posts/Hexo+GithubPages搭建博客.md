@@ -63,6 +63,10 @@ IdentityFile ~.ssh/id_rsa.gitlab
 
 编写完成后同样可以如前所述 *“ssh -T xxx”* 检查是否配置成功
 
+> 遇到git push origin/hexo时提示：Please make sure you have the correct access rights and the repository exists.
+>
+> 解决办法：操作一下~/.ssh目录下的known_hosts文件，mv known_hosts known_hosts.bat
+
 ## 3、Git常规配置
 
 ```bash
