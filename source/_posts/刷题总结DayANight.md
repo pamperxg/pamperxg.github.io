@@ -491,6 +491,14 @@ where w1.Temperature > w2.Temperature
 and to_days(w1.RecordDate)-to_days(w2.RecordDate)=1;
 ```
 
+presto中的常用日期处理函数：
+
+```mysql
+date_diff('day',cast(xx_time as date),cast(yy_time as date)) as zz_time
+date_trunc('year',t1.xx_time)
+year(xx_time)>2017
+```
+
 #### Shell
 
 [leetcode195:TenthLine](https://leetcode.com/problems/tenth-line/description/)
