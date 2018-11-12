@@ -443,6 +443,12 @@ public class RemoveNthFromEnd{
 
 - rank,dense_rank(不跳过),row_number 
 
+  窗口函数运行在having语句之后，order by之前。
+
+  ```mysql
+  select * rank() over (partition by xx order by yy desc)  as rnk from oo order by zz;
+  ```
+
 [leetcode176SecondHighestSalary](https://leetcode.com/problems/second-highest-salary/description/)
 
 - limit 1 offset 1，从第一条开始（offset1）取一条
