@@ -403,6 +403,14 @@ public class RemoveNthFromEnd{
 
 #### 数据结构
 
+查找数在排序数组中插入位置
+
+```python
+sorted(lst + [target]).index(target)
+len([x for x in lst if x < target])
+bisect.bisect_right(lst, target) #bisect_left
+```
+
 #### SQL
 
 执行顺序：

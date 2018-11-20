@@ -517,6 +517,30 @@ df.loc[df.Team.isin(['England','Italy','Russia']),['Team','Shooting Accuracy']] 
 df.groupby('a',as_index=False).sum()
 ```
 
+```python
+#分组排序，算位置
+#groupby时as_index=False和True的区别
+def get_level(data,key,values,ascending=True):
+    data_temp = data[key + [values]].copy()
+    data_temp.sort_values(key + [values], inplace=True, ascending=ascending)
+    data_temp['rank'] = range(data_temp.shape[0])
+    data_tmp['rank'] = data_tmp['rank'] + 1
+    min_rank = data_temp.groupby(key,as_index=False)['rank'].agg({'min_rank':'min'})
+    index = data_temp.index
+    data_temp = data_temp.merge(min_rank,on=key,how='left')
+    data_temp['rank'] = data_temp['rank'] - data_temp['min_rank']
+    max_rank = data_temp.groupby(key,as_index=False)['rank'].agg({'max_rank':'max'})
+    data_temp = data_temp.merge(max_rank,on=key,how='left')
+    data_temp.index = index
+    data_temp['slevel'] = round(data_temp['rank']/data_temp['max_rank'],2)
+    return data_temp['slevel']   
+```
+
+```python
+#shift、diff函数
+
+```
+
 **loc、iloc、ix**
 
 > loc：在行标签上进行索引，包括start和end
