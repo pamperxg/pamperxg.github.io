@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="​    本博客完整搭建流程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-01T16:35:52.739Z">
+<meta property="og:updated_time" content="2019-07-07T14:45:13.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GithubPages搭建博客">
 <meta name="twitter:description" content="​    本博客完整搭建流程">
@@ -203,6 +203,10 @@
 <p>已同时配置gitlab和github的key为例，config文件中写入如下信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github</span><br><span class="line">HostName github.com</span><br><span class="line">User git</span><br><span class="line">IdentityFile ~.ssh/id_rsa.github</span><br><span class="line"></span><br><span class="line">Host gitlab</span><br><span class="line">HostName gitlab.com</span><br><span class="line">User git</span><br><span class="line">IdentityFile ~.ssh/id_rsa.gitlab</span><br></pre></td></tr></table></figure>
 <p>编写完成后同样可以如前所述 <em>“ssh -T xxx”</em> 检查是否配置成功</p>
+<blockquote>
+<p>遇到git push origin/hexo时提示：Please make sure you have the correct access rights and the repository exists.</p>
+<p>解决办法：操作一下~/.ssh目录下的known_hosts文件，mv known_hosts known_hosts.bat</p>
+</blockquote>
 <h2 id="3、Git常规配置"><a href="#3、Git常规配置" class="headerlink" title="3、Git常规配置"></a>3、Git常规配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list     <span class="comment">#查看config信息</span></span><br><span class="line">$ git config --global user.name <span class="string">"xxx"</span>    </span><br><span class="line">$ git config --global user.email <span class="string">"xxx@xxx.xx"</span></span><br></pre></td></tr></table></figure>
 <p>如果须有某个文件夹下单独配置，–global改为–local即可</p>
 <h1 id="三、搭建博客开启写作之旅"><a href="#三、搭建博客开启写作之旅" class="headerlink" title="三、搭建博客开启写作之旅"></a>三、搭建博客开启写作之旅</h1><h3 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h3><p>​    Hexo搭建博客后部署到Github，如果我们需要把我们原始文件也存到Github便于我们后续在不同电脑更改，理论上我们需要一个库部署，一个库来存储我们的原始文件。这里我们通过建立不同的分支来实现。</p>
@@ -389,7 +393,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 pamper
+    		&copy; 2019 pamper
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -505,11 +509,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">...</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,14 +538,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">

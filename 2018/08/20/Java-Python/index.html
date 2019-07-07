@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Java和Python的一些基础知识总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-13T04:00:24.879Z">
+<meta property="og:updated_time" content="2019-07-07T14:45:13.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java&amp;Python">
 <meta name="twitter:description" content="Java和Python的一些基础知识总结">
@@ -395,7 +395,9 @@
 <p><strong>数据库连接</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ConnectDataBase</span><span class="params">(self,db_name,user_name,password)</span>:</span></span><br><span class="line">        conn = mdb.connect(host=<span class="string">'88.88.88.88'</span>,port=<span class="number">3306</span>,user=user_name,passwd=password,\</span><br><span class="line">                           db=db_name,charset=<span class="string">'utf8'</span>)</span><br><span class="line">        cursor = conn.cursor()</span><br><span class="line">        <span class="keyword">return</span> (conn,cursor)</span><br></pre></td></tr></table></figure>
 <p><strong>pandas操作</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定列进行操作</span></span><br><span class="line">df.loc[(df.Cabin.notnull()),<span class="string">'Cabin'</span>] = <span class="string">'Yes'</span>  <span class="comment">#选取指定列替换为yes</span></span><br><span class="line">df.loc[df.Team.isin([<span class="string">'England'</span>,<span class="string">'Italy'</span>,<span class="string">'Russia'</span>]),[<span class="string">'Team'</span>,<span class="string">'Shooting Accuracy'</span>]] <span class="comment">#选取满足条件的列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取指定列进行操作</span></span><br><span class="line">df.loc[(df.Cabin.notnull()),<span class="string">'Cabin'</span>] = <span class="string">'Yes'</span>  <span class="comment">#选取指定列替换为yes</span></span><br><span class="line">df.loc[df.Team.isin([<span class="string">'England'</span>,<span class="string">'Italy'</span>,<span class="string">'Russia'</span>]),[<span class="string">'Team'</span>,<span class="string">'Shooting Accuracy'</span>]] <span class="comment">#选取满足条件的列</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">df.groupby(<span class="string">'a'</span>,as_index=<span class="keyword">False</span>).sum()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分组排序，算位置</span></span><br><span class="line"><span class="comment">#groupby时as_index=False和True的区别</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_level</span><span class="params">(data,key,values,ascending=True)</span>:</span></span><br><span class="line">    data_temp = data[key + [values]].copy()</span><br><span class="line">    data_temp.sort_values(key + [values], inplace=<span class="keyword">True</span>, ascending=ascending)</span><br><span class="line">    data_temp[<span class="string">'rank'</span>] = range(data_temp.shape[<span class="number">0</span>])</span><br><span class="line">    data_tmp[<span class="string">'rank'</span>] = data_tmp[<span class="string">'rank'</span>] + <span class="number">1</span></span><br><span class="line">    min_rank = data_temp.groupby(key,as_index=<span class="keyword">False</span>)[<span class="string">'rank'</span>].agg(&#123;<span class="string">'min_rank'</span>:<span class="string">'min'</span>&#125;)</span><br><span class="line">    index = data_temp.index</span><br><span class="line">    data_temp = data_temp.merge(min_rank,on=key,how=<span class="string">'left'</span>)</span><br><span class="line">    data_temp[<span class="string">'rank'</span>] = data_temp[<span class="string">'rank'</span>] - data_temp[<span class="string">'min_rank'</span>]</span><br><span class="line">    max_rank = data_temp.groupby(key,as_index=<span class="keyword">False</span>)[<span class="string">'rank'</span>].agg(&#123;<span class="string">'max_rank'</span>:<span class="string">'max'</span>&#125;)</span><br><span class="line">    data_temp = data_temp.merge(max_rank,on=key,how=<span class="string">'left'</span>)</span><br><span class="line">    data_temp.index = index</span><br><span class="line">    data_temp[<span class="string">'slevel'</span>] = round(data_temp[<span class="string">'rank'</span>]/data_temp[<span class="string">'max_rank'</span>],<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> data_temp[<span class="string">'slevel'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#shift、diff函数</span></span><br></pre></td></tr></table></figure>
 <p><strong>loc、iloc、ix</strong></p>
 <blockquote>
 <p>loc：在行标签上进行索引，包括start和end</p>
@@ -407,6 +409,12 @@
 </blockquote>
 <p><strong>map、filter、reduce</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">squared = list(map(<span class="keyword">lambda</span> x:x**<span class="number">2</span>,items)) <span class="comment">#map python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line">less_than_zero = filter(<span class="keyword">lambda</span> x:x&lt;<span class="number">0</span>,number_list) <span class="comment">#同python3返回迭代器，python2返回列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对一个列表进行计算并且返回结果</span></span><br><span class="line">product = reduce((<span class="keyword">lambda</span> x,y:x*y),[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">#24</span></span><br></pre></td></tr></table></figure>
+<p><strong>时间处理</strong>(python、pandas)：</p>
+<p>python标准库：datetime、time、calendar</p>
+<ul>
+<li>其中datetime模块中的标准数据类型有：date、time、datetime、timedeltad</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime,timedelta</span><br><span class="line">datetime.now()</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">[datetime.strptime(x,<span class="string">'%Y-%m-%d'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> date]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line"><span class="keyword">from</span> dateutil.parser <span class="keyword">import</span> parse</span><br><span class="line">parse(<span class="string">'2018-10-10'</span>)</span><br><span class="line"><span class="comment">#4</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.to_datetime(date)</span><br></pre></td></tr></table></figure>
 <p><strong>网络相关</strong>：</p>
 <p>应用层：为特定应用程序提供数据传输服务，http，dns</p>
 <p>运输层：进程间的通用数据传输服务，TCP、UDP</p>
@@ -460,6 +468,11 @@
 </blockquote>
 </li>
 </ul>
+<hr>
+<p>Pycharm相同路径下的文件无法引用问题：</p>
+<blockquote>
+<p>在该路径下右击，Mark Directory as Source Root</p>
+</blockquote>
 
       
 
@@ -622,7 +635,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 pamper
+    		&copy; 2019 pamper
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -738,11 +751,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">...</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,14 +780,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
