@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="。。。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T15:15:43.490Z">
+<meta property="og:updated_time" content="2019-07-16T15:29:11.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="carryC">
 <meta name="twitter:description" content="。。。">
@@ -208,10 +208,20 @@
 <p>WindowSize</p>
 <p>MSS-maximun segment size</p>
 <p>ACK</p>
-<p>FLOW-control</p>
-<p>Congestion-Control</p>
+<p>FLOW-control：</p>
+<p>​    滑动窗口：加快传输效率，避免每一次发送数据都要等待接收端确认再发送下一个数据，而是在等待确认的过程中继续发送数据，在窗口大小内都是可以接受的。</p>
+<p>Congestion-Control：</p>
+<p>​    慢开始，避免拥塞</p>
+<p>​    快重传，快恢复</p>
 <p>回调函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义主函数，回调函数作为参数</span></span><br><span class="line"><span class="function">function <span class="title">A</span><span class="params">(callback)</span> </span>&#123;</span><br><span class="line">    callback();  </span><br><span class="line">    console.log('我是主函数');      </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义回调函数</span></span><br><span class="line"><span class="function">function <span class="title">B</span><span class="params">()</span></span>&#123;</span><br><span class="line">    setTimeout(<span class="string">"console.log('我是回调函数')"</span>, <span class="number">3000</span>);<span class="comment">//模仿耗时操作  </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用主函数，将函数B传进去</span></span><br><span class="line">A(B);</span><br></pre></td></tr></table></figure>
+<p>QUIC协议：</p>
+<p>0-RTT握手过程：</p>
+<p>​    通信双方发起通信连接时，第一个数据包就可以携带有效业务数据。</p>
+<p>​    DH算法</p>
+<p>重传与恢复</p>
+<p>安全性</p>
+<p>observatory：utils.update_repository</p>
 
       
 
@@ -298,6 +308,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/07/31/protocol/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          protocol
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/19/面试总结/" id="article-nav-older" class="article-nav-link-wrap">
@@ -461,15 +480,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,14 +504,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -505,7 +516,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,6 +533,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
             
             <div class="clearfix"></div>
