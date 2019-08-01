@@ -9,6 +9,39 @@ RT!
 <!--more-->
 
 ```c
+//孪生素数
+//在定义变量时，*定义的是指针，&定义的是引用
+//在使用时，*是解指针，&是取地址
+#include "stdio.h"
+int isPrime(int n)
+{
+    int i;
+    if(n < 2)
+        return 0;
+    for(i=2;i*i<=n;i++)
+        if(n%i==0)
+            return 0;
+    return 1;
+}
+int main()
+{
+    int a,b,flag=1;
+    scanf("%d %d",&a,&b);
+    for(;a+2<=b;a++)
+        if(isPrime(a&&isPrime(a+2)))
+            flag=0,printf(%d,%d\n,a,a+2);
+    if(flag)
+        printf("-1\n");
+    return 0;
+}
+```
+
+
+
+
+
+```c
+//A+B
 #define INT_MAX 2147483647
 #define INT_MIN (-INT_MAX-1)
 

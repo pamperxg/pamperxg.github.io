@@ -39,6 +39,8 @@ communication protocol
 
   CWND/RWND
 
+  **TCPBBR**：启动、排空、带宽探测、时延探测
+
 - http2+tcp+tls广泛应用
 
   tcp和tls带来了两次握手时延
