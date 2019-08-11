@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="communication protocol">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T15:35:15.774Z">
+<meta property="og:updated_time" content="2019-08-11T14:55:58.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="protocol">
 <meta name="twitter:description" content="communication protocol">
@@ -187,6 +187,27 @@
       
         <p>communication protocol</p>
 <a id="more"></a>
+<p>OSI七层模型和TCP/IP五层模型：</p>
+<blockquote>
+<p>应用层：为应用程序提供服务</p>
+<p>表示层：数据格式转化、数据加密</p>
+<p>会话层：建立、管理、维护会话</p>
+<p>传输层：建立、管理、维护端到端地链接</p>
+<p>网络层：IP选址以及路由</p>
+<p>数据链路层：提供介质访问和链路管理</p>
+<p>物理层</p>
+</blockquote>
+<blockquote>
+<p>应用层 HTTP</p>
+<p>传输层 TCP UDP</p>
+<p>网络层 IP ICMP</p>
+<p>数据链路层 ARP(直接和网络设备接口打交道)</p>
+<p>物理层</p>
+</blockquote>
+<p>​    Linux中的BSD socket和INET socket：对应于七层模型中的表示层和会话层，重要的数据结构为struct socket、struct sock、proto。</p>
+<p>​    Linux中的IP协议向下需要和网络设备接口打交道，向上需要提供传输和接收服务(路由服务)，是一个非常核心的协议。</p>
+<p>​    Linux中网络接口模块为内核代码的/linux/net部分代码，其中tcp/ip协议的实现在/linux/net/ipv4部分。网络接口主要由网络设备接口、网络接口core模块、网络协议族、网络接口socket四部分组成，其中网络设备接口(linux/driver/net)负责与物理介质进行数据的交互；网络接口核心模块主要功能为屏蔽物理层介质，为网络协议提供统一的接口，负责把包送入合适的协议(主要管理文件为linux/net/core/dev.c)；网络协议层实现各种网络协议；网络接口Socket为用户提供的网络服务提供编程接口(linux/net/socket.c)。</p>
+<p>​    linux/include/linux/socket.h中linuxBSDsocket定义了多至32中支持的协议族，其中PF_INET为tcp/ip协议族。在/linux/net/ipv4目录下，<strong>af_inet.c</strong>为主要的管理文件。</p>
 <ul>
 <li><p>UDP：（UserDatagramProtocol）</p>
 <p>无连接、面向事务简单不可靠、速度快、适合传输量小的场景、资源消耗少、面向数据报、可以一对多</p>
@@ -204,8 +225,17 @@
 <p>ACK/SACK(告诉发送方接收到连续Segment范围)</p>
 <p>FLOW-control/Congestion-control</p>
 <p>CWND/RWND</p>
-<p><strong>TCPBBR</strong>：启动、排空、带宽探测、时延探测</p>
+<p>TCP中接收速率的计算，可以采用固定时间窗口的计算方式和数ACK数的计算方式，如果在存在ACK传输过程中丢失的情况下，后者的计算准确性更好。</p>
+<p>源码中接收速率的计算方法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tcp.c、tcp_rate.c</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> u64 <span class="title">tcp_compute_delivery_rate</span><span class="params">(<span class="keyword">const</span> struct tcp_sock *tp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	u32 rate = READ_ONCE(tp-&gt;rate_delivered);</span><br><span class="line">	u32 intv = READ_ONCE(tp-&gt;rate_interval_us);</span><br><span class="line">	u64 rate64 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (rate &amp;&amp; intv) &#123;</span><br><span class="line">		rate64 = (u64)rate * tp-&gt;mss_cache * USEC_PER_SEC;</span><br><span class="line">		do_div(rate64, intv);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> rate64;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The bandwidth estimator estimates the rate at which the network</span></span><br><span class="line"><span class="comment"> * can currently deliver outbound data packets for this flow. At a high</span></span><br><span class="line"><span class="comment"> * level, it operates by taking a delivery rate sample for each ACK.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * A rate sample records the rate at which the network delivered packets</span></span><br><span class="line"><span class="comment"> * for this flow, calculated over the time interval between the transmission</span></span><br><span class="line"><span class="comment"> * of a data packet and the acknowledgment of that packet.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Specifically, over the interval between each transmit and corresponding ACK,</span></span><br><span class="line"><span class="comment"> * the estimator generates a delivery rate sample. Typically it uses the rate</span></span><br><span class="line"><span class="comment"> * at which packets were acknowledged. However, the approach of using only the</span></span><br><span class="line"><span class="comment"> * acknowledgment rate faces a challenge under the prevalent ACK decimation or</span></span><br><span class="line"><span class="comment"> * compression: packets can temporarily appear to be delivered much quicker</span></span><br><span class="line"><span class="comment"> * than the bottleneck rate. Since it is physically impossible to do that in a</span></span><br><span class="line"><span class="comment"> * sustained fashion, when the estimator notices that the ACK rate is faster</span></span><br><span class="line"><span class="comment"> * than the transmit rate, it uses the latter:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *    send_rate = #pkts_delivered/(last_snd_time - first_snd_time)</span></span><br><span class="line"><span class="comment"> *    ack_rate  = #pkts_delivered/(last_ack_time - first_ack_time)</span></span><br><span class="line"><span class="comment"> *    bw = min(send_rate, ack_rate)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Notice the estimator essentially estimates the goodput, not always the</span></span><br><span class="line"><span class="comment"> * network bottleneck link rate when the sending or receiving is limited by</span></span><br><span class="line"><span class="comment"> * other factors like applications or receiver window limits.  The estimator</span></span><br><span class="line"><span class="comment"> * deliberately avoids using the inter-packet spacing approach because that</span></span><br><span class="line"><span class="comment"> * approach requires a large number of samples and sophisticated filtering.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * TCP flows can often be application-limited in request/response workloads.</span></span><br><span class="line"><span class="comment"> * The estimator marks a bandwidth sample as application-limited if there</span></span><br><span class="line"><span class="comment"> * was some moment during the sampled window of packets when there was no data</span></span><br><span class="line"><span class="comment"> * ready to send in the write queue.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>  <strong>TCPBBR</strong>：启动、排空、带宽探测、时延探测(STARTUP、DRAIN、PROBE_BW、PROBE_RTT)</p>
+<p>  ​    BBR算法不能感知丢包，只能看到bw和rtt。</p>
+<p>  ​    pacing rate(cwnd窗口中的数据包以多大的时间间隔发送) &amp; cwnd(当前TCP最多可以发送多少数据)</p>
+<p>  ​    即时带宽：bw=delivered/interval_us</p>
+<p>  ​    </p>
+<ul>
 <li><p>http2+tcp+tls广泛应用</p>
 <p>tcp和tls带来了两次握手时延</p>
 </li>
@@ -217,6 +247,8 @@
 <p>严格递增的PacketNumber+StreamOffset(不变)保证数据有序可靠</p>
 <p>Reneging，丢弃已接受并回SACK的内容</p>
 <p>QUIC ACK Frame可以同时提供256个AckBlock，在丢包率较高的网络下，可以提升网络恢复速度，减少重传</p>
+<p>lock free queue</p>
+<p>red-blue Tree</p>
 
       
 
@@ -470,6 +502,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">...</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
@@ -478,7 +514,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">...</a>
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,15 +534,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,10 +555,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
             
             <div class="clearfix"></div>
