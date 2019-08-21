@@ -7,6 +7,31 @@ tags: [coding,Java,SQL,Shell]
 RT!
 
 <!--more-->
+```C
+//remove element of linked list
+struct ListNode{
+    int val;
+    struct ListNode *next;
+};
+
+struct ListNode* removeElements(struct ListNode* head,int val){
+    while(head != NULL && head->val == val){
+        head = head->next;
+    }
+    struct ListNode *current = head;
+    while(current != NULL){
+        struct ListNode *pNext = current->next;
+        if(pNext != NULL && pNext->val == val){
+            current->next = pNext->next;
+            free(pNext);
+        }
+        else{
+            current = current->next;
+        }
+    }
+    return head;
+}
+```
 
 ```c
 //孪生素数
@@ -35,9 +60,6 @@ int main()
     return 0;
 }
 ```
-
-
-
 
 
 ```c

@@ -159,4 +159,13 @@ lock free queue
 red-blue Tree
 
 
+vscode 插件：
+>ident Rainbow
+>code Runner
+>vscode Icons
+>beyond the horizon
+>markdown preview enhanced
+>braket pair colorizer
+
+wifi物理极限带宽计算：
 
