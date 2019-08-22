@@ -66,7 +66,7 @@ block和no-block socket
 
 使用：
 
-```c
+```C
 #include <sys/epoll.h>
 kdpfd = create_epoll(int maxfds);//close()
 nfds = epoll_wait(kdpfd, events, maxevents, -1);
@@ -75,7 +75,7 @@ for( ; ; )
         nfds = epoll_wait(epfd,events,20,500);
         for(i=0;i<nfds;++i)
         {
-            if(events[i].data.fd==listenfd) //有新的连接；我们可以注册多个FD,如果内核发现事件，就会载入events，如果有我们要的描述符也就是listenfd，说明某某套接字监听描述符所对应的事件发生了变化。每次最多监测20个fd数。
+            if(events[i].data.fd==listenfd) /*有新的连接；我们可以注册多个FD,如果内核发现事件，就会载入events，如果有我们要的描述符也就是listenfd，说明某某套接字监听描述符所对应的事件发生了变化。每次最多监测20个fd数。*/
             {
                 connfd = accept(listenfd,(sockaddr *)&clientaddr, &clilen); //accept这个连接
                 ev.data.fd=connfd;
@@ -136,7 +136,7 @@ Congestion-Control：
 
 回调函数：
 
-```c
+```C
 //定义主函数，回调函数作为参数
 function A(callback) {
     callback();  
@@ -164,6 +164,156 @@ QUIC协议：
 
 安全性
 
-
-
 observatory：utils.update_repository
+
+```C
+//unsigned short 最大为65535
+#define NULL 0
+#define MEN_OK 0
+#define MEM_ERR 1
+
+enum ENUM_STAT_ITEM
+{
+STAT_ITEM0,
+STAT_ITEM1,
+STAT_ITEM_BUTT
+};
+
+typedef struct tag_PERM_COUNT_STAT_INFO
+{
+    unsigned short stat_item;
+    unsigned short number;
+}_sPermCountStatInfo;
+
+_sPermCountStatInfo pcsi[STAT_ITEM_BUTT] = 
+{
+    {STAT_ITEM0,16000},
+    {STAT_ITEM1,50000},
+};  //定义数组，数组中的元素均为_sPermCountStatInfo类型
+
+unsigned long *pulStatDataBuffer = NULL;
+unsigned short AllocPermMemory(void)
+{
+    unsigned short usBufferSize = 0;
+    unsigned short usLoop = 0;
+
+    for(usLoop=0;usLoop<STAT_ITEM_BUTT;usLoop++)
+    {
+        usBufferSize += pcsi[usLoop].number;
+    }
+    pulStatDataBuffer = (unsigned long *)malloc(sizeof(unsigned long) *usBufferSize);  //返回分配内存块起始位置的指针
+    
+    if(NULL == pulStatDataBuffer) //malloc内存后要判断是否成功
+    {
+        return MEM_ERR;
+    }
+    return MEN_OK;
+}
+```
+64位的架构中，sizeof(char*)的值为：8
+
+|length|32bit os|64bit os|
+|:-:|:-:|:-:|
+|指针|4|8|
+|int|4|4|
+|char|1|1|
+|double|8|8|
+
+
+```C
+#include <stdio.h>
+#define M(x,y,z) x*y+z
+int main(void) { 
+    int a=1,b=2,c=3;
+	printf("%d\n",M(a+b,b+c,c+a)); //12 a+b*b+c+z
+	return 0;
+}
+```
+```C
+
+#include <stdio.h>
+int main(void) { 
+    char acArr[] = "ABCDE";
+    char *pcPtr;
+    for(pcPtr=acArr;pcPtr<acArr+5;pcPtr++){
+        printf("%s\n",pcPtr);
+    }
+}
+/*ABCDE
+BCDE
+CDE
+DE
+E
+*/
+```
+构成c程序的基本单位是函数
+
+```C
+#include <stdio.h>
+
+int main()
+{
+    int a = 0,i ;
+    for(i=0;i<5;i++){
+        switch (i)
+        {
+        case 0:
+        case 3:
+            a+=2;
+        case 1:
+        case 2:
+            a+=3;
+        default:
+            a+=5;
+        }
+    }
+    printf("i=%d\n",a);
+}
+/*
+case0
+case3
+case1
+case2
+default
+case1
+case2
+default
+case2
+default
+case3
+case1
+case2
+default
+default
+i=41
+*/
+```
+编译占用内存大小：
+编译器四字节对齐，double占两个字节位
+
+线性数据结构：
+非线性数据结构：
+数据元素之间存在一对一的线性关系
+
+```C
+union 
+{
+    struct
+    {
+        char a:1;
+        char b:2;
+        char c:3;
+    }d;
+    char e;
+}f;
+f.e = 1;
+printf("%d",f.d.a);
+//x86平台上，结果为-1
+```
+
+浮点型变量分为单精度（float型）、双精度（double型）、长双精度（long double型）3类，单精度浮点型小数点后面有效数字为6~7位和双精度浮点型小数点后面有效数字为15~16位，单精度为32位，双精度为64位，8位为一个字节。
+
+线程占有的都是不共享的，如：栈，寄存器，状态，程序计数器
+共享的有：堆，全局变量，静态变量
+函数调用栈，内存在函数执行期间有效，由编译器自动分配回收
+堆由程序显式分配和回收，不回收会发生内存泄漏
