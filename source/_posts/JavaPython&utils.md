@@ -1,5 +1,5 @@
 ---
-title: Java&Python
+title: JavaPython&utils
 date: 2018-8-20 00:33:45
 tags: [coding,Java,Python,语言基础知识]
 ---

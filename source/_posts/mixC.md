@@ -1,14 +1,24 @@
 ---
-title: carryC
+title: mixC
 date: 2019-07-07 22:48:03
 tags: [notes,...]
 ---
 
 。。。
 
+
+
 <!--more-->
+vscode 插件：
+>ident Rainbow
+>code Runner
+>vscode Icons
+>beyond the horizon
+>markdown preview enhanced
+>braket pair colorizer
 
 ```python
+#提取目录下特定文件
 import sys
 import os
 import re
@@ -51,89 +61,6 @@ def get_item(files_list):
 res_func_list = get_item(txt_files)
 ```
 
-#### epoll
-
-linuxIO多路复用的管理机制
-
-- 支持一个进程打开大数目的socket描述符
-- IO效率不随着FD数目增加而线性下降
-- 使用mmap加速内核与用户空间的消息传递
-- 内核微调
-
-工作方式LT/ET
-
-block和no-block socket
-
-使用：
-
-```C
-#include <sys/epoll.h>
-kdpfd = create_epoll(int maxfds);//close()
-nfds = epoll_wait(kdpfd, events, maxevents, -1);
-for( ; ; )
-    {
-        nfds = epoll_wait(epfd,events,20,500);
-        for(i=0;i<nfds;++i)
-        {
-            if(events[i].data.fd==listenfd) /*有新的连接；我们可以注册多个FD,如果内核发现事件，就会载入events，如果有我们要的描述符也就是listenfd，说明某某套接字监听描述符所对应的事件发生了变化。每次最多监测20个fd数。*/
-            {
-                connfd = accept(listenfd,(sockaddr *)&clientaddr, &clilen); //accept这个连接
-                ev.data.fd=connfd;
-                ev.events=EPOLLIN|EPOLLET;//LT
-                epoll_ctl(epfd,EPOLL_CTL_ADD,connfd,&ev); //将新的fd添加到epoll的监听队列中
-            }
-            else if( events[i].events&EPOLLIN ) //接收到数据，读socket,数据可读标志EPOLLIN
-            {
-                n = read(sockfd, line, MAXLINE)) < 0    //读
-                ev.data.ptr = md;     //md为自定义类型，添加数据
-                ev.events=EPOLLOUT|EPOLLET;
-                epoll_ctl(epfd,EPOLL_CTL_MOD,sockfd,&ev);//修改标识符，等待下一个循环时发送数据，异步处理的精髓
-            }
-            else if(events[i].events&EPOLLOUT) //有数据待发送，写socket
-            {
-                struct myepoll_data* md = (myepoll_data*)events[i].data.ptr;    //取数据
-                sockfd = md->fd;
-                send( sockfd, md->ptr, strlen((char*)md->ptr), 0 );        //发送数据
-                ev.data.fd=sockfd;
-                ev.events=EPOLLIN|EPOLLET;
-                epoll_ctl(epfd,EPOLL_CTL_MOD,sockfd,&ev); //修改标识符，等待下一个循环时接收数据
-            }
-            else
-            {
-                //其他的处理
-            }
-        }
-    }
-```
-
-UDP：（UserDatagramProtocol）
-
-无连接、面向事务简单不可靠、速度快、适合传输量小的场景、资源消耗少、面向数据报、可以一对多
-
-TCP：
-
-面向连接、可靠、传输数据量大、速度较慢、面向字节流、点对点连接
-
-**超时重传机制**和**数据应答机制**保证可靠传输
-
-RTT-RoundTripTime
-
-WindowSize
-
-MSS-maximun segment size
-
-ACK
-
-FLOW-control：
-
-​	滑动窗口：加快传输效率，避免每一次发送数据都要等待接收端确认再发送下一个数据，而是在等待确认的过程中继续发送数据，在窗口大小内都是可以接受的。
-
-Congestion-Control：
-
-​	慢开始，避免拥塞
-
-​	快重传，快恢复
-
 回调函数：
 
 ```C
@@ -152,15 +79,7 @@ function B(){
 A(B);
 ```
 
-QUIC协议：
 
-0-RTT握手过程：
-
-​	通信双方发起通信连接时，第一个数据包就可以携带有效业务数据。
-
-​	DH算法
-
-重传与恢复
 
 安全性
 
@@ -289,10 +208,13 @@ i=41
 */
 ```
 编译占用内存大小：
+
 编译器四字节对齐，double占两个字节位
 
 线性数据结构：
+
 非线性数据结构：
+
 数据元素之间存在一对一的线性关系
 
 ```C
@@ -317,3 +239,72 @@ printf("%d",f.d.a);
 共享的有：堆，全局变量，静态变量
 函数调用栈，内存在函数执行期间有效，由编译器自动分配回收
 堆由程序显式分配和回收，不回收会发生内存泄漏
+
+
+---
+windows 安装mingw
+https://osdn.net/projects/mingw/downloads/68260/mingw-get-setup.exe/
+
+在测试计划阶段制定*退出准则*
+当发现的缺陷数量小于某指定标准的时候停止测试
+测试计划中的测试完成准则的目的是为了确定什么时候结束测试
+
+冒烟测试：
+指软件修改后，对其关键的功能进行测试
+用于确定是否需要让测试人员进入到新版本的测试工作中
+为防止时间人力的浪费，在通过冒烟测试之后才进行全面测试阶段
+
+黑盒测试：(等价类、边界值、决策树、状态转换、正交因子组合、错误猜测、探索性测试设计)
+测试程序的功能和性能
+白盒测试：(覆盖)
+通过熟悉被测对象的内部工作机理选择测试数据；假定测试人员知道一个单元或程序的逻辑路径，应用编码知识检查程序的输出
+
+静态分析：数据流分析、代码检视  (静态分析可以发现参数类型不匹配、没有被声明的变量、没有被调用过的函数等错误)
+动态分析：等价类划分、用例测试、探索式测试、决策测试
+
+等价类划分：
+按给定条件的类型划分有效等价类和无效等价类
+如：输入条件给定取值范围，可以确立一个有效等价类和两个无效等价类
+
+
+数据组合覆盖测试设计：
+||||
+|:-:|:-:|:-:|
+|EC|单一选择组合|每一个输入的每一个值在所有组合(用例)中至少出现一次|
+|BC|基本选择组合|选取基本组合，在此基础上通过修改一个输入的取值创建新的组合|
+|AC|全组合||
+|OA|正交数组||
+|N:wise|覆盖任意N个输入全组合||
+全组合覆盖生成的用例会包含Pairwise组合覆盖生成的用例
+虽然BC组合比EC组合的覆盖强度大，但是BC组合生成的用例未必包含EC组合生成的与用例
+
+
+测试覆盖方法：
+
+||||
+|:-:|:-:|:-:|
+|语句覆盖|一条语句(如：if)一次||
+|判定覆盖|每一个分支覆盖，但是无法验证判定条件错误||
+|条件覆盖|每个判定条件及其可能取值覆盖||
+|判定-条件覆盖|覆盖判断条件及其本声判定结果||
+|条件组合覆盖|||
+|路径覆盖|覆盖程序中所有可能的路径，数量庞大||
+判定-条件覆盖要求设计的测试用例使得判断中每个条件的所有可能至少出现一次，并且每个判断本身的判定结果也至少出现一次。
+
+
+
+SFIT故障注入手段
+软硬件BIST
+
+**错误猜测**适合在系统化的测试设计之后应用
+
+性能测试考虑因素：系统响应能力、系统吞吐量、系统可伸缩性、系统资源使用情况
+
+单元测试测试范畴可包括：模块局部数据结构测试、模块边界条件测试、模块执行路径测试
+
+软件可靠性和硬件可靠性：
+软件不存在物理退化现象，而硬件的失效主要由于物理退化所致
+由于软件内部逻辑相对硬件内部逻辑更加复杂，设计错误成为软件失效的主要原因
+软件是唯一的，而两个硬件不可能绝对相同所以概率方法在硬件可靠性领域取得了很大成功。
+
+---

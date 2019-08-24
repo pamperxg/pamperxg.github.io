@@ -43,6 +43,9 @@ OSI七层模型和TCP/IP五层模型：
 
 ​    linux/include/linux/socket.h中linuxBSDsocket定义了多至32中支持的协议族，其中PF_INET为tcp/ip协议族。在/linux/net/ipv4目录下，**af_inet.c**为主要的管理文件。
 
+
+​	滑动窗口：加快传输效率，避免每一次发送数据都要等待接收端确认再发送下一个数据，而是在等待确认的过程中继续发送数据，在窗口大小内都是可以接受的。
+
 - UDP：（UserDatagramProtocol）
 
   无连接、面向事务简单不可靠、速度快、适合传输量小的场景、资源消耗少、面向数据报、可以一对多
@@ -153,19 +156,4 @@ OSI七层模型和TCP/IP五层模型：
 Reneging，丢弃已接受并回SACK的内容
 
 QUIC ACK Frame可以同时提供256个AckBlock，在丢包率较高的网络下，可以提升网络恢复速度，减少重传
-
-lock free queue
-
-red-blue Tree
-
-
-vscode 插件：
->ident Rainbow
->code Runner
->vscode Icons
->beyond the horizon
->markdown preview enhanced
->braket pair colorizer
-
-wifi物理极限带宽计算：
 
