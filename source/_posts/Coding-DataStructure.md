@@ -1,10 +1,10 @@
 ---
-title: leetcode & nowcode
+title: Coding_DataStructure
 date: 2018-8-31 00:32:30
 tags: [coding,Java,SQL,Shell]
 ---
 
-RT!
+Coding on leetcode & nowcoder
 
 <!--more-->
 ```C
@@ -606,38 +606,3 @@ tail -n+10 file.txt|head -1
 
 head -10 file.txt | tail -1
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

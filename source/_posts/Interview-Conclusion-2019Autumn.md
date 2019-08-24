@@ -1,10 +1,8 @@
 ---
-title: 2019秋招面试总结
+title: Interview Conclusion_2019Autumn
 date: 2018-09-19 22:09:54
-tags: [notes,面试总结]
+tags: [notes,Interview Conclusion]
 ---
-
-
 
 2019秋招
 
@@ -12,7 +10,8 @@ tags: [notes,面试总结]
 
 面试官名言：
 
-。。。
+:)
+
 >不同面试官的侧重点不一样，有的比较看重基础，有的比较看重项目经验，你的xxx还是不错的。。
 >今天我们就聊到这里。。。你先回去等通知。。
 

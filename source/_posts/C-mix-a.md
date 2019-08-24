@@ -1,12 +1,10 @@
 ---
-title: mixC
-date: 2019-07-07 22:48:03
-tags: [notes,...]
+title: C_mix_a
+date: 2019-08-24 18:26:48
+tags: [notes,C,...]
 ---
 
-。。。
-
-
+C & ...
 
 <!--more-->
 vscode 插件：
@@ -17,51 +15,8 @@ vscode 插件：
 >markdown preview enhanced
 >braket pair colorizer
 
-```python
-#提取目录下特定文件
-import sys
-import os
-import re
 
-print(sys.argv[0])
-print(os.getcwd())
-print(os.path.abspath('.'))
-print(os.path.abspath('..'))
-
-def findtxt(path, ret):
-    """Finding the *.txt file in specify path"""
-    filelist = os.listdir(path)
-    for filename in filelist:
-        de_path = os.path.join(path, filename)
-        if os.path.isfile(de_path):
-            if de_path.endswith(".txt"): #Specify to find the txt file.
-                ret.append(de_path)
-        else:
-            findtxt(de_path, ret)
-            
-
-txt_files = []
-findtxt(root_path,txt_files)
-
-def get_item(files_list):
-    res = []
-    for i in range(len(files_list)):
-        file_items = []
-        with open(files_list[i]) as f:
-        #     print(f.read().split('\n'))
-        #     print(type(f.read().split('\n')))
-            file_items = f.read().split('\n')
-            file_highlights = []
-            for j in range(len(file_items)):
-                file_highlights.append(file_items[j].split('.')[1])
-            res.append(file_highlights)
-    print(res)
-    return res
-
-res_func_list = get_item(txt_files)
-```
-
-回调函数：
+C回调函数：
 
 ```C
 //定义主函数，回调函数作为参数
@@ -239,7 +194,6 @@ printf("%d",f.d.a);
 共享的有：堆，全局变量，静态变量
 函数调用栈，内存在函数执行期间有效，由编译器自动分配回收
 堆由程序显式分配和回收，不回收会发生内存泄漏
-
 
 ---
 windows 安装mingw
