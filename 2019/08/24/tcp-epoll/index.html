@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>tcp_epoll | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="epolllinuxIO多路复用的管理机制  支持一个进程打开大数目的socket描述符 IO效率不随着FD数目增加而线性下降 使用mmap加速内核与用户空间的消息传递 内核微调  工作方式LT/ET block和no-block socket 使用： 12345678910111213141516171819202122232425262728293031323334353637#includ">
+  <meta name="description" content="epoll &amp;amp; more">
 <meta name="keywords" content="notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tcp_epoll">
 <meta property="og:url" content="http://yoursite.com/2019/08/24/tcp-epoll/index.html">
 <meta property="og:site_name" content="Pamper&#39;s Blog">
-<meta property="og:description" content="epolllinuxIO多路复用的管理机制  支持一个进程打开大数目的socket描述符 IO效率不随着FD数目增加而线性下降 使用mmap加速内核与用户空间的消息传递 内核微调  工作方式LT/ET block和no-block socket 使用： 12345678910111213141516171819202122232425262728293031323334353637#includ">
+<meta property="og:description" content="epoll &amp;amp; more">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-24T10:17:50.180Z">
+<meta property="og:updated_time" content="2019-08-24T10:49:54.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp_epoll">
-<meta name="twitter:description" content="epolllinuxIO多路复用的管理机制  支持一个进程打开大数目的socket描述符 IO效率不随着FD数目增加而线性下降 使用mmap加速内核与用户空间的消息传递 内核微调  工作方式LT/ET block和no-block socket 使用： 12345678910111213141516171819202122232425262728293031323334353637#includ">
+<meta name="twitter:description" content="epoll &amp;amp; more">
   
     <link rel="alternative" href="/atom.xml" title="Pamper&#39;s Blog" type="application/atom+xml">
   
@@ -185,7 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <p>epoll &amp; more<br><a id="more"></a></p>
 <h4 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h4><p>linuxIO多路复用的管理机制</p>
 <ul>
 <li>支持一个进程打开大数目的socket描述符</li>
