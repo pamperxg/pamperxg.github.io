@@ -166,6 +166,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tcp-epoll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/tcp-epoll/">tcp_epoll</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/24/tcp-epoll/" class="archive-article-date">
+  	<time datetime="2019-08-24T10:11:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h4 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h4><p>linuxIO多路复用的管理机制</p>
+<ul>
+<li>支持一个进程打开大数目的socket描述符</li>
+<li>IO效率不随着FD数目增加而线性下降</li>
+<li>使用mmap加速内核与用户空间的消息传递</li>
+<li>内核微调</li>
+</ul>
+<p>工作方式LT/ET</p>
+<p>block和no-block socket</p>
+<p>使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line">kdpfd = create_epoll(<span class="keyword">int</span> maxfds);<span class="comment">//close()</span></span><br><span class="line">nfds = epoll_wait(kdpfd, events, maxevents, <span class="number">-1</span>);</span><br><span class="line"><span class="keyword">for</span>( ; ; )</span><br><span class="line">    &#123;</span><br><span class="line">        nfds = epoll_wait(epfd,events,<span class="number">20</span>,<span class="number">500</span>);</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;nfds;++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(events[i].data.fd==listenfd) <span class="comment">/*有新的连接；我们可以注册多个FD,如果内核发现事件，就会载入events，如果有我们要的描述符也就是listenfd，说明某某套接字监听描述符所对应的事件发生了变化。每次最多监测20个fd数。*/</span></span><br><span class="line">            &#123;</span><br><span class="line">                connfd = accept(listenfd,(sockaddr *)&amp;clientaddr, &amp;clilen); <span class="comment">//accept这个连接</span></span><br><span class="line">                ev.data.fd=connfd;</span><br><span class="line">                ev.events=EPOLLIN|EPOLLET;<span class="comment">//LT</span></span><br><span class="line">                epoll_ctl(epfd,EPOLL_CTL_ADD,connfd,&amp;ev); <span class="comment">//将新的fd添加到epoll的监听队列中</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>( events[i].events&amp;EPOLLIN ) <span class="comment">//接收到数据，读socket,数据可读标志EPOLLIN</span></span><br><span class="line">            &#123;</span><br><span class="line">                n = read(sockfd, line, MAXLINE)) &lt; <span class="number">0</span>    <span class="comment">//读</span></span><br><span class="line">                ev.data.ptr = md;     <span class="comment">//md为自定义类型，添加数据</span></span><br><span class="line">                ev.events=EPOLLOUT|EPOLLET;</span><br><span class="line">                epoll_ctl(epfd,EPOLL_CTL_MOD,sockfd,&amp;ev);<span class="comment">//修改标识符，等待下一个循环时发送数据，异步处理的精髓</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(events[i].events&amp;EPOLLOUT) <span class="comment">//有数据待发送，写socket</span></span><br><span class="line">            &#123;</span><br><span class="line">                struct myepoll_data* md = (myepoll_data*)events[i].data.ptr;    <span class="comment">//取数据</span></span><br><span class="line">                sockfd = md-&gt;fd;</span><br><span class="line">                send( sockfd, md-&gt;ptr, <span class="built_in">strlen</span>((<span class="keyword">char</span>*)md-&gt;ptr), <span class="number">0</span> );        <span class="comment">//发送数据</span></span><br><span class="line">                ev.data.fd=sockfd;</span><br><span class="line">                ev.events=EPOLLIN|EPOLLET;</span><br><span class="line">                epoll_ctl(epfd,EPOLL_CTL_MOD,sockfd,&amp;ev); <span class="comment">//修改标识符，等待下一个循环时接收数据</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//其他的处理</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">notes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/24/tcp-epoll/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="communication-protocol" class="article article-type-communication  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -246,19 +330,19 @@
 
 
   
-    <article id="post-carryC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mixC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/07/carryC/">carryC</a>
+      <a class="article-title" href="/2019/07/07/mixC/">mixC</a>
     </h1>
   
 
         
-        <a href="/2019/07/07/carryC/" class="archive-article-date">
+        <a href="/2019/07/07/mixC/" class="archive-article-date">
   	<time datetime="2019-07-07T14:48:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
 </a>
         
@@ -268,7 +352,7 @@
       
         <p>。。。</p>
         
-          <a class="article-more-a" href="/2019/07/07/carryC/#more">more >></a>
+          <a class="article-more-a" href="/2019/07/07/mixC/#more">more >></a>
         
       
 
@@ -296,7 +380,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/07/carryC/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/07/mixC/">展开全文 >></a>
         </p>
       
 
@@ -326,19 +410,19 @@
 
 
   
-    <article id="post-面试总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2019秋招面试总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/面试总结/">面试总结</a>
+      <a class="article-title" href="/2018/09/19/2019秋招面试总结/">2019秋招面试总结</a>
     </h1>
   
 
         
-        <a href="/2018/09/19/面试总结/" class="archive-article-date">
+        <a href="/2018/09/19/2019秋招面试总结/" class="archive-article-date">
   	<time datetime="2018-09-19T14:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
 </a>
         
@@ -348,7 +432,7 @@
       
         <p>2019秋招</p>
         
-          <a class="article-more-a" href="/2018/09/19/面试总结/#more">more >></a>
+          <a class="article-more-a" href="/2018/09/19/2019秋招面试总结/#more">more >></a>
         
       
 
@@ -376,7 +460,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/19/面试总结/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/19/2019秋招面试总结/">展开全文 >></a>
         </p>
       
 
@@ -406,19 +490,19 @@
 
 
   
-    <article id="post-leet and now code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-leetcode &amp; nowcode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/31/leet and now code/">刷题总结DayANight</a>
+      <a class="article-title" href="/2018/08/31/leetcode & nowcode/">leetcode &amp; nowcode</a>
     </h1>
   
 
         
-        <a href="/2018/08/31/leet and now code/" class="archive-article-date">
+        <a href="/2018/08/31/leetcode & nowcode/" class="archive-article-date">
   	<time datetime="2018-08-30T16:32:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-31</time>
 </a>
         
@@ -428,7 +512,7 @@
       
         <p>RT!</p>
         
-          <a class="article-more-a" href="/2018/08/31/leet and now code/#more">more >></a>
+          <a class="article-more-a" href="/2018/08/31/leetcode & nowcode/#more">more >></a>
         
       
 
@@ -464,95 +548,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/31/leet and now code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML&amp;DL基础概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/25/ML&DL基础概念/">ML&amp;DL基础概念</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/25/ML&DL基础概念/" class="archive-article-date">
-  	<time datetime="2018-08-25T12:42:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>统计学习</strong>偏向于理论的优美完善，研究泛化误差界。<strong>机器学习</strong>是统计学习对实践技术的延伸，为实际问题提供算法支撑。<strong>数据挖掘</strong>偏重于大量数据的实践应用，注重实际问题的解决。</p>
-        
-          <a class="article-more-a" href="/2018/08/25/ML&DL基础概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">notes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DataScience</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MachineLearning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/25/ML&DL基础概念/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/31/leetcode & nowcode/">展开全文 >></a>
         </p>
       
 
@@ -700,6 +696,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
@@ -712,7 +712,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">大数据</a>
+                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,14 +740,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">DataScience</a>
               </li>
              
@@ -757,6 +749,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">语言基础知识</a>
               </li>
             
             <div class="clearfix"></div>
