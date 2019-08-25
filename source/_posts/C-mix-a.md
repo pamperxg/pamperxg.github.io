@@ -1,6 +1,6 @@
 ---
 title: C_mix_a
-date: 2019-08-24 18:26:48
+date: 2019-08-22 18:26:48
 tags: [notes,C,...]
 ---
 
@@ -36,9 +36,7 @@ A(B);
 
 
 
-安全性
-
-observatory：utils.update_repository
+---
 
 ```C
 //unsigned short 最大为65535
@@ -262,3 +260,69 @@ SFIT故障注入手段
 软件是唯一的，而两个硬件不可能绝对相同所以概率方法在硬件可靠性领域取得了很大成功。
 
 ---
+
+关于C的内存操作：
+栈变量声明后不需要开发人员手动释放
+内存分配后，需要对指针进行判空操作
+free指针后，要对指针进行置空操作，以防其他人员误用
+内存分配函数：malloc、calloc、realloc
+
+```C
+//堆内存分配函数声明于stdlib.h
+//向操作系统请求内存分配，分配成功返回分配到的内存空间首地址，没分配成功返回NULL
+void* realloc(void* ptr,unsigned newsize);  //将ptr指向的内存增大或缩小到size，当ptr为NULL时，相当于malloc；当参数size为0时等同于free(ptr)
+//新空间并不是以原来的空间为基地址分配的，而是重新分配一个空间，然后将原来的空间内容拷贝到新空间的开始部分
+void* malloc(unsigned size);
+void* calloc(size_t numElements,size_t sizeOfElement);  //分配n块长度为size字节的连续区域，相当于malloc n*size
+
+```
+
+C字符串读取函数，scanf、gets、fgets:
+scanf遇到空格等空字符就会返回
+gets遇到换行符返回，并把换行符替换成'\0',没有读写输入限制，可能导致程序向未知内存空间写入数据
+fgets,```char *fgets(char *buf,int bufsize,FILE *stream)```,会读取换行符，在末尾添加'\0'
+
+printf()会强行读取内存中的数据作为正常数据输出，如果没有边界检测很有可能产生堆溢出。
+printk()是内核态中的打印函数
+
+linux动态库搜索路径
+|linux动态库搜索路径顺序|
+|:-:|
+|编译目标代码时指定的搜索路径，如：```gcc main.c -WL,rpath```|
+|DT_RPATH|
+|环境变量LD_LIBRARY指定的搜索路径|
+|DT_RUNPATH指定的搜索路径|
+|配置文件/etc/ld.so.conf|
+|默认动态库搜索路径/lib|
+|默认动态库搜索路径/usr/lib|
+
+*rpath 和 runpath 是 ELF 文件的可选内容。如果一个 ELF 文件含有 rpath ，那么系统会优先在 rpath 所指向的路径搜索，然后再搜索 LD_LIBRARY_PATH ；而 runpath 则是在 LD_LIBRARY_PATH 之后搜索。*
+
+编译选项
+
+地址随机化可以有效增强进程的防攻击能力，在编译阶段开启-fPIC选项可以使程序在加载和运行阶段具备随机化特征
+
+-WI,-z,-noexecstack实现栈不可执行
+
+内存中敏感信息的存储：
+不使用String类存储
+可以使用char unsigned cahr保存
+
+为了防止黑客通过构造指向系统关键文件的链接文件，linux下需要对文件路径进行标准化
+
+realpath()返回绝对路径
+
+symlink
+
+C右移位操作后，左边的数据怎么填充：
+逻辑移位和算术移位，对于无符号数都为逻辑移位，对于有符号数，右移位逻辑移位，左移为算术移位
+其中逻辑移位填充0，算术移位填充符号位
+
+数组长度求法：
+```C
+char src[10];sizeof(src);
+```
+
+---
+
+DT-Fuzz(开发者模糊测试)：
