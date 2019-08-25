@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="C &amp;amp; …">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-25T09:12:06.313Z">
+<meta property="og:updated_time" content="2019-08-25T15:22:19.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C_mix_a">
 <meta name="twitter:description" content="C &amp;amp; …">
@@ -300,6 +300,11 @@
 <p>C字符串读取函数，scanf、gets、fgets:<br>scanf遇到空格等空字符就会返回<br>gets遇到换行符返回，并把换行符替换成’\0’,没有读写输入限制，可能导致程序向未知内存空间写入数据<br>fgets,<figure class="highlight plain"><figcaption><span>*fgets(char *buf,int bufsize,FILE *stream)```,会读取换行符，在末尾添加'\0'</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">printf()会强行读取内存中的数据作为正常数据输出，如果没有边界检测很有可能产生堆溢出。</span><br><span class="line">printk()是内核态中的打印函数</span><br><span class="line"></span><br><span class="line">linux动态库搜索路径</span><br><span class="line">|linux动态库搜索路径顺序|</span><br><span class="line">|:-:|</span><br><span class="line">|编译目标代码时指定的搜索路径，如：```gcc main.c -WL,rpath```|</span><br><span class="line">|DT_RPATH|</span><br><span class="line">|环境变量LD_LIBRARY指定的搜索路径|</span><br><span class="line">|DT_RUNPATH指定的搜索路径|</span><br><span class="line">|配置文件/etc/ld.so.conf|</span><br><span class="line">|默认动态库搜索路径/lib|</span><br><span class="line">|默认动态库搜索路径/usr/lib|</span><br><span class="line"></span><br><span class="line">*rpath 和 runpath 是 ELF 文件的可选内容。如果一个 ELF 文件含有 rpath ，那么系统会优先在 rpath 所指向的路径搜索，然后再搜索 LD_LIBRARY_PATH ；而 runpath 则是在 LD_LIBRARY_PATH 之后搜索。*</span><br><span class="line"></span><br><span class="line">编译选项</span><br><span class="line"></span><br><span class="line">地址随机化可以有效增强进程的防攻击能力，在编译阶段开启-fPIC选项可以使程序在加载和运行阶段具备随机化特征</span><br><span class="line"></span><br><span class="line">-WI,-z,-noexecstack实现栈不可执行</span><br><span class="line"></span><br><span class="line">内存中敏感信息的存储：</span><br><span class="line">不使用String类存储</span><br><span class="line">可以使用char unsigned cahr保存</span><br><span class="line"></span><br><span class="line">为了防止黑客通过构造指向系统关键文件的链接文件，linux下需要对文件路径进行标准化</span><br><span class="line"></span><br><span class="line">realpath()返回绝对路径</span><br><span class="line"></span><br><span class="line">symlink</span><br><span class="line"></span><br><span class="line">C右移位操作后，左边的数据怎么填充：</span><br><span class="line">逻辑移位和算术移位，对于无符号数都为逻辑移位，对于有符号数，右移位逻辑移位，左移为算术移位</span><br><span class="line">其中逻辑移位填充0，算术移位填充符号位</span><br><span class="line"></span><br><span class="line">数组长度求法：</span><br><span class="line">```C</span><br><span class="line">char src[10];sizeof(src);</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>DT-Fuzz(开发者模糊测试)：</p>
+<p>常见单元测试框架：</p>
+<p>性能测试方法：</p>
+<p>测试替身：</p>
+<p>valgrid工具：</p>
+<p>ASAN  KASAN 工具</p>
 
       
 
@@ -578,10 +583,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">coding</a>
               </li>
              
@@ -595,6 +596,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
