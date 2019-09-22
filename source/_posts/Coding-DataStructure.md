@@ -7,6 +7,7 @@ tags: [coding,Java,SQL,Shell]
 Coding on leetcode & nowcoder
 
 <!--more-->
+
 ```C
 //remove element of linked list
 struct ListNode{
@@ -606,3 +607,5 @@ tail -n+10 file.txt|head -1
 
 head -10 file.txt | tail -1
 ```
+
+---
