@@ -337,3 +337,40 @@ valgrid工具：
 
 ASAN  KASAN 工具
 
+```shell
+gcc test.c -o test
+./test
+
+#makefile
+target:dependencies
+    (tab)command
+
+CC = gcc
+CFLAGS = -lm -Wall -g
+test: test.c xxx.o
+    $(CC) $(CFLAGS) test.c xxx.o -o test
+xxx.o:
+    $(CC) $(CFLAGS) -c xxx.c
+clean:
+    rm *.o main
+
+make clean  /make
+
+#makefile 只执行第一条
+#可以在最前面加上
+all:xx  xxx  #同时生成多个可执行文件
+
+```
+gdb调试c语言代码：
+```shell
+gcc -g xx.c -o xx.exe  #-g 调试
+
+gdb xx.exe  #逐行执行程序
+#add breakpoint： b main
+#run: r
+#run this line(单步运行): n
+#显示变量： p
+#退出  q
+#
+
+```
