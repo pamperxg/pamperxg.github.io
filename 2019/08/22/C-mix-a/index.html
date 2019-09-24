@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="C &amp;amp; …">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-25T15:22:19.579Z">
+<meta property="og:updated_time" content="2019-09-24T17:33:38.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C_mix_a">
 <meta name="twitter:description" content="C &amp;amp; …">
@@ -305,6 +305,8 @@
 <p>测试替身：</p>
 <p>valgrid工具：</p>
 <p>ASAN  KASAN 工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test</span><br><span class="line">./test</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">makefile</span></span><br><span class="line">target:dependencies</span><br><span class="line">    (tab)command</span><br><span class="line"></span><br><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -lm -Wall -g</span><br><span class="line">test: test.c xxx.o</span><br><span class="line">    $(CC) $(CFLAGS) test.c xxx.o -o test</span><br><span class="line">xxx.o:</span><br><span class="line">    $(CC) $(CFLAGS) -c xxx.c</span><br><span class="line">clean:</span><br><span class="line">    rm *.o main</span><br><span class="line"></span><br><span class="line">make clean  /make</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">makefile 只执行第一条</span></span><br><span class="line"><span class="meta">#</span><span class="bash">可以在最前面加上</span></span><br><span class="line">all:xx  xxx  #同时生成多个可执行文件</span><br></pre></td></tr></table></figure>
+<p>gdb调试c语言代码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gcc -g xx.c -o xx.exe  #-g 调试</span><br><span class="line"></span><br><span class="line">gdb xx.exe  #逐行执行程序</span><br><span class="line"><span class="meta">#</span><span class="bash">add breakpoint： b main</span></span><br><span class="line"><span class="meta">#</span><span class="bash">run: r</span></span><br><span class="line"><span class="meta">#</span><span class="bash">run this line(单步运行): n</span></span><br><span class="line"><span class="meta">#</span><span class="bash">显示变量： p</span></span><br><span class="line"><span class="meta">#</span><span class="bash">退出  q</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -579,7 +581,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Congestion Control</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">...</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Interview Conclusion</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,14 +610,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Interview Conclusion</a>
               </li>
              
               <li class="article-tag-list-item">

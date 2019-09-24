@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="Coding on leetcode &amp;amp; nowcoder">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-24T10:35:02.451Z">
+<meta property="og:updated_time" content="2019-09-08T13:45:53.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coding_DataStructure">
 <meta name="twitter:description" content="Coding on leetcode &amp;amp; nowcoder">
@@ -266,6 +266,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date_diff(&apos;day&apos;,cast(xx_time as date),cast(yy_time as date)) as zz_time</span><br><span class="line">date_trunc(&apos;year&apos;,t1.xx_time)</span><br><span class="line">year(xx_time)&gt;2017</span><br></pre></td></tr></table></figure>
 <h4 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h4><p><a href="https://leetcode.com/problems/tenth-line/description/" target="_blank" rel="noopener">leetcode195:TenthLine</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cnt=0</span><br><span class="line">while read line &amp;&amp; [ $cnt -le 10 ];do</span><br><span class="line">	let 'cnt = cnt + 1'</span><br><span class="line">	if [ $cnt -eq 10 ];then</span><br><span class="line">		echo $line</span><br><span class="line">		exit 0</span><br><span class="line">	fi</span><br><span class="line">done &lt; file.txt</span><br><span class="line"></span><br><span class="line">awk 'FNR == 10 &#123;print&#125;' file.txt</span><br><span class="line">awk 'NR == 10' file.txt</span><br><span class="line"></span><br><span class="line">sed -n 10p file.txt</span><br><span class="line"></span><br><span class="line">tail -n+10 file.txt|head -1</span><br><span class="line"></span><br><span class="line">head -10 file.txt | tail -1</span><br></pre></td></tr></table></figure>
+<hr>
 
       
 
@@ -544,7 +545,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Congestion Control</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">...</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Interview Conclusion</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,14 +574,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Interview Conclusion</a>
               </li>
              
               <li class="article-tag-list-item">
