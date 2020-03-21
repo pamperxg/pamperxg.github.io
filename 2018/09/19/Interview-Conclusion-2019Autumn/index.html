@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Interview Conclusion_2019Autumn | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,7 +38,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -187,6 +187,7 @@
       
         <p>2019秋招</p>
 <a id="more"></a>
+
 <blockquote>
 <p>如果实力不够，就只能凭缘分 ：)</p>
 </blockquote>
@@ -352,8 +353,10 @@
 <p>XGB</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h5 id="SQL题"><a href="#SQL题" class="headerlink" title="SQL题"></a>SQL题</h5><p>一个表包含Name，Subject，Score三个字段，输出总分前十名的同学</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Name</span>,<span class="keyword">sum</span>(Score) <span class="keyword">as</span> SumScore <span class="keyword">from</span> A <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">Name</span> <span class="keyword">order</span> <span class="keyword">by</span> SumScore <span class="keyword">limit</span> <span class="number">10</span>; ?</span><br></pre></td></tr></table></figure>
+
 <h5 id="编程语言题"><a href="#编程语言题" class="headerlink" title="编程语言题"></a>编程语言题</h5><p>Python dict排序</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">0</span>])</span><br><span class="line">sorted(d.items(),key = <span class="keyword">lambda</span> d:d[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
 <p>Python 有哪些数据类型结构？List和Dict的区别？</p>
 <blockquote>
 <p>list,dict,set,tuple</p>
@@ -377,12 +380,14 @@
 </blockquote>
 <p>Python异常捕获？</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    xxx</span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(type(e))  <span class="comment">##捕捉到异常对象执行</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	print(<span class="number">1</span>) <span class="comment">##不抛出异常执行    </span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(<span class="number">2</span>)  <span class="comment">##无论如何都执行</span></span><br></pre></td></tr></table></figure>
+
 <p>Python生成器？</p>
 <blockquote>
 <p>变循环，边计算的结构，节省空间（如果使用列表内存占用太大）</p>
 </blockquote>
 <p>Python map、reduce函数？</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2int</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x,y:x*<span class="number">10</span>+y,map(char2num,s))</span><br><span class="line"><span class="comment">#map</span></span><br><span class="line"><span class="comment">#reduce 把结果继续和下一个元素做累积运算</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="大数据相关题"><a href="#大数据相关题" class="headerlink" title="大数据相关题"></a>大数据相关题</h5><p>介绍下HDFS？</p>
 <p>说下MapReduce原理？</p>
 <p>高可用机制和联邦机制是什么？</p>
