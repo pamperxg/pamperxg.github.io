@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pamper&#39;s Blog">
 <meta property="og:description" content="​    本博客完整搭建流程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T14:45:13.632Z">
+<meta property="og:updated_time" content="2020-03-22T07:52:52.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GithubPages搭建博客">
 <meta name="twitter:description" content="​    本博客完整搭建流程">
@@ -253,7 +253,15 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm -r --cached .</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"update .gitignore"</span></span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure>
 
-<h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>​    配置文件_config.yml中有主题配置选项theme，将心仪的主题clone到themes文件夹下，修改配置重新部署即可应用主题，主题基本配置同样主题文件夹下的 _config.yml配置。</p>
+<ul>
+<li><p>插入图片</p>
+<ul>
+<li>_config.yml中修改post_asset_folder:true</li>
+<li>安装插件<figure class="highlight plain"><figcaption><span>install</span><a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">-- save```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```hexo n xxx```时还会生成```xxx```空文件夹，将图片放至此文件夹中，即可引用图片，引用方式：```![xx]xxx.png</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1></li>
+</ul>
+<p>​    配置文件_config.yml中有主题配置选项theme，将心仪的主题clone到themes文件夹下，修改配置重新部署即可应用主题，主题基本配置同样主题文件夹下的 _config.yml配置。</p>
 <p>​    本博客采用<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>主题</p>
 
       
@@ -529,6 +537,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
