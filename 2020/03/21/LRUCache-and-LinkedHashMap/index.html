@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>BigData | Pamper&#39;s Blog</title>
+  <title>LRUCache and LinkedHashMap | Pamper&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一些大数据相关基础思想和概念，我的简书">
-<meta name="keywords" content="notes,大数据">
+  <meta name="description" content="LRU(Least Recently Used)Cache算法实现和LinkedHashMap源码分析">
+<meta name="keywords" content="coding,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BigData">
-<meta property="og:url" content="http://yoursite.com/2018/08/25/BigData/index.html">
+<meta property="og:title" content="LRUCache and LinkedHashMap">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/LRUCache-and-LinkedHashMap/index.html">
 <meta property="og:site_name" content="Pamper&#39;s Blog">
-<meta property="og:description" content="一些大数据相关基础思想和概念，我的简书">
+<meta property="og:description" content="LRU(Least Recently Used)Cache算法实现和LinkedHashMap源码分析">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-24T10:43:19.900Z">
+<meta property="og:updated_time" content="2020-03-21T14:39:17.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BigData">
-<meta name="twitter:description" content="一些大数据相关基础思想和概念，我的简书">
+<meta name="twitter:title" content="LRUCache and LinkedHashMap">
+<meta name="twitter:description" content="LRU(Least Recently Used)Cache算法实现和LinkedHashMap源码分析">
   
     <link rel="alternative" href="/atom.xml" title="Pamper&#39;s Blog" type="application/atom+xml">
   
@@ -165,30 +165,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-BigData" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LRUCache-and-LinkedHashMap" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BigData
+      LRUCache and LinkedHashMap
     </h1>
   
 
         
-        <a href="/2018/08/25/BigData/" class="archive-article-date">
-  	<time datetime="2018-08-25T01:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+        <a href="/2020/03/21/LRUCache-and-LinkedHashMap/" class="archive-article-date">
+  	<time datetime="2020-03-21T08:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一些大数据相关基础思想和概念，<a href="https://www.jianshu.com/u/484f3f0c4dd3" target="_blank" rel="noopener">我的简书</a></p>
+        <p>LRU(Least Recently Used)Cache算法实现和LinkedHashMap源码分析</p>
 <a id="more"></a>
 
-<h4 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h4><h4 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h4>
+<h4 id="LRUCache"><a href="#LRUCache" class="headerlink" title="LRUCache"></a>LRUCache</h4><ul>
+<li>双向链表实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> key;</span><br><span class="line">        <span class="keyword">int</span> value;</span><br><span class="line">        Node pre;</span><br><span class="line">        Node next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Integer, Node&gt; cache = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node head, tail;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">        head = <span class="keyword">new</span> Node();</span><br><span class="line">        tail = <span class="keyword">new</span> Node();</span><br><span class="line">        head.pre = <span class="keyword">null</span>;</span><br><span class="line">        tail.next = <span class="keyword">null</span>;</span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.pre = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addNodeToHead</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        node.pre = head;</span><br><span class="line">        node.next = head.next;</span><br><span class="line">        head.next.pre = node;</span><br><span class="line">        head.next = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">delOneNode</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        Node pre = node.pre;</span><br><span class="line">        Node next = node.next;</span><br><span class="line">        pre.next = next;</span><br><span class="line">        next.pre = pre;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveToHead</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        delOneNode(node);</span><br><span class="line">        addNodeToHead(node);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Node <span class="title">popTail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Node last = tail.pre;</span><br><span class="line">        <span class="keyword">this</span>.delOneNode(last);</span><br><span class="line">        <span class="keyword">return</span> last;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node node = cache.get(key);</span><br><span class="line">        moveToHead(node);</span><br><span class="line">        <span class="keyword">return</span> node.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cache.size() == capacity) &#123;</span><br><span class="line">                Node last = <span class="keyword">this</span>.popTail();</span><br><span class="line">                <span class="keyword">this</span>.cache.remove(last.key);</span><br><span class="line">            &#125;</span><br><span class="line">            Node toAddNode = <span class="keyword">new</span> Node();</span><br><span class="line">            toAddNode.key = key;</span><br><span class="line">            toAddNode.value = value;</span><br><span class="line">            cache.put(key, toAddNode);</span><br><span class="line">            addNodeToHead(toAddNode);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Node node = cache.get(key);</span><br><span class="line">            node.value = value;</span><br><span class="line">            moveToHead(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过LinkedHashMap实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> <span class="keyword">extends</span> <span class="title">LinkedHashMap</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(capacity, <span class="number">0.75f</span>, <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) <span class="keyword">super</span>.getOrDefault(key, -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry eldest)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size() &gt; capacity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h4>
       
 
       
@@ -201,11 +211,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">notes</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">coding</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -261,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/25/BigData/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/21/LRUCache-and-LinkedHashMap/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -275,18 +285,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/25/ML&DL基础概念/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ML&amp;DL基础概念
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/20/Java-Py-utils/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java_Py_utils</div>
+    <a href="/2018/09/19/Interview-Conclusion-2019Autumn/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Interview Conclusion_2019Autumn</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -313,7 +314,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#HDFS"><span class="toc-number">1.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MapReduce"><span class="toc-number">2.</span> <span class="toc-text">MapReduce</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#LRUCache"><span class="toc-number">1.</span> <span class="toc-text">LRUCache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LinkedHashMap"><span class="toc-number">2.</span> <span class="toc-text">LinkedHashMap</span></a></li></ol>
                     </div>
                 </span>
             </div>
