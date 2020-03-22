@@ -166,6 +166,11 @@ $ git commit -m "update .gitignore"
 $ git push origin hexo
 ```
 
+- 插入图片
+  - _config.yml中修改post_asset_folder:true
+  - 安装插件```npm install https://github.com/CodeFalling/hexo-asset-image -- save```
+  - ```hexo n xxx```时还会生成```xxx```空文件夹，将图片放至此文件夹中，即可引用图片，引用方式：```![xx]xxx.png```
+
  # 四、主题配置
 
 ​	配置文件_config.yml中有主题配置选项theme，将心仪的主题clone到themes文件夹下，修改配置重新部署即可应用主题，主题基本配置同样主题文件夹下的 _config.yml配置。
