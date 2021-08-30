@@ -615,3 +615,19 @@ head -10 file.txt | tail -1
 ```
 
 ---
+
+##### 翻转数字
+
+```java
+// Base 10 case
+ans = ans*10 + n % 10
+n /= 10
+    
+//Base 2 case
+ans = ans*2 + n % 2
+    
+//Bit operation
+ans = (ans << 1) | (n & 1)
+n >>= 1
+```
+
