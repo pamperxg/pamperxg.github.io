@@ -1,17 +1,24 @@
 package leetcode.tree;
 
-import sun.awt.image.ImageWatched;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeBase {
+//    public List<Integer> preorderTraversal(TreeNode root) {
+//
+//    }
+//
+//    public List<Integer> inorderTraversal(TreeNode root) {
+//
+//    }
+//
+//    public List<Integer> postorderTraversal(TreeNode root) {
+//
+//    }
+
     /**
      * [3,9,20,null,null,15,7]
      */
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         if (root == null) {
@@ -35,7 +42,7 @@ public class TreeBase {
         return res;
     }
 
-    public TreeNode genTreeFromArray(Integer[] levelOrderList) {
+    public static TreeNode genTreeFromLevelOrderArray(Integer[] levelOrderList) {
         TreeNode p = new TreeNode(levelOrderList[0]);
         TreeNode head = p;
         Queue<TreeNode> nodes = new LinkedList<>();
@@ -55,5 +62,17 @@ public class TreeBase {
             p = nodes.poll();
         }
         return head;
+    }
+
+    public static void main(String[] args) {
+        // 层序遍历
+        TreeNode head = genTreeFromLevelOrderArray(new Integer[]{3,9,20,null,null,15,7});
+        List<List<Integer>> levelOrderRes = levelOrder(head);
+        System.out.printf(Arrays.toString(levelOrderRes.toArray()));
+        // 前序遍历
+
+        // 中序遍历
+
+        // 后续遍历
     }
 }
